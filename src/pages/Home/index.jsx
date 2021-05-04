@@ -4,7 +4,6 @@ import './style.css'
 import { Button } from '../../components/atoms'
 import NewHome from '../../components/organisms/Home/NewHome'
 import PopularHome from '../../components/organisms/Home/PopularHome'
-import CarouselPopular from '../../components/organisms/Home/CarouselPopular'
 
 export default function Home(){
    return(
