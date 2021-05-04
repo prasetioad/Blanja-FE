@@ -1,0 +1,14 @@
+/* DESKTOP */
+@media(min-width: 768px) {
+   .loginBtn { 
+      border-radius: 1vw;
+      font-size: 1vw;
+      padding: 1vw; 
+      width: 25vw;
+   }
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+    
+}
