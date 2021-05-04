@@ -1,0 +1,31 @@
+/* DESKTOP */
+@media(min-width: 768px) {
+   /* NAVBAR */
+   .leftNav { justify-content: space-between; width: 50vw; }
+   .logo { height: 3.3vw; width: 7.7vw; }
+   .searchBorder { border: 0.13vw solid #8E8E93; border-radius: 1.5vw; padding: 0.77vw 1.5vw; width: 30vw; }
+   .searchLogo { height: 1.3vw; width: 1.3vw; }
+   .inputSearch { border: none; font-size: 1vw; width: 100%; }
+   .inputSearch:focus { outline: none; }
+   .filterBtn { margin-left: 1vw; height: 3vw; width: 3vw; }
+   .rightNav { justify-content: space-between; width: 22vw; }
+   .cartLogo { height: 1.5vw; margin-right: 2vw; width: 1.5vw; }
+   .loginBtn, .regBtn { border-radius: 1.5vw; font-size: 1vw; padding: 0.77vw; width: 8vw; }
+   .regBtn { border: 0.1vw solid #9B9B9B; }
+   .rightBtnZone { justify-content: space-between; width: 10vw; }
+   .notification { height: 1.5vw; width: 1.5vw; }
+   .mail { height: 1.5vw; width: 1.5vw; }
+   .profile { height: 3vw; width: 3vw; }
+   /* FILTER */
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+   .logo { width: 30vw; }
+   .rightNav, .searchBorder, .filterBtn { display: none; }
+   .searchMobile { border: 2px solid #9B9B9B; border-radius: 24px; justify-content: space-between; padding: 5vw; width: 100%; }
+   .searchMobileInput { border: none; font-size: 5vw; width: 50%; }
+   .searchMobileInput:focus { outline: none; }
+   .authBtnMobileLogin { border-radius: 12px; font-size: 5vw; padding: 3vw; width: 30vw; }
+   .authBtnMobileRegister { border: 1px solid #9B9B9B; border-radius: 12px; font-size: 5vw; padding: 3vw; width: 30vw; }
+}

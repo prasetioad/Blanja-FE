@@ -1,0 +1,23 @@
+/* DESKTOP */
+@media(min-width: 768px) {
+   .paddingFilter { border-bottom: 0.2vw solid #F4F4F4; padding: 1.5vw; }
+   .filterCategoryText { font-size: 1vw; font-weight: bold; }
+   .filterOption { margin-top: 1.5vw; }
+   /* COLOR */
+   .colorBtn { border-radius: 50%; margin-right: 1vw; padding: 1vw; }
+   /* SIZE */
+   .sizeBtn { 
+      border-radius: 0.5vw;
+      font-size: 1vw; 
+      margin-right: 1vw; 
+      padding: 1vw; 
+      width: 3.3vw; 
+   }
+   .unselectSize { background: white; border: 0.1vw solid #9B9B9B; }
+   .selectSize { background: #273AC7; color: white; }
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+   
+}
