@@ -1,0 +1,67 @@
+p.title{
+  font-family: Metropolis;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 34px;
+  color: #222222;
+}
+
+p.teks{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #9B9B9B;
+}
+
+img.product-img{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 136px;
+}
+
+div.card{
+  background: #FFFFFF;
+  box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
+  border-radius: 15px;
+  width: 208px;
+  height: 278px;
+}
+
+p.product-name{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  margin-top: -10px;
+}
+
+p.price{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #DB3022;
+  margin-top: -10px;
+}
+
+p.teks-store{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: #9B9B9B;
+  margin-top: -5px;
+}
+
+img.rating{
+  width: 14px;
+  height: 14px;
+  margin-top: -23px;
+}
+

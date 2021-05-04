@@ -3,7 +3,8 @@ import './style.css'
 
 export default function Register(){
    return(
-      <div>
+
+      <div className="showInAnimation">
          <Helmet>
             <title>Blanja - Register</title>
          </Helmet>

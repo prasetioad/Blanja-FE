@@ -3,7 +3,8 @@ import './style.css'
 
 export default function MyBag(){
    return(
-      <div>
+
+      <div className="showInAnimation">
          <Helmet>
             <title>Blanja - My Bag</title>
          </Helmet>

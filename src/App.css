@@ -39,7 +39,16 @@
 
 /* GLOBAL CSS */
 button { border: none; text-align: center; }
+
 button:hover { cursor: pointer; opacity: 0.5; }
 .inDevelopment { align-items: center; justify-content: center; }
 .displayRow { display: flex; flex-direction: row; }
 .displayColumn { display: flex; flex-direction: column; }
+
+.inDevelopment { align-items: center; justify-content: center; }
+.showInAnimation {animation: showOpacity 0.5s;} @keyframes showOpacity{from{opacity: 0;} to{opacity: 1;}}
+.displayRow { align-items: center; display: flex; flex-direction: row; }
+.displayColumn { display: flex; flex-direction: column; }
+.hoverThis { transition-duration: 0.3s; }
+.hoverThis:hover { cursor: pointer; opacity: 0.5; }
+

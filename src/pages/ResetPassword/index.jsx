@@ -3,7 +3,8 @@ import './style.css'
 
 export default function ResetPassword(){
    return(
-      <div>
+
+      <div className="showInAnimation">
          <Helmet>
             <title>Blanja - Reset Password</title>
          </Helmet>

@@ -5,7 +5,8 @@ import { Button } from '../../components/atoms'
 
 export default function Login(){
    return(
-      <div>
+
+      <div className="showInAnimation">
          <Helmet>
             <title>Blanja - Login</title>
          </Helmet>
