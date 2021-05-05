@@ -12,6 +12,7 @@ import Home from "../../pages/Home";
 import MyBag from "../../pages/MyBag";
 import Product from '../../pages/Product'
 import Category from '../../pages/Category'
+import CheckOut from "../../pages/Checkout"
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
         <PublicRoute path="/reset" component={ResetPassword} />
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
         <PrivateRoute path="/bag" component={MyBag} />
-        <Route path="/product" component={Product}/>
+        <Route path="/product" component={Product} />
         <Route path="/category" component={Category} />
+        <Route path="/check-out" component={CheckOut} />
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
