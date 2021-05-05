@@ -10,6 +10,7 @@ import ResetPassword from "../../pages/ResetPassword";
 import ConfirmPassword from "../../pages/ConfirmPassword";
 import Home from "../../pages/Home";
 import MyBag from "../../pages/MyBag";
+import CheckOut from "../../pages/Checkout"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <PublicRoute path="/reset" component={ResetPassword} />
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
         <PrivateRoute path="/bag" component={MyBag} />
+        <Route path="/check-out" component={CheckOut} />
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
