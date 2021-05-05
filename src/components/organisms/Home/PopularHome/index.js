@@ -9,7 +9,7 @@ function PopularHome() {
     axios.get(`https://jsonplaceholder.typicode.com/users`)
     .then((res)=>{
       const dataNewProduct = res.data
-      console.log(dataNewProduct);
+      // console.log(dataNewProduct);
       setGetNewProduct(dataNewProduct)
       
     })
@@ -20,14 +20,14 @@ function PopularHome() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container" >
        <p className={style["title"]}>Popular</p>
        <p className={style["teks"]}>Find clothes that are trending recently</p>
        <div className="row">
         {getNewProduct !== undefined ? getNewProduct.map((item)=>{
         return (
         <>
-        <div className="col-2.5 ml-3 mb-5" key={item.index}>
+        <div className="col-3 mb-5" >
           <div className={style["card"]}>
             <img className={[["card-img-top"], style["product-img"]].join(' ')} src="https://www.fashionrevolution.org/wp-content/uploads/2020/11/gez-xavier-mansfield-b34E1vh1tYU-unsplash.jpg" alt=""/>
             <div className="card-body">

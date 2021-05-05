@@ -5,6 +5,7 @@ import './style.css'
 import { Home } from '../../components/templates'
 import NewHome from '../../components/organisms/Home/NewHome'
 import PopularHome from '../../components/organisms/Home/PopularHome'
+import Carousel1 from '../../components/organisms/Home/Corousel 1'
 
 export default function HomePage(){
    return(
@@ -13,6 +14,7 @@ export default function HomePage(){
             <title>Blanja - Home</title>
          </Helmet>
          <Home/>
+         {/* <Carousel1 /> */}
          <NewHome />
          <PopularHome />
       </div>
