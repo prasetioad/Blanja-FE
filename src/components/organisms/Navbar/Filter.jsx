@@ -50,25 +50,27 @@ export default function Filter({ func }) {
       }
    }
    return(
-      <div className={"displayRow " + css.filter}>
-         <div className={"displayRow " + css.transparentBackground}/>
-         <div className={"displayColumn " + css.insideFilter}>
-            <div className={"displayRow " + css.filterTop}>
-               <img className={"hoverThis " + css.filterClose} onClick={func} src={Close}/>
-               <span className={css.filterText}>Filter</span>
-            </div>
-            <div className={"displayColumn " + css.filterArea}>
-               <Colors col={[color, (e) => { selectColor(e.target.parentElement.parentElement.getAttribute("color")) }]}/>
-               <Sizes 
-                  alph={[alphabetSize, (e) => { selectAlphabetSize(e.target.innerText) }]} 
-                  cat={category} 
-                  num={[numericSize, (e) => { selectNumericSize(e.target.innerText) }]}
-               />
-               <Categories cat={category} catState={ (e) => { selectCategory(e.target.innerText) } }/>
-            </div>
-            <div className={"displayRow " + css.filterBottom}>
-               <Button btnClr="white" cls={css.discardBtn} func={ () => { discard() } } val="Discard"/>
-               <Button btnClr="#273AC7" cls={css.applyBtn}  func={ () => { apply() } } ftClr="white" val="Apply"/>
+      <div>
+         <div className={"displayRow " + css.filter}>
+            <div className={"displayRow " + css.transparentBackground}/>
+            <div className={"displayColumn " + css.insideFilter}>
+               <div className={"displayRow " + css.filterTop}>
+                  <img alt="Filter" className={"hoverThis " + css.filterClose} onClick={func} src={Close}/>
+                  <span className={css.filterText}>Filter</span>
+               </div>
+               <div className={"displayColumn " + css.filterArea}>
+                  <Colors col={[color, (e) => { selectColor(e.target.parentElement.parentElement.getAttribute("color")) }]}/>
+                  <Sizes 
+                     alph={[alphabetSize, (e) => { selectAlphabetSize(e.target.innerText) }]} 
+                     cat={category} 
+                     num={[numericSize, (e) => { selectNumericSize(e.target.innerText) }]}
+                  />
+                  <Categories cat={category} catState={ (e) => { selectCategory(e.target.innerText) } }/>
+               </div>
+               <div className={"displayRow " + css.filterBottom}>
+                  <Button btnClr="white" cls={css.discardBtn} func={ () => { discard() } } val="Discard"/>
+                  <Button btnClr="#273AC7" cls={css.applyBtn}  func={ () => { apply() } } ftClr="white" val="Apply"/>
+               </div>
             </div>
          </div>
       </div>
