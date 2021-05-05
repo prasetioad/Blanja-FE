@@ -7,7 +7,7 @@ import ResetPassword from './pages/ResetPassword'
 import ConfirmPassword from './pages/ConfirmPassword'
 import Home from './pages/Home'
 import MyBag from './pages/MyBag'
-import Corousel from './components/organisms/Home/Corousel 1/index'
+// import Corousel from './components/organisms/Home/Corousel 1/index'
 // REDUX (BELAKANGAN)
 import { Provider } from 'react-redux'
 import store from './configs/redux/Store'
@@ -17,7 +17,7 @@ function App() {
     // <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/test" component={Corousel}/>
+          {/* <Route path="/test" component={Corousel}/> */}
           <Route path="/login" component={Login}/>
           <Route path="/register" component={Register}/>
           <Route path="/reset" component={ResetPassword}/>
