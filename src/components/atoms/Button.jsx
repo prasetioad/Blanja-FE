@@ -1,6 +1,6 @@
-export default function Button({ btnClr, cls, ftClr, val }){
+export default function Button({ btnClr, cls, ftClr, func, val }){
    return(
-      <div>
+      <div onClick={func}>
          <button className={"displayRow " + cls} style={{ background: btnClr, color: ftClr}} type="submit">
             <span style={{margin: "auto"}}>{val}</span>
          </button>

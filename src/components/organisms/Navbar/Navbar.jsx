@@ -10,7 +10,7 @@ export default function Navbar({ func }) {
    return(
       <div className={"displayColumn " + css.navbar}>
          <div className={"displayRow " + css.navbarTop}>
-            <LeftNav func={func}/>
+            <LeftNav close={close} func={func}/>
             <RightNav/>
             <img className={css.navBtn} onClick={ () => showNavMobile(!navMobile) } src={NavBtn}/>
          </div>
