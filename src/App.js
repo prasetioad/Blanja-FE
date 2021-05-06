@@ -10,6 +10,7 @@ import MyBag from './pages/MyBag'
 // REDUX (BELAKANGAN)
 import { Provider } from 'react-redux'
 import store from './configs/redux/Store'
+import Product from './pages/Product'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" component={Register}/>
           <Route path="/reset" component={ResetPassword}/>
           <Route path="/confirm" component={ConfirmPassword}/>
+          <Route path="/products" component={Product}/>
           <Route path="/bag" component={MyBag}/>
           <Route path="/" component={Home}/>
         </Switch>

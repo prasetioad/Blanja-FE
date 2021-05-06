@@ -23,7 +23,9 @@
         line-height: 38px;
         color: #FFFFFF;
     }
-
+    .homeCarouselOneImg img{
+        width: 420px;
+    }
     .homeCarouselTwoCategory{
         width: 80%;
         margin: auto;
@@ -48,6 +50,20 @@
         line-height: 12px;
         color: #9B9B9B;
     }
+    .CarouselTwoCategoryItem{
+        margin-top: 16px;
+    }
+    .CarouselTwoCategoryText{
+        position: absolute;
+        margin-top: 3.3em;
+        margin-left: 1.9em;
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        line-height: 0px;
+        color: #FFFFFF;
+        display: none;
+    }
     @media screen and (max-width: 600px){
         .homeCorouselOne{
             width: 95%;
@@ -68,6 +84,9 @@
         }
         .homeCarouselTwoCategory{
             width:95%;
+        }
+        .homeCarouselOneImg img{
+            width: 450px;
         }
         
     }
@@ -96,4 +115,5 @@
         .homeCarouselTwoCategory{
             width:100%;
         }
+        
     }

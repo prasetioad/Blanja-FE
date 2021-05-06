@@ -32,7 +32,7 @@ function Index() {
                     </div>
                     <div>
                         <div className="homeCarouselOneText">
-                            <p>Trends in 2020</p>
+                            <p>Black Edition</p>
                         </div>
                         <div className="homeCarouselOneImg">
                             <img src="./asset/benjamin-voros-TnNo84AJJ5A-unsplash 1.png" alt=""/>
@@ -40,7 +40,7 @@ function Index() {
                     </div>
                     <div>
                         <div className="homeCarouselOneText">
-                            <p>Trends in 2020</p>
+                            <p>Black Edtion</p>
                         </div>
                         <div className="homeCarouselOneImg">
                             <img src="./asset/ian-dooley-10ca-K3e6Ko-unsplash 1.png" alt=""/>
@@ -56,7 +56,7 @@ function Index() {
                     </div>
                     <div>
                         <div className="homeCarouselOneText">
-                            <p>Trends in 2020</p>
+                            <p>Black Edtion</p>
                         </div>
                         <div className="homeCarouselOneImg">
                             <img src="./asset/ian-dooley-10ca-K3e6Ko-unsplash 1.png" alt=""/>
@@ -85,7 +85,7 @@ function Index() {
                     <Carousel breakPoints={categoryBreakPoints}>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
-                                <p></p>
+                                <p>Shoes</p>
                             </div>
                             <div className="CarouselTwoCategoryImg">
                                 <img src="./asset/Group 1229.png" alt=""/>
@@ -93,7 +93,7 @@ function Index() {
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
-                                <p></p>
+                                <p>Pants</p>
                             </div>
                             <div className="CarouselTwoCategoryImg">
                                 <img src="./asset/Group 1230.png" alt=""/>
@@ -101,7 +101,7 @@ function Index() {
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
-                                <p></p>
+                                <p>Jacket</p>
                             </div>
                             <div className="CarouselTwoCategoryImg">
                                 <img src="./asset/Group 1231.png" alt=""/>
@@ -109,7 +109,7 @@ function Index() {
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
-                                <p></p>
+                                <p>Shorts</p>
                             </div>
                             <div className="CarouselTwoCategoryImg">
                                 <img src="./asset/Group 1232.png" alt=""/>
@@ -117,18 +117,10 @@ function Index() {
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
-                                <p></p>
+                                <p>T-Shirt</p>
                             </div>
                             <div className="CarouselTwoCategoryImg">
                                 <img src="./asset/Group 1233 (1).png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="CarouselTwoCategoryObjek">
-                            <div className="CarouselTwoCategoryText">
-                                <p></p>
-                            </div>
-                            <div className="CarouselTwoCategoryImg">
-                                <img src="./asset/Group 1232.png" alt=""/>
                             </div>
                         </div>
                     </Carousel>
