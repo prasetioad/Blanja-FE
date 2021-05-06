@@ -1,17 +1,14 @@
 import { Helmet } from 'react-helmet'
-// import './style.css'
 // ATOMS
-import Products from '../../components/templates/Products.jsx'
-import { Home } from '../../components/templates'
+import { Product } from '../../components/templates'
 
-export default function Product(){
+export default function ProductPage(){
    return(
       <div className="showInAnimation">
          <Helmet>
             <title>Blanja - Product</title>
          </Helmet>
-         {/* <Home/> */}
-         <Products/>
+         <Product/>
       </div>
    )
 }

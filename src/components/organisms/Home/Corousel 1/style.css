@@ -37,8 +37,7 @@
         line-height: 34px;
         color: #222222;
         margin-left: 3vw;
-        display: flex;
-        justify-content: start;
+        display: flex-start;
         flex-direction: column;
     }
     .hctTitle p{
