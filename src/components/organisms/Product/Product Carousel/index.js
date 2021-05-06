@@ -142,7 +142,7 @@ function Index() {
                                         <Button btnClr='transparent' cls='prodButtonAddBag' ftClr='black' val="Add bag"/>
                                     </div>
                                     <div className="prodButtonItem">
-                                        <Button btnClr='#DB3022' cls='prodButtonBuyNow' ftClr='white' val="Buy Now"/>
+                                        <Button btnClr='#273AC7' cls='prodButtonBuyNow' ftClr='white' val="Buy Now"/>
                                     </div>
                                 </div>
                             </div>

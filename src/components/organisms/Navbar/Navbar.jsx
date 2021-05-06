@@ -29,7 +29,7 @@ export default function Navbar({ func }) {
   return(
     <div className={css.navbarCSS}>
       <div className={"displayRow " + css.navbarTop}>
-        <LeftNav close={close} func={func}/>
+        <LeftNav func={func}/>
         <RightNav func={ () => { logout() } } ud={userData}/>
         <img className={css.navBtn} onClick={ () => showNavMobile(!navMobile) } src={NavBtn} alt="Nav"/>
       </div>

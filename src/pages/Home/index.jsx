@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet'
 import './style.css'
 // ATOMS
-
 import { Home } from '../../components/templates'
 
 export default function HomePage(){
