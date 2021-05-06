@@ -3,8 +3,10 @@ import css from "./style.module.css";
 import Search from "../../../images/Search.png";
 // ATOMS
 import { Button } from "../../../atoms";
+import { useHistory } from "react-router";
 
 export default function MobileNav({ func, ud }) {
+  const history = useHistory()
   return (
     <div className="displayColumn">
       <div

@@ -1,10 +1,7 @@
 import { Helmet } from 'react-helmet'
-import InformationProfuct from '../../components/organisms/Product/InformationProduct'
-import OtherProducts from '../../components/organisms/Product/OtherProducts'
-import ProductTop from '../../components/organisms/Product/Product Carousel/index'
 // import './style.css'
 // ATOMS
-
+import Products from '../../components/templates/Products.jsx'
 import { Home } from '../../components/templates'
 
 export default function Product(){
@@ -13,12 +10,8 @@ export default function Product(){
          <Helmet>
             <title>Blanja - Product</title>
          </Helmet>
-         <Home/>
-
-         <ProductTop />
-         <InformationProfuct />
-         <OtherProducts />
-         
+         {/* <Home/> */}
+         <Products/>
       </div>
    )
 }
