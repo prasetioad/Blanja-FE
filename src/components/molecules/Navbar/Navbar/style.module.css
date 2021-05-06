@@ -10,7 +10,7 @@
    .filterBtn { margin-left: 1vw; height: 3vw; width: 3vw; }
    .rightNav { justify-content: space-between; width: 22vw; }
    .cartLogo, .bellLogo { height: 1.5vw; width: 1.5vw; }
-   .cartLogo { margin-right: 2vw; }
+   .cartLogo { margin-right: 2.5vw; }
    .loginBtn, .regBtn { border-radius: 1.5vw; font-size: 1vw; padding: 0.77vw; width: 8vw; }
    .regBtn { border: 0.1vw solid #9B9B9B; }
    .rightBtnZone { justify-content: space-between; width: 10vw; }
