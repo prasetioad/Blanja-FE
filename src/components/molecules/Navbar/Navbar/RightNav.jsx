@@ -1,4 +1,5 @@
 import css from "./style.module.css";
+import { useHistory } from 'react-router'
 // IMAGES
 import Cart from "../../../images/cart.png";
 import Bell from "../../../images/bell.png";
@@ -8,6 +9,7 @@ import NoNotification from "../../../images/noNotification.png"
 import { Button } from "../../../atoms";
 
 export default function RightNav({ func, ud }) {
+  const history = useHistory()
   return (
     <div className={"displayRow " + css.rightNav}>
       <div></div>
