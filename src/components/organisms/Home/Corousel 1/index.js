@@ -135,7 +135,7 @@ function Index() {
                 </div>
             </div>
         </div>
-    )
+  )
 }
 
-export default Index
+export default Index;

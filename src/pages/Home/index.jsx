@@ -5,7 +5,7 @@ import './style.css'
 import { Home } from '../../components/templates'
 import NewHome from '../../components/organisms/Home/NewHome'
 import PopularHome from '../../components/organisms/Home/PopularHome'
-import CarouselOne from '../../components/organisms/Home/Corousel 1/index'
+import CarouselOne from '../../components/organisms/Home/Corousel 1'
 
 export default function HomePage(){
    return(

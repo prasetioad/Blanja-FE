@@ -18,15 +18,15 @@ p.title{
   img.product-img{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    height: 136px;
+    /* height: 136px; */
   }
   
   div.card{
     background: #FFFFFF;
     box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
     border-radius: 15px;
-    width: 208px;
-    height: 278px;
+    /* width: 208px;
+    height: 278px; */
   }
   
   p.product-name{
