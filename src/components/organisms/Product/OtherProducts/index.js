@@ -11,18 +11,16 @@ function OtherProducts({ product }) {
 
   const history = useHistory();
 
-
   const [getNewProduct, setGetNewProduct] = useState([])
   const [rating, setRating] =useState(null)
 
   useEffect(() => {
-    if (product) {
+    
       if (product.category === "T-Shirt") {
         axios.get(`${urlApi}/product/category/1`)
           .then((res) => {
             const dataNewProduct = res.data.data
             setGetNewProduct(dataNewProduct)
-
           })
           .catch((err) => {
             Swal.fire({
@@ -88,7 +86,7 @@ function OtherProducts({ product }) {
             })
           })
       }
-    }
+    
 
   }, [])
 

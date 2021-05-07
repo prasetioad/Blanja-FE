@@ -36,7 +36,7 @@ function PopularHome() {
         return (
         <>
           <div className="col-lg-3 col-6 mb-5" >
-            <div className={style["card"]} onClick={()=>{ history.push(`./product/${item.map}`)}}>
+            <div className={style["card"]} onClick={()=>{ history.push(`./product/${item.id}`)}}>
               <img className={[["card-img-top"], style["product-img"]].join(' ')} src={`${process.env.REACT_APP_API_IMG}${item.image}`} alt=""/>
               <div className="card-body">
                 <p className={style["product-name"]}>{item.title}</p>
