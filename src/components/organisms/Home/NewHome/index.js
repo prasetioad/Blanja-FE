@@ -3,9 +3,11 @@ import style from "./newhome.module.css";
 import axios from "axios";
 import { FaStar } from 'react-icons/fa'
 import {tshirt} from '../../../images'
+import { useHistory } from 'react-router';
 
 function NewHome() {
   const [getNewProduct, setGetNewProduct] = useState([]);
+  const history = useHistory()
   // Untuk Banyaknya rating/bintang
   const [rating, setRating] =useState(null)
 
@@ -33,8 +35,8 @@ function NewHome() {
         {getNewProduct !== undefined ? getNewProduct.map((item)=>{
         return (
         <>
-          <div className="col-lg-3 mb-5" >
-            <div className={style["card"]}>
+          <div className="col-lg-3 col-6 mb-5" >
+            <div className={style["card"]} onClick={()=>{ history.push('./product')}}>
               <img className={[["card-img-top"], style["product-img"]].join(' ')} src={tshirt} alt=""/>
               <div className="card-body">
                 <p className={style["product-name"]}>{item.username}</p>
