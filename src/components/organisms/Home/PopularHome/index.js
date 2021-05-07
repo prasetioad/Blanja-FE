@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import style from "./popularhome.module.css";
 import axios from "axios";
 import { FaStar } from 'react-icons/fa'
-import {tshirt} from '../../../images'
 import { useHistory } from 'react-router';
 
 function PopularHome() {
@@ -18,7 +17,7 @@ function PopularHome() {
       // console.log(dataNewProduct);
       setGetNewProduct(dataNewProduct)
       
-      setRating(5)
+      // setRating(5)
     })
     .catch((err)=>{
       console.log(err);
@@ -51,7 +50,7 @@ function PopularHome() {
                     <FaStar 
                       className={style["star"]} 
                       size={25}
-                      color={ratingValue <= (rating) ? '#FFBA49' : '#D4D4D4'}
+                      color={ratingValue <= (item.rating) ? '#FFBA49' : '#D4D4D4'}
                     />
                   </>
                   ) 

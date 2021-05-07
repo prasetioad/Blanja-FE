@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import style from './otherproducts.module.css'
 import Swal from 'sweetalert2';
-
+import { FaStar } from 'react-icons/fa'
 
 function OtherProducts({ product }) {
   const urlApi = process.env.REACT_APP_API_URL;
@@ -11,7 +11,9 @@ function OtherProducts({ product }) {
 
   const history = useHistory();
 
+
   const [getNewProduct, setGetNewProduct] = useState([])
+  const [rating, setRating] =useState(null)
 
   useEffect(() => {
     if (product) {

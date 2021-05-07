@@ -14,15 +14,16 @@ function Shorts() {
     axios.get(`${process.env.REACT_APP_API_URL}/product/category/5`)
     .then((res)=>{
       const dataAllShorts = res.data.data
-    //   console.log(dataAllShorts);
+      console.log(dataAllShorts);
       setGetShorts(dataAllShorts)
 
-      setRating(5) 
+      // setRating(5) 
     })
     .catch((err)=>{
       console.log(err);
     })
   }, [])
+
 
   return (
     <div>
@@ -47,7 +48,7 @@ function Shorts() {
                     <FaStar 
                       className={style["star"]} 
                       size={25}
-                      color={ratingValue <= (rating) ? '#FFBA49' : '#D4D4D4'}
+                      color={ratingValue <= (item.rating) ? '#FFBA49' : '#D4D4D4'}
                     />
                   </>
                   ) 
