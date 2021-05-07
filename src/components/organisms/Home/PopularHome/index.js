@@ -55,7 +55,6 @@ function PopularHome() {
                   </>
                   ) 
                 })}
-                {/* <img className={style["rating"]} src="https://www.flaticon.com/svg/vstatic/svg/786/786230.svg?token=exp=1620118115~hmac=a4e96f09c345196119a6f8470b55151f" alt=""/> */}
               </div>
             </div>
           </div>

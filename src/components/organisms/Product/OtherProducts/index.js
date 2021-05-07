@@ -30,7 +30,7 @@ function OtherProducts() {
           <>
           <div className="col-lg-3 mb-5" >
             <div className={style["card"]}>
-              <img className={[["card-img-top"], style["product-img"]].join(' ')} src="https://www.fashionrevolution.org/wp-content/uploads/2020/11/gez-xavier-mansfield-b34E1vh1tYU-unsplash.jpg" alt="image"/>
+              <img className={[["card-img-top"], style["product-img"]].join(' ')} src={tshirt} alt="image"/>
               <div className="card-body">
                 <p className={style["product-name"]}>{item.username}</p>
                 <p className={style["price"]}>$ 40.0</p>

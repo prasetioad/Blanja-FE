@@ -13,7 +13,7 @@ function Jacket() {
     axios.get(`https://jsonplaceholder.typicode.com/users`)
     .then((res)=>{
       const dataAllJacket = res.data
-      console.log(dataAllJacket);
+      // console.log(dataAllJacket);
       setGetJacket(dataAllJacket)
      
       setRating(4) 
@@ -33,7 +33,7 @@ function Jacket() {
           {getJacket !== undefined ? getJacket.map((item)=>{
           return (
           <>
-          <div className="col-lg-3 mb-5" >
+          <div className="col-lg-3 col-6 mb-5" >
             <div className={style["card"]}>
               <img className={[["card-img-top"], style["product-img"]].join(' ')} src={jacket} alt=""/>
               <div className="card-body">

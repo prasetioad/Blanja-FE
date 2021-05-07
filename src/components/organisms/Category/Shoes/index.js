@@ -1,22 +1,22 @@
 import {useState, useEffect} from 'react'
-import style from './tshirt.module.css'
+import style from './shoes.module.css'
 import axios from 'axios'
 import { FaStar } from 'react-icons/fa'
-import {tshirt} from '../../../images'
+import {shoes} from '../../../images'
 
-function Tshirt() {
-  const [getTshirt, setGetTshirt] = useState([])
+function Shoes() {
+  const [getShoes, setGetShoes] = useState([])
   // Untuk Banyaknya rating/bintang
   const [rating, setRating] =useState(null)
 
   useEffect(()=>{
     axios.get(`https://jsonplaceholder.typicode.com/users`)
     .then((res)=>{
-      const dataAllThsirt = res.data
-      // console.log(dataAllThsirt);
-      setGetTshirt(dataAllThsirt)
+      const dataAllShoes = res.data
+    //   console.log(dataAllShoes);
+      setGetShoes(dataAllShoes)
      
-      setRating(4) 
+      setRating(3) 
     })
     .catch((err)=>{
       console.log(err);
@@ -26,16 +26,16 @@ function Tshirt() {
   return (
     <div>
       <div className="container">
-        <p className={style["navigation"]}>Home - Category - Tshirt</p>
-        <p className={style["title"]}>T-Shirt</p>
+        <p className={style["navigation"]}>Home - Category - Shoes</p>
+        <p className={style["title"]}>Shoes</p>
       
         <div className="row">
-          {getTshirt !== undefined ? getTshirt.map((item)=>{
+          {getShoes !== undefined ? getShoes.map((item)=>{
           return (
           <>
           <div className="col-lg-3 col-6 mb-5" >
             <div className={style["card"]}>
-              <img className={[["card-img-top"], style["product-img"]].join(' ')} src={tshirt} alt=""/>
+              <img className={[["card-img-top"], style["product-img"]].join(' ')} src={shoes} alt=""/>
               <div className="card-body">
                 <p className={style["product-name"]}>{item.username}</p>
                 <p className={style["price"]}>$ 40.0</p>
@@ -67,4 +67,4 @@ function Tshirt() {
   )
 }
 
-export default Tshirt
+export default Shoes

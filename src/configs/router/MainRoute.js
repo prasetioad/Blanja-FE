@@ -9,9 +9,10 @@ import Register from "../../pages/Register";
 import ResetPassword from "../../pages/ResetPassword";
 import ConfirmPassword from "../../pages/ConfirmPassword";
 import Home from "../../pages/Home";
-import MyBag from "../../pages/MyBag";
+import MyBagPage from "../../pages/MyBag";
 import Product from '../../pages/Product'
 import Category from '../../pages/Category'
+import Chat from '../../pages/Chat'
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
         <PublicRoute path="/register" component={Register} />
         <PublicRoute path="/reset" component={ResetPassword} />
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
-        <PrivateRoute path="/bag" component={MyBag} />
+        <PrivateRoute path="/bag" component={MyBagPage} />
         <Route path="/product" component={Product}/>
         <Route path="/category" component={Category} />
+        <Route path="/chat" component={Chat} />
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
