@@ -18,15 +18,15 @@ p.teks{
 img.product-img{
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  /* height: 136px; */
+  max-height: 251px;
 }
 
 div.card{
   background: #FFFFFF;
   box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
   border-radius: 15px;
-  /* width: 208px;
-  height: 278px; */
+  min-height: 410px;
+  max-height: 410px;
 }
 
 p.product-name{
@@ -67,3 +67,13 @@ img.rating{
 
 .newHomeOuterBackgroundParentDIV { padding: 5vw 0 1vw 0; }
 
+@media only screen and (max-width: 600px) {
+  img.product-img{
+    max-height: 188px;
+  }
+  
+  div.card{
+    min-height: 364px;
+    max-height: 364px;
+  }
+}
