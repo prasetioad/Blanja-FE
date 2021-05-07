@@ -38,18 +38,18 @@ function MyBag() {
       })
 
   }, [])
-
+  
   const countPrice = () => {
     let sum = 0
     product.forEach((value) => {
-      sum += parseInt(value.price)
-    })
+      sum += parseInt(value.price * value.totalBuy)
+    })    
     setTotalPrice(sum)
   }
   const countSelect = () => {
     let c = 0
-    for(let i = 0; i < product.length; i++){
-      if(product[i].select === true) {
+    for (let i = 0; i < product.length; i++) {
+      if (product[i].select === true) {
         c++
       }
     }
@@ -86,9 +86,9 @@ function MyBag() {
               Select all items ( {countSelected} items selected)
             </label>
 
-            {product.map((item) => {
+            {product.map((item, index) => {
               return (
-                <>
+                <div key={index}>
                   <div className="row mt-4">
                     <div className="col d-flex">
                       <div className={style["select-items"]}>
@@ -145,6 +145,7 @@ function MyBag() {
                                     return data
                                   })
                                 )
+                                countSelect();
                               }}
                             />
                             <p className={style["value"]}>{item.totalBuy}</p>
@@ -156,7 +157,7 @@ function MyBag() {
                                   product.map((data) => {
                                     if (item.id === data.id) {
                                       data.totalBuy = data.totalBuy + 1;
-                                      
+
                                     }
                                     return data
                                   })
@@ -176,7 +177,7 @@ function MyBag() {
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )
             })}
 
