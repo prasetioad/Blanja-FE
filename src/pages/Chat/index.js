@@ -18,7 +18,6 @@ function ChatPage() {
               <div className="row">
                 <div className="col-3">
                   <img className={style["userimg"]} src={userprofile} alt=""/>
-
                 </div>
                 <div className="col">
                   <p className={style["user-name"]}>Jonas Adam</p>
@@ -32,9 +31,7 @@ function ChatPage() {
               <img src={userprofile} alt="" className={style["main-userimg"]}/>
               <p className={style["main-username"]}>Jonas adam</p>
               <div className={style["line-width"]}></div>
-              
               <input className={style["input-massage-body"]} type="text" placeholder="type message..." />
-              
             </div>
           </div>
         </div>

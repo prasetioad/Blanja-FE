@@ -3,6 +3,7 @@ import style from './mybag.module.css'
 import {mybagjacket} from '../../images'
 import {AiOutlineMinusCircle, AiFillPlusCircle} from 'react-icons/ai'
 import axios from 'axios'
+import { Navbar } from '..'
 
 function MyBag() {
   const [value, setValue] = useState(1)
@@ -29,6 +30,7 @@ function MyBag() {
 
   return (
     <div>
+      <Navbar />
       <div className="container">
         <p className={style["title-mybag"]}>My bag</p>
         <div className="row">

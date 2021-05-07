@@ -25,9 +25,8 @@ function NewHome() {
   }, [])
 
   return (
-    <div>
+    <div className={style.newHomeOuterBackgroundParentDIV}>
       <div className="container">
-
        <p className={style["title"]}>New</p>
        <p className={style["teks"]}>You’ve never seen it before!</p>
        <div className="row">
@@ -64,7 +63,6 @@ function NewHome() {
         );
         })
         : console.log("try again")}
-
         </div>
       </div>
     </div>

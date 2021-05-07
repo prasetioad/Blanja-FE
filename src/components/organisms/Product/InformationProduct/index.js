@@ -3,7 +3,7 @@ import style from './information.module.css'
 import axios from 'axios'
 import { FaStar } from 'react-icons/fa'
 
-function InformationProfuct() {
+function InformationProduct() {
   const [getProductInfo, setGetProductInfo] = useState([])
   const [rating, setRating] =useState(null)
   const [hover, setHover] = useState(null)
@@ -63,4 +63,4 @@ function InformationProfuct() {
   )
 }
 
-export default InformationProfuct
+export default InformationProduct

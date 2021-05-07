@@ -1,16 +1,16 @@
 import css from "./style.module.css";
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router'
 // IMAGES
 import Cart from "../../../images/cart.png";
 import Bell from "../../../images/bell.png";
 import Mail from "../../../images/mail.png";
-import DummyProfile from "../../../images/dummyProfile.png";
+import NoNotification from "../../../images/noNotification.png"
 // ATOMS
 import { Button } from "../../../atoms";
+import { Notification } from "../../../molecules"
 
-export default function RightNav() {
-  const loginSwitchTest = false;
-  const history = useHistory();
+export default function RightNav({ func, ud }) {
+  const history = useHistory()
   return (
     <div className={"displayRow " + css.rightNav}>
       <div></div>
@@ -23,7 +23,7 @@ export default function RightNav() {
           src={Cart}
           alt="Cart"
         />
-        {loginSwitchTest === false ? (
+        {ud === null ? (
           <div
             className="displayRow"
             style={{ justifyContent: "space-between", width: "17vw" }}
@@ -55,17 +55,34 @@ export default function RightNav() {
           </div>
         ) : (
           <div className={"displayRow " + css.rightBtnZone}>
-            <img
-              className={"hoverThis " + css.notification}
-              src={Bell}
-              alt="Bell"
-            />
+            <Notification/>
             <img className={"hoverThis " + css.mail} src={Mail} alt="Mail" />
-            <img
-              className={"hoverThis " + css.profile}
-              src={DummyProfile}
-              alt="Profile"
-            />
+            <div className="hideFirst col-md-1 dropdown order-md-7">
+              <img 
+                className={"dropdown-toggle hoverThis imgNavbar " + css.profileBtn} 
+                id="dropdownMenuButton" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false" 
+                alt="profileBtn" 
+                src={ud.image}
+              />
+              <div className={"hideFirst dropdown-menu " + css.dropdownUser} aria-labelledby="dropdownMenuButton">
+                <div className={css.userDropdownWrapper}>
+                    <div className="displayRow">
+                      <img className={"hoverThis " + css.profileImage} src={ud.image}/>
+                      <div className={css.userProfileNameAndPhone}>
+                          <p className={css.userProfileName}>{ud.name}</p>
+                          <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
+                      </div>
+                    </div>
+                    <div className={"displayRow " + css.userBtnArea}>
+                      <Button cls={"hoverThis " + css.settingsBtn} val="Settings"/>
+                      <Button cls={"hoverThis " + css.logoutBtn} func={func} val="Logout"/>
+                    </div>
+                </div> 
+              </div>
+            </div>
           </div>
         )}
       </div>
