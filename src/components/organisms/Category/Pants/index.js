@@ -16,8 +16,7 @@ function Pants() {
       const dataAllPants = res.data.data
     //   console.log(dataAllPants);
       setGetPants(dataAllPants)
-     
-      setRating(4) 
+      // setRating(4) 
     })
     .catch((err)=>{
       console.log(err);
@@ -47,7 +46,7 @@ function Pants() {
                     <FaStar 
                       className={style["star"]} 
                       size={25}
-                      color={ratingValue <= (rating) ? '#FFBA49' : '#D4D4D4'}
+                      color={ratingValue <= (item.rating) ? '#FFBA49' : '#D4D4D4'}
                     />
                   </>
                   ) 

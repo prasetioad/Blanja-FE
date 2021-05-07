@@ -15,18 +15,13 @@ function NewHome() {
       const dataNewProduct = res.data.data
       // console.log(dataNewProduct);
       setGetNewProduct(dataNewProduct)
-      
-      // Untuk set rating/bintang
-      setRating(4)
+
+      // setRating(4)
     })
     .catch((err)=>{
       console.log(err);
     })
   }, [])
-
-  const changeRating = (param) =>{
-    setRating(param) 
-  } 
 
   return (
     <div className={style.newHomeOuterBackgroundParentDIV}>
@@ -51,7 +46,7 @@ function NewHome() {
                     <FaStar 
                       className={style["star"]} 
                       size={25}
-                      color={ratingValue <= (rating) ? '#FFBA49' : '#D4D4D4'}
+                      color={ratingValue <= (item.rating) ? '#FFBA49' : '#D4D4D4'}
                     />
                   </>
                   ) 
