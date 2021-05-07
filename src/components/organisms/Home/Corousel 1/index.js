@@ -1,9 +1,10 @@
 import React from 'react'
 import './style.css'
 import Carousel from 'react-elastic-carousel';
+import { useHistory } from 'react-router';
 
 function Index() {
-
+    const history = useHistory()
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
         { width: 550, itemsToShow: 1 },
@@ -87,31 +88,31 @@ function Index() {
                             <div className="CarouselTwoCategoryText">
                                 <p>Shoes</p>
                             </div>
-                            <div className="CarouselTwoCategoryImg">
+                            <div className="CarouselTwoCategoryImg" onClick={()=>{ history.push('./category/shoes')}}>
                                 <img src="./asset/Group 1229.png" alt=""/>
                             </div>
                         </div>
                         <div className="CarouselTwoCategoryObjek">
-                            <div className="CarouselTwoCategoryText">
+                            <div className="CarouselTwoCategoryText" >
                                 <p>Pants</p>
                             </div>
-                            <div className="CarouselTwoCategoryImg">
-                                <img src="./asset/Group 1230.png" alt=""/>
+                            <div className="CarouselTwoCategoryImg" onClick={()=>{ history.push('./category/pants')}}>
+                                <img src="./asset/Group 1230.png" alt="" />
                             </div>
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
                                 <p>Jacket</p>
                             </div>
-                            <div className="CarouselTwoCategoryImg">
-                                <img src="./asset/Group 1231.png" alt=""/>
+                            <div className="CarouselTwoCategoryImg" onClick={()=>{ history.push('./category/jacket')}}>
+                                <img src="./asset/Group 1231.png" alt=""  />
                             </div>
                         </div>
                         <div className="CarouselTwoCategoryObjek">
                             <div className="CarouselTwoCategoryText">
                                 <p>Shorts</p>
                             </div>
-                            <div className="CarouselTwoCategoryImg">
+                            <div className="CarouselTwoCategoryImg" onClick={()=>{ history.push('./category/short')}}>
                                 <img src="./asset/Group 1232.png" alt=""/>
                             </div>
                         </div>
@@ -119,7 +120,7 @@ function Index() {
                             <div className="CarouselTwoCategoryText">
                                 <p>T-Shirt</p>
                             </div>
-                            <div className="CarouselTwoCategoryImg">
+                            <div className="CarouselTwoCategoryImg" onClick={()=>{ history.push('./category/tshirt')}}>
                                 <img src="./asset/Group 1233 (1).png" alt=""/>
                             </div>
                         </div>

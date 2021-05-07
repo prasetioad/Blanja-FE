@@ -6,5 +6,11 @@ import CarouselOne from './Home/Corousel 1'
 import InformationProduct from './Product/InformationProduct'
 import OtherProducts from './Product/OtherProducts'
 import ProductTop from './Product/Product Carousel/index'
+import Jacket from './Category/Jacket/index'
+import Tshirt from './Category/Tshirt/index'
+import HeadAddress from './CheckOut/HeadAddress'
+import ShoppingSum from './CheckOut/ShoppingSum'
+import CardProCheckout from './CheckOut/CardProCheckOut'
 
-export { Navbar, Filter, NewHome, PopularHome, CarouselOne, InformationProduct, OtherProducts, ProductTop }
+export { Navbar, Filter, NewHome, PopularHome, CarouselOne, HeadAddress,ShoppingSum,CardProCheckout,
+    InformationProduct, OtherProducts, ProductTop, Jacket, Tshirt }

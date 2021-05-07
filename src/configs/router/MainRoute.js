@@ -24,7 +24,7 @@ function App() {
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
         <PrivateRoute path="/bag" component={MyBag} />
         <Route path="/product" component={Product} />
-        <Route path="/category" component={Category} />
+        <Route path="/category/:params" component={Category} />
         <Route path="/check-out" component={CheckOut} />
         <Route exact path="/" component={Home} />
       </Switch>
