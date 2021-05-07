@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet'
 import './style.css'
 import MyBag from '../../components/organisms/MyBag'
-import Home from '../../components/templates/Home'
+
 
 export default function MyBagPage(){
    return(
