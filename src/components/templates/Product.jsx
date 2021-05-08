@@ -1,9 +1,8 @@
-import css from './style.module.css';
 import { useState } from 'react';
 // ORGANISMS
-import { Navbar, Filter, NewHome, PopularHome, CarouselOne } from '../organisms';
+import { Navbar, Filter, ProductTop, InformationProduct, OtherProducts } from '../organisms';
 
-export default function Home() {
+export default function Product() {
    const [filter, showFilter] = useState(false)
    return(
       <div style={{background: "#F9F9F9"}}>
@@ -12,11 +11,9 @@ export default function Home() {
          <Filter func={ () => {showFilter(false)} }/>
          : 
          null}
-         <div className={css.homeTemplates}>
-            <CarouselOne/>
-            <NewHome />
-            <PopularHome />
-         </div>
+         <ProductTop />
+         <InformationProduct />
+         <OtherProducts />
       </div>
    )
 }

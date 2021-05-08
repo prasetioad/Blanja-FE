@@ -13,6 +13,7 @@ import MyBag from "../../pages/MyBag";
 import Product from '../../pages/Product'
 import Category from '../../pages/Category'
 import CheckOut from "../../pages/Checkout"
+import Profile from "../../pages/Profile"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/product" component={Product} />
         <Route path="/category" component={Category} />
         <Route path="/check-out" component={CheckOut} />
+        <PrivateRoute path="/profile" component={Profile}/>
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>

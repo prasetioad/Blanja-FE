@@ -40,19 +40,19 @@ function Index() {
                                 <img src={mainImg} alt="image"/>
                             </div>
                             <div className="productTopContentTriggerImage">
-                                <div className="productTriggerImageItem">
+                                <div className="hoverThis productTriggerImageItem">
                                     <img src="./asset/1de17b40-c750-40ed-a618-ca2c5ee79da0 1.png" alt="" onClick={()=> setMainImg("./asset/1de17b40-c750-40ed-a618-ca2c5ee79da0 1.png")}/>
                                 </div>
-                                <div className="productTriggerImageItem">
+                                <div className="hoverThis productTriggerImageItem">
                                     <img src="./asset/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png" alt="" onClick={()=> setMainImg("./asset/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png")}/>
                                 </div>
-                                <div className="productTriggerImageItem">
+                                <div className="hoverThis productTriggerImageItem">
                                     <img src="./asset/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png" alt="" onClick={()=> setMainImg("./asset/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png")}/>
                                 </div>
-                                <div className="productTriggerImageItem">
+                                <div className="hoverThis productTriggerImageItem">
                                     <img src="./asset/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png" alt="" onClick={()=> setMainImg("./asset/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png")}/>
                                 </div>
-                                <div className="productTriggerImageItem">
+                                <div className="hoverThis productTriggerImageItem">
                                     <img src="./asset/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt="" onClick={()=> setMainImg("./asset/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png")}/>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ function Index() {
                                         <Button btnClr='transparent' cls='prodButtonAddBag' ftClr='black' val="Add bag"/>
                                     </div>
                                     <div className="prodButtonItem">
-                                        <Button btnClr='#DB3022' cls='prodButtonBuyNow' ftClr='white' val="Buy Now"/>
+                                        <Button btnClr='#273AC7' cls='prodButtonBuyNow' ftClr='white' val="Buy Now"/>
                                     </div>
                                 </div>
                             </div>
