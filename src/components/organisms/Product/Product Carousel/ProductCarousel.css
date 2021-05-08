@@ -39,6 +39,7 @@
 .productTopContentRight{
     display: flex-start;
     flex-direction: row;
+    padding: 0 2em;
 }
 /* .productTopContentRightBody{
     margin-left: 28px;
@@ -95,6 +96,10 @@
 }
 .ptbccItem{
     margin-left: 5px;
+}
+.ptbcc-1{
+    background-color: black;
+    height: 10px;
 }
 .ptbccItem img{
     padding: 2px;
@@ -161,6 +166,10 @@
         justify-content: center;
         flex-direction: column;
         margin: auto;
+    }
+    .productTopMainImage{
+        width: 95%;
+        border: 1px solid blue;
     }
     .productTopMainImage img{
         width:95%;

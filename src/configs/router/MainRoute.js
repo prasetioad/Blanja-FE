@@ -9,9 +9,10 @@ import Register from "../../pages/Register";
 import ResetPassword from "../../pages/ResetPassword";
 import ConfirmPassword from "../../pages/ConfirmPassword";
 import Home from "../../pages/Home";
-import MyBag from "../../pages/MyBag";
+import MyBagPage from "../../pages/MyBag";
 import Product from '../../pages/Product'
 import Category from '../../pages/Category'
+import Chat from '../../pages/Chat'
 import CheckOut from "../../pages/Checkout"
 
 function App() {
@@ -22,10 +23,13 @@ function App() {
         <PublicRoute path="/register" component={Register} />
         <PublicRoute path="/reset" component={ResetPassword} />
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
-        <PrivateRoute path="/bag" component={MyBag} />
-        <Route path="/product" component={Product} />
+
+        <PrivateRoute path="/bag" component={MyBagPage} />
+        <PrivateRoute path="/product/:idproduct" component={Product} />
         <Route path="/category/:params" component={Category} />
         <Route path="/check-out" component={CheckOut} />
+        <Route path="/chat" component={Chat} />
+
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
