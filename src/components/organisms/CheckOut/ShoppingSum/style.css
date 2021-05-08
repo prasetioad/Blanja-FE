@@ -48,3 +48,139 @@
     line-height: 16px;
     color: #222222;
 }
+.Modal {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    background-color: white;
+    width:35vw;
+    height:75vh;
+    /* padding: 10px; */
+    margin: auto;
+    overflow: auto;
+  }
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+  }
+  .paymentModalBody{
+      padding: 10px;
+  }
+  .paymentModalHead{
+      display: flex;
+      justify-content: flex-start;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(53, 50, 50, 0.25);
+    border-radius: 8px 8px 0px 0px;
+    padding-left: 20px;
+    padding-top: 5px;
+  }
+  .paymentModalTitle{
+      margin-left: 20px;
+      font-weight: 500;
+    font-size: 22px;
+    line-height: 22px;
+  }
+  .paymentModalMethod{
+      margin-top: 10px;
+      padding: 10px;
+  }
+  .paymentModalItemRigth{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      margin-left: 50px;
+      width: 100%;
+  }
+  .paymentWrapperMethodItem{
+      display: flex;
+      justify-content: space-evenly;
+      height: 200px;
+  }
+  .paymentModalItemLeft{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+  }
+  .paymentModalItemRightContent{
+      display: flex;
+      justify-content: space-between;
+      /* width: 100%; */
+  }
+  .paymentModalName{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .paymentModalSummaryDetil{
+      display: flex;
+      justify-content: space-between;
+  }
+  .paymentModalSummaryDetil p{
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #9B9B9B;
+  }
+  .paymentModalSummaryDetil span {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .paymentModalFooter{
+    background: #FFFFFF;
+    box-shadow: 0px -8px 10px rgba(217, 217, 217, 0.25);
+    border-radius: 0px 0px 8px 8px;
+    margin-top: 20px;
+  }
+  .paymentModalFooterBody{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      /* margin: 10px; */
+      align-items: center;
+  }
+  .paymentSHoppingSUmmary{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+  }
+  .paymentSHoppingSUmmary p{
+      margin-bottom: 0;
+  }
+  .paymentModalBtn{
+      width: 160px;
+      height: 36px;
+      border-radius: 25px;
+  }
+
+  @media only screen and (max-width: 770px) {
+    .Modal{
+        width: 75vw;
+        height: 75vh;
+    }
+    .Overlay{
+        top: 50%;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .Modal{
+        width: 85vw;
+        height: 85vh;
+    }
+    .Overlay{
+        top: 50%;
+    }
+  }

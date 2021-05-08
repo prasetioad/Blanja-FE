@@ -39,13 +39,13 @@ const initialState = {
             }
         };
         case "JUMLAH":
-            // console.log(state)
-        return {
-            ...state,
-            dataOrder:{
-                ...state.dataOrder,
-                jumlah: action.payload
-            }
+            console.log('masuk Payload Jumlah');
+            return {
+                ...state,
+                dataOrder:{
+                    ...state.dataOrder,
+                    jumlah: action.payload
+                }
         };
             default:
                 return state;
