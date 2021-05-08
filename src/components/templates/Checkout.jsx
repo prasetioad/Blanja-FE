@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axiosApiInstance from "../../helpers/axios";
-import Swal from "sweetalert2";
 
 // ORGANISMS
 import {
@@ -24,11 +23,7 @@ export default function Checkout() {
         setAddress(result.data.data[0]);
       })
       .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Cannot get this address!",
-        });
+        setAddress([]);
       });
   }, [urlApi]);
 
@@ -56,7 +51,7 @@ export default function Checkout() {
           <div className="row row-checkout">
             <div className="col-8 col-left-checkout">
               <h3>Shipping Address</h3>
-              <HeadAddress address={address} />
+              <HeadAddress />
               <CardProCheckout cart={cart} />
             </div>
             <div className="col-4 col-right-checkout">
