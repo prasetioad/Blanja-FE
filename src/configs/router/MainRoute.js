@@ -14,6 +14,7 @@ import Product from '../../pages/Product'
 import Category from '../../pages/Category'
 import Chat from '../../pages/Chat'
 import CheckOut from "../../pages/Checkout"
+import Profile from "../../pages/Profile"
 
 function App() {
   return (
@@ -28,8 +29,8 @@ function App() {
         <PrivateRoute path="/product/:idproduct" component={Product} />
         <Route path="/category/:params" component={Category} />
         <Route path="/check-out" component={CheckOut} />
+        <PrivateRoute path="/profile" component={Profile}/>
         <Route path="/chat" component={Chat} />
-
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>

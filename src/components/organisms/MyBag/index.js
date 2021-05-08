@@ -3,7 +3,7 @@ import style from './mybag.module.css'
 import { mybagjacket } from '../../images'
 import { AiOutlineMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
 import axios from 'axios'
-import { Navbar } from '..'
+import { Navbar, Filter } from '..'
 import Swal from 'sweetalert2'
 
 function MyBag() {
@@ -11,6 +11,7 @@ function MyBag() {
   const [product, setProduct] = useState([])
   const [countSelected, setCountSelected] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
+  const [filter, showFilter] = useState(false)
 
   useEffect(() => {
     axios.get(`https://jsonplaceholder.typicode.com/users`)
@@ -63,7 +64,11 @@ function MyBag() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar func={ () => { showFilter(true) } }/>
+         {filter === true ?
+         <Filter func={ () => {showFilter(false)} }/>
+         : 
+         null}
       <div className="container">
         <p className={style["title-mybag"]}>My bag</p>
         <div className="row">

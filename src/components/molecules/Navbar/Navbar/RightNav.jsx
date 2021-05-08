@@ -2,14 +2,12 @@ import css from "./style.module.css";
 import { useHistory } from 'react-router'
 // IMAGES
 import Cart from "../../../images/cart.png";
-import Bell from "../../../images/bell.png";
 import Mail from "../../../images/mail.png";
-import NoNotification from "../../../images/noNotification.png"
 // ATOMS
 import { Button } from "../../../atoms";
 import { Notification } from "../../../molecules"
 
-export default function RightNav({ func, ud }) {
+export default function RightNav({ func, au, ud }) {
   const history = useHistory()
   return (
     <div className={"displayRow " + css.rightNav}>
@@ -65,19 +63,19 @@ export default function RightNav({ func, ud }) {
                 aria-haspopup="true" 
                 aria-expanded="false" 
                 alt="profileBtn" 
-                src={ud.image}
+                src={au === undefined ? ud.image : au}
               />
               <div className={"hideFirst dropdown-menu " + css.dropdownUser} aria-labelledby="dropdownMenuButton">
                 <div className={css.userDropdownWrapper}>
                     <div className="displayRow">
-                      <img className={"hoverThis " + css.profileImage} src={ud.image}/>
+                      <img className={"hoverThis " + css.profileImage} src={au === undefined ? ud.image : au}/>
                       <div className={css.userProfileNameAndPhone}>
                           <p className={css.userProfileName}>{ud.name}</p>
                           <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
                       </div>
                     </div>
                     <div className={"displayRow " + css.userBtnArea}>
-                      <Button cls={"hoverThis " + css.settingsBtn} val="Settings"/>
+                      <Button cls={"hoverThis " + css.settingsBtn} func={ () => {history.push("/profile") } } val="Settings"/>
                       <Button cls={"hoverThis " + css.logoutBtn} func={func} val="Logout"/>
                     </div>
                 </div> 

@@ -4,14 +4,13 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 // ORGANISMS
-import { Navbar, ProductTop, InformationProduct, OtherProducts } from '../organisms'
+import { Navbar, Filter, ProductTop, InformationProduct, OtherProducts } from '../organisms';
 
 export default function Product() {
    const urlApi = process.env.REACT_APP_API_URL;
    let { idproduct } = useParams();
-
    const [product, setProduct] = useState([])
-
+   const [filter, showFilter] = useState(false)
    useEffect(() => {
       if (idproduct) {
          axios.get(`${urlApi}/product/${idproduct}`)
@@ -32,7 +31,11 @@ export default function Product() {
 
    return (
       <div style={{ background: "#F9F9F9" }}>
-         <Navbar />
+         <Navbar func={ () => { showFilter(true) } }/>
+         {filter === true ?
+         <Filter func={ () => {showFilter(false)} }/>
+         : 
+         null}
          <ProductTop product={product} />
          <InformationProduct product={product} />
          <OtherProducts product={product} />

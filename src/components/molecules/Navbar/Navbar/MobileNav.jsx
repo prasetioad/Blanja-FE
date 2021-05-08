@@ -1,11 +1,11 @@
 import css from "./style.module.css";
+import { useHistory } from 'react-router'
 // IMAGES
 import Search from "../../../images/Search.png";
 // ATOMS
 import { Button } from "../../../atoms";
-import { useHistory } from "react-router";
 
-export default function MobileNav({ func, ud }) {
+export default function MobileNav({ func, au, ud }) {
   const history = useHistory()
   return (
     <div className="displayColumn">
@@ -58,14 +58,14 @@ export default function MobileNav({ func, ud }) {
       :
       <div className={css.userDropdownWrapper}>
         <div className="displayRow">
-          <img className={"hoverThis " + css.profileImage} src={ud.image}/>
+          <img className={"hoverThis " + css.profileImage} src={au === undefined ? ud.image : au}/>
           <div className={css.userProfileNameAndPhone}>
               <p className={css.userProfileName}>{ud.name}</p>
               <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
           </div>
         </div>
         <div className={"displayRow " + css.userBtnArea}>
-          <Button cls={"hoverThis " + css.settingsBtn} val="Settings"/>
+          <Button cls={"hoverThis " + css.settingsBtn} func={ () => { history.push("/profile") } } val="Settings"/>
           <Button cls={"hoverThis " + css.logoutBtn} func={func} val="Logout"/>
         </div>
       </div>
