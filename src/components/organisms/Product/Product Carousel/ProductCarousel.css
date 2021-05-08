@@ -1,5 +1,4 @@
 .productTopContentCarouselWrap{
-    width: 100vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -8,14 +7,13 @@
 .productTopCategoryRoute{
     width: 65%;
     margin: auto;
+    padding: 2vw 0;
 }
 .productTopContentBody{
     display: flex;
-    justify-content: flex-start;
-    width: 65%;
+    justify-content: center;
+    width: 100%;
     margin: auto;
-}
-.productTopContetBodyLeft{
 }
 .productTopMainImage img{
     width: 21.5vw;
@@ -33,23 +31,20 @@
 }
 
 .productTopContentRight{
-    display: flex;
-    justify-content: start;
+    display: flex-start;
     flex-direction: row;
+    padding: 0 2em;
 }
-.productTopContentRightBody{
+/* .productTopContentRightBody{
     margin-left: 28px;
-}
+} */
 .productTopBotContent p{
     font-family: Metropolis;
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
-    line-height: 28px;
+    line-height: 2vw;
     margin-bottom: 3px;
-}
-.productTopBotContent {
-   
 }
 .prodTextTiny{
     font-family: Metropolis;
@@ -66,7 +61,7 @@
     font-family: Metropolis;
     font-style: normal;
     font-weight: bold;
-    font-size: 33px;
+    font-size: 2em;
     line-height: 33px;
     color: #222222;
 }
@@ -79,7 +74,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 3.3vw;
 }
 .productTopBotContentColor p{
     font-style: normal;
@@ -94,6 +89,10 @@
 }
 .ptbccItem{
     margin-left: 5px;
+}
+.ptbcc-1{
+    background-color: black;
+    height: 10px;
 }
 .ptbccItem img{
     padding: 2px;
@@ -123,7 +122,7 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 0.5vw;
-    width: 130px;
+    width:10vw;
 }
 .prodButtonsBottom{
     display: flex;
@@ -192,17 +191,10 @@
     }
     .productSizeAndCountObjek{
         margin-top: 20px;
-        margin-left: 0;
+        margin-left: 3px;
     }
     .prodStrip{
-        margin: 0;
-    }
-    .prodButtonsBottom button{
-        /* margin-left: 10px;
-        border: 1px black solid;
-        border-radius: 25px;
-        height: 48px;
-        width: 160px; */
+        margin:3px;
     }
     .prodButtonsBottom{
         display: flex;
@@ -226,5 +218,8 @@
         width: 100%;
         border: 1px solid black;
     }
-
+    .productSizeAndCountItem{
+        margin-left: 10px;
+        padding: 20px;
+    }
   }
