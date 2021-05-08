@@ -29,3 +29,14 @@ Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
 
 ## My Bag
 ![mybag-mockup](https://user-images.githubusercontent.com/74039235/117531713-10092e80-b00e-11eb-813d-ac80ca5c7ff6.jpg)
+
+## Checkout
+![checkout-mockup](https://user-images.githubusercontent.com/74039235/117532125-257f5800-b010-11eb-89b3-0aeeeda86afe.jpg)
+
+## Shopping Address
+## Payment
+## Notification
+## Profile
+## Store Profile
+## Chat
+![chat-mockup](https://user-images.githubusercontent.com/74039235/117532296-e7ceff00-b010-11eb-894d-b79b3e6fcdf9.jpg)
