@@ -5,9 +5,15 @@
     margin: auto;
 }
 .productTopCategoryRoute{
-    width: 65%;
+    width: 70%;
     margin: auto;
     padding: 2vw 0;
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #9B9B9B;
 }
 .productTopContentBody{
     display: flex;
@@ -51,6 +57,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 16px;
+    margin-top: 5px;
     color: #9B9B9B;
 }
 .productTopBotContentPrice{
@@ -216,5 +223,8 @@
     .productSizeAndCountItem{
         margin-left: 10px;
         padding: 20px;
+    }
+    .productTopBotContent p{
+        margin-bottom: 10px;
     }
   }

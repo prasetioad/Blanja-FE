@@ -41,12 +41,13 @@ function Index() {
     const handleType=(data)=>{
         dispatch(addType(data))
     }
+    console.log(count);
     return (
         <div>
             <div className="productTopContent">
                 <div className="productTopContentCarouselWrap">
                 <div className="productTopCategoryRoute">
-                    <p>Home  category  T-Shirt</p>
+                    <p>Home - category - T-Shirt</p>
                 </div>
                     <div className="productTopContentBody">
                         <div className="productTopContetBodyLeft">
