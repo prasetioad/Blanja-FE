@@ -220,7 +220,7 @@ export default function Reset() {
                       )}
                   </>
                 )}
-                <div className="text-right mt-4">
+                <div className="text-right mt-2">
                   <Link to="/reset" className="mt-2">
                     Forgot password?
                   </Link>

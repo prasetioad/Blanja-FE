@@ -1,11 +1,11 @@
 import css from "./style.module.css";
-import { useHistory } from 'react-router'
+import { useHistory } from "react-router";
 // IMAGES
 import Cart from "../../../images/cart.png";
 import Mail from "../../../images/mail.png";
 // ATOMS
 import { Button } from "../../../atoms";
-import { Notification } from "../../../molecules"
+import { Notification } from "../../../molecules";
 
 export default function RightNav({ func, au, ud }) {
   const history = useHistory()
@@ -53,19 +53,22 @@ export default function RightNav({ func, au, ud }) {
           </div>
         ) : (
           <div className={"displayRow " + css.rightBtnZone}>
-            <Notification/>
+            <Notification />
             <img className={"hoverThis " + css.mail} src={Mail} alt="Mail" />
             <div className="hideFirst col-md-1 dropdown order-md-7">
-              <img 
-                className={"dropdown-toggle hoverThis imgNavbar " + css.profileBtn} 
-                id="dropdownMenuButton" 
-                data-toggle="dropdown" 
-                aria-haspopup="true" 
-                aria-expanded="false" 
-                alt="profileBtn" 
+              <img
+                className={
+                  "dropdown-toggle hoverThis imgNavbar " + css.profileBtn
+                }
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                alt="profileBtn"
                 src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}
               />
-              <div className={"hideFirst dropdown-menu " + css.dropdownUser} aria-labelledby="dropdownMenuButton">
+              <div
+                className={"hideFirst dropdown-menu " + css.dropdownUser}
+                aria-labelledby="dropdownMenuButton"
+              >
                 <div className={css.userDropdownWrapper}>
                     <div className="displayRow">
                       <img className={"hoverThis " + css.profileImage} src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}/>

@@ -1,6 +1,6 @@
-import css from "./style.module.css";
-import { useEffect, useState } from 'react'
 import { useHistory } from "react-router";
+import css from "./style.module.css";
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 // IMAGES
 import Logo from "../../../images/tukuLogo.png";

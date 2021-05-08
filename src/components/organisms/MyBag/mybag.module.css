@@ -1,4 +1,4 @@
-p.title-mybag{
+p.title-mybag {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 800;
@@ -8,7 +8,7 @@ p.title-mybag{
   margin-top: 50px;
 }
 
-label.select-all-items{
+label.select-all-items {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 500;
@@ -18,21 +18,20 @@ label.select-all-items{
   margin-top: 55px;
   padding-left: 30px;
   padding-top: 25px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
   border-radius: 14px;
   width: 100%;
   height: 64px;
 }
 
-input[type="checkbox"]{
-  
-  background-color: #DB3022;
+input[type="checkbox"] {
+  background-color: #db3022;
   border-radius: 4px;
   margin-right: 30px;
 }
 
-p.shop-summary-teks{
+p.shop-summary-teks {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 600;
@@ -43,23 +42,23 @@ p.shop-summary-teks{
   padding-top: 24px;
 }
 
-div.box-sum{
-  background: #FFFFFF;
+div.box-sum {
+  background: #ffffff;
   box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
   border-radius: 14px;
   padding-left: 24px;
 }
 
-p.total-price{
+p.total-price {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  color: #9B9B9B;
+  color: #9b9b9b;
 }
 
-p.price-value{
+p.price-value {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 600;
@@ -71,8 +70,8 @@ p.price-value{
   color: #222222;
 }
 
-button.btn-buy{
-  background: #DB3022;
+button.btn-buy {
+  background: #273ac7;
   border-radius: 25px;
   font-family: Metropolis;
   font-style: normal;
@@ -82,7 +81,7 @@ button.btn-buy{
   display: flex;
   align-items: center;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 80%;
   height: 36px;
   display: flex;
@@ -92,13 +91,13 @@ button.btn-buy{
   margin-right: auto;
 }
 
-button.btn-buy:focus{
+button.btn-buy:focus {
   background-color: black;
   color: white;
 }
 
-div.select-items{
-  background: #FFFFFF;
+div.select-items {
+  background: #ffffff;
   box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
   border-radius: 4px;
   /* display: inline; */
@@ -109,39 +108,36 @@ div.select-items{
   padding-top: 24px;
 }
 
-img.item-selected{
+img.item-selected {
   border-radius: 8px;
+  transform: translateX(-35px);
 }
 
-p.item-name{
+p.item-name {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
   color: #000000;
- 
-  
 }
 
-p.store-name{
+p.store-name {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
-  color: #9B9B9B;
-  
+  color: #9b9b9b;
 }
 
-
-p.value{
+p.value {
   /* display: inline; */
   margin-left: 15px;
   margin-right: 15px;
 }
 
-p.price{
+p.price {
   font-family: Metropolis;
   font-style: normal;
   font-weight: 600;
@@ -152,29 +148,28 @@ p.price{
   margin-top: 5px;
 }
 
-
 @media only screen and (max-width: 600px) {
-  p.item-name{
+  p.item-name {
     font-size: 12px;
   }
 
-  p.item-name{
+  p.item-name {
     margin-left: -30px;
   }
 
-  p.store-name{
+  p.store-name {
     margin-left: -30px;
   }
 
-  div.box-sum{
+  div.box-sum {
     margin-bottom: 40px;
   }
 
-  p.price{
+  p.price {
     size: 12px;
   }
 
-  div.select-items{
+  div.select-items {
     height: 200px;
   }
 }

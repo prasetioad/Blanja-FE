@@ -1,8 +1,8 @@
 import css from "./style.module.css";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import axios from 'axios';
-import Swal from 'sweetalert2'
+import axios from "axios";
+import Swal from "sweetalert2";
 // IMAGES
 import NavBtn from "../../images/navMobile.png";
 // MOLECULES
@@ -10,7 +10,7 @@ import { LeftNav, RightNav, MobileNav } from "../../molecules";
 
 export default function Navbar({ func, au }) {
   const history = useHistory();
-  const [navMobile, showNavMobile] = useState(false)
+  const [navMobile, showNavMobile] = useState(false);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     localStorage.removeItem("color")
