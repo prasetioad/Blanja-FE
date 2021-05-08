@@ -1,16 +1,15 @@
 import css from "./style.module.css";
-import { useHistory } from 'react-router'
+import { useHistory } from "react-router";
 // IMAGES
 import Cart from "../../../images/cart.png";
-import Bell from "../../../images/bell.png";
 import Mail from "../../../images/mail.png";
-import NoNotification from "../../../images/noNotification.png"
 // ATOMS
 import { Button } from "../../../atoms";
-import { Notification } from "../../../molecules"
+import { Notification } from "../../../molecules";
 
 export default function RightNav({ func, ud }) {
-  const history = useHistory()
+  const history = useHistory();
+  const imgUrl = process.env.REACT_APP_API_IMG;
   return (
     <div className={"displayRow " + css.rightNav}>
       <div></div>
@@ -55,32 +54,46 @@ export default function RightNav({ func, ud }) {
           </div>
         ) : (
           <div className={"displayRow " + css.rightBtnZone}>
-            <Notification/>
+            <Notification />
             <img className={"hoverThis " + css.mail} src={Mail} alt="Mail" />
             <div className="hideFirst col-md-1 dropdown order-md-7">
-              <img 
-                className={"dropdown-toggle hoverThis imgNavbar " + css.profileBtn} 
-                id="dropdownMenuButton" 
-                data-toggle="dropdown" 
-                aria-haspopup="true" 
-                aria-expanded="false" 
-                alt="profileBtn" 
-                src={ud.image}
+              <img
+                className={
+                  "dropdown-toggle hoverThis imgNavbar " + css.profileBtn
+                }
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                alt="profileBtn"
+                src={`${imgUrl}${ud.image}`}
               />
-              <div className={"hideFirst dropdown-menu " + css.dropdownUser} aria-labelledby="dropdownMenuButton">
+              <div
+                className={"hideFirst dropdown-menu " + css.dropdownUser}
+                aria-labelledby="dropdownMenuButton"
+              >
                 <div className={css.userDropdownWrapper}>
-                    <div className="displayRow">
-                      <img className={"hoverThis " + css.profileImage} src={ud.image}/>
-                      <div className={css.userProfileNameAndPhone}>
-                          <p className={css.userProfileName}>{ud.name}</p>
-                          <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
-                      </div>
+                  <div className="displayRow">
+                    <img
+                      className={"hoverThis " + css.profileImage}
+                      src={`${imgUrl}${ud.image}`}
+                      alt="user"
+                    />
+                    <div className={css.userProfileNameAndPhone}>
+                      <p className={css.userProfileName}>{ud.name}</p>
+                      <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
                     </div>
-                    <div className={"displayRow " + css.userBtnArea}>
-                      <Button cls={"hoverThis " + css.settingsBtn} val="Settings"/>
-                      <Button cls={"hoverThis " + css.logoutBtn} func={func} val="Logout"/>
-                    </div>
-                </div> 
+                  </div>
+                  <div className={"displayRow " + css.userBtnArea}>
+                    <Button
+                      cls={"hoverThis " + css.settingsBtn}
+                      val="Settings"
+                    />
+                    <Button
+                      cls={"hoverThis " + css.logoutBtn}
+                      func={func}
+                      val="Logout"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

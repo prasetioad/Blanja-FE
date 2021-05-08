@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import Route from "./configs/router/MainRoute";
-import store from "./configs/redux/Store"
+import store from "./configs/redux/store";
 
 import "./index.css";
 
