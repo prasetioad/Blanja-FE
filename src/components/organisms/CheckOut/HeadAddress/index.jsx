@@ -1,236 +1,421 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
+import axiosApiInstance from "../../../../helpers/axios";
 import "./style.css";
-import Modal from "react-modal";
-import { Button } from "../../../atoms";
 
-export default function HeadAddress({ address }) {
-  const [newAddress, setNewAddress] = useState({
-    addressName: null,
-    recipient: null,
-    address: null,
-    city: null,
-    phone: null,
-    postalCode: null,
-    checkbox: false,
-  });
-  const customStyles = {
-    content: {
-      top: "53%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      innerWidth: "100%",
+export default function HeadAddress() {
+  const urlApi = process.env.REACT_APP_API_URL;
+
+  const [address, setAddress] = useState([]);
+  const [allAddress, setAllAddress] = useState([]);
+  const [add, setAdd] = useState(false);
+  const [choose, setChoose] = useState(false);
+  const [primary, setPrimary] = useState(false);
+
+  const handleActiveAdd = () => {
+    setAdd(true);
+    setChoose(false);
+  };
+
+  const handleActiveChoose = () => {
+    setChoose(true);
+    setAdd(false);
+  };
+
+  const handlePrimary = () => {
+    setPrimary(!primary);
+  };
+
+  const getOneAddress = () => {
+    axiosApiInstance
+      .get(`${urlApi}/address/find-one`)
+      .then((result) => {
+        setAddress(result.data.data);
+      })
+      .catch((err) => {
+        setAddress([]);
+      });
+  };
+
+  const getAllAdress = () => {
+    axiosApiInstance
+      .get(`${urlApi}/address`)
+      .then((result) => {
+        setAllAddress(result.data.data);
+      })
+      .catch((err) => {
+        setAllAddress([]);
+      });
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      type: "",
+      address: "",
+      postalCode: "",
+      city: "",
+      name: "",
+      phoneNumber: "",
     },
+    validationSchema: Yup.object({
+      type: Yup.string().required("Required!"),
+      address: Yup.string().required("Required!"),
+      postalCode: Yup.string().required("Required!"),
+      city: Yup.string().required("Required!"),
+      name: Yup.string().min(3, "Mininum 3 characters").required("Required!"),
+      phoneNumber: Yup.string()
+        .min(11, "Mininum 11 characters")
+        .required("Required!"),
+    }),
+    onSubmit: (values) => {
+      if (address.length < 1) {
+        values.isPrimary = true;
+      } else {
+        values.isPrimary = primary;
+      }
+      axiosApiInstance
+        .post(`${urlApi}/address`, values)
+        .then((res) => {
+          formik.resetForm();
+          Swal.fire({
+            title: "Success!",
+            text: "Alamat berhasil ditambahkan",
+            icon: "success",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#273ac7",
+          }).then(() => {
+            getOneAddress();
+            getAllAdress();
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Error!",
+            text: err.response.data.message,
+            icon: "error",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#273ac7",
+          });
+        });
+    },
+  });
+
+  const handleChangeAddress = (id) => {
+    axiosApiInstance
+      .put(`${urlApi}/address/${id}`, { isPrimary: true })
+      .then((res) => {
+        formik.resetForm();
+        Swal.fire({
+          title: "Success!",
+          text: "Alamat utama berhasil diupdate",
+          icon: "success",
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#273ac7",
+        }).then(() => {
+          getOneAddress();
+          getAllAdress();
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: "Error!",
+          text: err.response.data.message,
+          icon: "error",
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#273ac7",
+        });
+      });
   };
-  Modal.setAppElement("body");
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [addAddress, setaddAddress] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
-  const closeAddAddress = () => {
-    setaddAddress(false);
-    setIsOpen(false);
-  };
-  const onChangeInput = (e) => {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    setNewAddress({
-      ...newAddress,
-      [name]: value,
-    });
-  };
+
+  useEffect(() => {
+    getOneAddress();
+  }, []);
+
+  useEffect(() => {
+    getAllAdress();
+  }, []);
 
   return (
-    <div className="box-head-add" id="main">
-      <h4>{address.name}</h4>
-      <p>{address.address}</p>
-      <button
-        onClick={() => {
-          openModal();
-        }}
+    <>
+      <div className="box-head-add" id="main">
+        {address.length > 0 ? (
+          address.map((item, index) => {
+            return (
+              <div key={index}>
+                <h4>{item.name}</h4>
+                <p>{item.address}</p>
+              </div>
+            );
+          })
+        ) : (
+          <>
+            <h4>Alamat belum ditambahkan</h4>
+            <p>Alamat akan tampil disini</p>
+          </>
+        )}
+        {address.length > 0 ? (
+          <button
+            data-toggle="modal"
+            data-target="#exampleModal"
+            onClick={() => handleActiveChoose()}
+          >
+            Choose Another Address
+          </button>
+        ) : (
+          <button
+            data-toggle="modal"
+            data-target="#exampleModal"
+            onClick={() => handleActiveAdd()}
+          >
+            Add Address
+          </button>
+        )}
+      </div>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
       >
-        Choose Another Address
-      </button>
-      <Modal
-        isOpen={modalIsOpen}
-        //   onAfterOpen=''
-        onRequestClose={closeModal}
-        className="ModalAddress"
-        contentLabel="Example Modal"
-      >
-        <div className="reactModalPlakat">
-          <div className="reactModalBody">
-            {addAddress === false && (
+        <div className="modal-dialog modal-lg modal-dialog-centered">
+          <div className="modal-content px-2">
+            <div className="modal-header pb-1">
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {add && (
               <>
-                <div className="reactModalTitle">
-                  <span>Choose another address</span>
-                </div>
-                <div className="reactModalAddNewAdd">
-                  <span
-                    onClick={() => {
-                      setaddAddress(true);
-                    }}
+                <div className="modal-body d-flex flex-column justify-content-center pt-2">
+                  <h5
+                    className="modal-title text-center"
+                    id="exampleModalLabel"
                   >
                     Add new address
-                  </span>
+                  </h5>
+                  <form className="mt-4">
+                    <div className="form-row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="type">
+                          Save address as (ex : home address, office address)
+                        </label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.type && formik.touched.type && "error"
+                          }`}
+                          value={formik.values.type}
+                          onChange={formik.handleChange}
+                          id="type"
+                          placeholder=""
+                        />
+                        {formik.errors.type && formik.touched.type && (
+                          <small className="text-error mt-2">
+                            {formik.errors.type}
+                          </small>
+                        )}
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <label htmlFor="name">Recipient’s name</label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.name && formik.touched.name && "error"
+                          }`}
+                          value={formik.values.name}
+                          onChange={formik.handleChange}
+                          id="name"
+                          placeholder=""
+                        />
+                        {formik.errors.name && formik.touched.name && (
+                          <small className="text-error mt-2">
+                            {formik.errors.name}
+                          </small>
+                        )}
+                      </div>
+                      <div className="form-group col-md-6">
+                        <label htmlFor="phone">
+                          Recipient's telephone number
+                        </label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.phoneNumber &&
+                            formik.touched.phoneNumber &&
+                            "error"
+                          }`}
+                          value={formik.values.phoneNumber}
+                          onChange={formik.handleChange}
+                          id="phoneNumber"
+                          placeholder=""
+                        />
+                        {formik.errors.phoneNumber &&
+                          formik.touched.phoneNumber && (
+                            <small className="text-error mt-2">
+                              {formik.errors.phoneNumber}
+                            </small>
+                          )}
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <label htmlFor="address">Address</label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.address &&
+                            formik.touched.address &&
+                            "error"
+                          }`}
+                          value={formik.values.address}
+                          onChange={formik.handleChange}
+                          id="address"
+                          placeholder=""
+                        />
+                        {formik.errors.address && formik.touched.address && (
+                          <small className="text-error mt-2">
+                            {formik.errors.address}
+                          </small>
+                        )}
+                      </div>
+                      <div className="form-group col-md-6">
+                        <label htmlFor="postalCode">Postal code</label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.postalCode &&
+                            formik.touched.postalCode &&
+                            "error"
+                          }`}
+                          value={formik.values.postalCode}
+                          onChange={formik.handleChange}
+                          id="postalCode"
+                          placeholder=""
+                        />
+                        {formik.errors.postalCode &&
+                          formik.touched.postalCode && (
+                            <small className="text-error mt-2">
+                              {formik.errors.postalCode}
+                            </small>
+                          )}
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <label htmlFor="city">City or Subdistrict</label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.errors.city && formik.touched.city && "error"
+                          }`}
+                          value={formik.values.city}
+                          onChange={formik.handleChange}
+                          id="city"
+                          placeholder=""
+                        />
+                        {formik.errors.city && formik.touched.city && (
+                          <small className="text-error mt-2">
+                            {formik.errors.city}
+                          </small>
+                        )}
+                      </div>
+                    </div>
+                    {address.length > 0 && (
+                      <div className="form-group">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="primary"
+                            style={{ width: "20px" }}
+                            onChange={() => handlePrimary()}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="primary"
+                            style={{ marginLeft: "5px" }}
+                          >
+                            Make it the primary address
+                          </label>
+                        </div>
+                      </div>
+                    )}
+                  </form>
                 </div>
-                <div className="reactModalAddressBlock">
-                  <div className="reactModalAddressBody">
-                    <div className="reactmodalAddressBodyTitle">
-                      <p>Andreas Jane</p>
-                    </div>
-                    <div className="reactModalAddressContent">
-                      <p>
-                        Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja,
-                        Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note:
-                        blok c 16] Sokaraja, Kab. Banyumas, 53181
-                      </p>
-                    </div>
-                    <div className="reacModalChangeAddressButton">
-                      <span style={{ color: "#273AC7" }}>Change address</span>
-                    </div>
-                  </div>
+                <div className="modal-footer pb-4">
+                  <button
+                    type="button"
+                    className="btn btn-cancel"
+                    data-dismiss="modal"
+                    onClick={() => formik.resetForm()}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-save ml-3"
+                    data-dismiss="modal"
+                    onClick={formik.submitForm}
+                  >
+                    Save
+                  </button>
                 </div>
               </>
             )}
-            {addAddress === true && (
+            {choose && (
               <>
-                <Modal
-                  isOpen={addAddress}
-                  // onAfterOpen=''
-                  onRequestClose={closeAddAddress}
-                  style={customStyles}
-                  contentLabel="Example Modal"
-                >
-                  <div className="reactModalTitle">
+                <div className="modal-body d-flex flex-column justify-content-center pt-2 choose">
+                  <h5
+                    className="modal-title text-center"
+                    id="exampleModalLabel"
+                  >
+                    Choose another address
+                  </h5>
+                  <div
+                    className="new-address d-flex justify-content-center align-items-center mt-4"
+                    onClick={() => handleActiveAdd()}
+                  >
                     <span>Add new address</span>
                   </div>
-                  <div className="reactModalAddAddressForm">
-                    <form action="">
-                      <div className="reactModalAddressTop">
-                        <div className="inputTopAddAddress">
-                          <p>
-                            Save address as (ex : home address, office address)
-                          </p>
-                          <input
-                            type="text"
-                            placeholder="Rumah"
-                            name="addressName"
-                            onChange={(e) => {
-                              onChangeInput(e);
-                            }}
-                          />
+                  {allAddress.length > 0 &&
+                    allAddress.map((item, index) => {
+                      return (
+                        <div
+                          className={`current-address mt-4 p-4 ${
+                            item.isPrimary && "active"
+                          }`}
+                          key={index}
+                        >
+                          <h3>{item.name}</h3>
+                          <p>{item.address}</p>
+                          {item.isPrimary ? (
+                            <div>Current address</div>
+                          ) : (
+                            <div
+                              className="choose"
+                              onClick={() => handleChangeAddress(item.id)}
+                            >
+                              Choose address
+                            </div>
+                          )}
                         </div>
-                      </div>
-                      <div className="reactModalAddAddressFlex">
-                        <div className="reactModalAddAddressFlexLeft">
-                          <div className="addAddressFlexLeftItem">
-                            <p>Recipient’s name</p>
-                            <input
-                              type="text"
-                              name="recipient"
-                              onChange={(e) => {
-                                onChangeInput(e);
-                              }}
-                            />
-                          </div>
-                          <div className="addAddressFlexLeftItem">
-                            <p>Address</p>
-                            <input
-                              type="text"
-                              name="address"
-                              onChange={(e) => {
-                                onChangeInput(e);
-                              }}
-                            />
-                          </div>
-                          <div className="addAddressFlexLeftItem">
-                            <p>City or Subdistrict</p>
-                            <input
-                              type="text"
-                              name="city"
-                              onChange={(e) => {
-                                onChangeInput(e);
-                              }}
-                            />
-                          </div>
-                          <div className="addAddressFlexLeftItem checkboxAddAddress">
-                            <div>
-                              <input
-                                type="checkbox"
-                                className=""
-                                name="checkbox"
-                                onChange={(e) => {
-                                  onChangeInput(e);
-                                }}
-                              />
-                            </div>
-                            <div>
-                              <p>Make it the primary address</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="reactModalAddAddressFlexLeft">
-                          <div className="">
-                            <div className="addAddressFlexLeftItem">
-                              <p>Recipient's telephone number</p>
-                              <input
-                                type="text"
-                                name="phone"
-                                onChange={(e) => {
-                                  onChangeInput(e);
-                                }}
-                              />
-                            </div>
-                            <div className="addAddressFlexLeftItem">
-                              <p>Postal code</p>
-                              <input
-                                type="text"
-                                name="postalCode"
-                                onChange={(e) => {
-                                  onChangeInput(e);
-                                }}
-                              />
-                            </div>
-                          </div>
-                          <div className="reactModalAddAddressButtons">
-                            <div className="reactModalAddButtonItem">
-                              <Button
-                                btnClr="white"
-                                cls="addAddressButtonsItm"
-                                ftClr="#9B9B9B"
-                                func={() => closeAddAddress()}
-                                val="Cancel"
-                                style={{ border: "1px solid #9B9B9B" }}
-                              />
-                            </div>
-                            <div className="reactModalAddButtonItem">
-                              <Button
-                                btnClr={"#273AC7"}
-                                cls="addAddressButtonsItm"
-                                ftClr="white"
-                                func=""
-                                val="Save"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </Modal>
+                      );
+                    })}
+                </div>
               </>
             )}
           </div>
         </div>
-      </Modal>
-    </div>
+      </div>
+    </>
   );
 }

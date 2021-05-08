@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import Modal from "react-modal";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import axiosApiInstance from "../../../../helpers/axios";
@@ -12,30 +11,22 @@ export default function ShoppingSum({ total, address, cart }) {
 
   const history = useHistory();
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   const [postage] = useState(15000);
   const [payment, setPayment] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("");
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
 
   const handlePaymentMethod = (params) => {
     setPaymentMethod(params);
   };
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   const handleBuy = () => {
-    if (paymentMethod === "") {
+    if (address.length < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Silahkan masukkan alamat lengkap",
+      });
+    } else if (paymentMethod === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -54,7 +45,7 @@ export default function ShoppingSum({ total, address, cart }) {
           Swal.fire({
             icon: "success",
             title: "Berhasil",
-            text: "Order berhasil, silahkan lakukan pembayaran!",
+            text: "Checkout berhasil, silahkan lakukan pembayaran!",
           }).then(() => {
             Swal.fire({
               icon: "info",
@@ -97,139 +88,140 @@ export default function ShoppingSum({ total, address, cart }) {
         <h4>Shopping Summary</h4>
         <h5>Rp.{payment}</h5>
       </div>
-      <button
-        onClick={() => {
-          openModal();
-        }}
-      >
+      <button data-toggle="modal" data-target="#paymentModal">
         Select Payment
       </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        // style={customStyles}
-        contentLabel="Example Modal"
-        className="Modal"
-        // overlayClassName='Overlay'
+      <div
+        className="modal fade"
+        id="paymentModal"
+        aria-labelledby="paymentModalLabel"
+        aria-hidden="true"
       >
-        <div className="paymentModalBody">
-          <div className="paymentModalHead">
-            <div>
-              <FaTimes
-                style={{ fontSize: "28pxs" }}
-                onClick={() => {
-                  closeModal();
-                }}
-              />
-            </div>
-            <div className="paymentModalTitle">
-              <p>Payment</p>
-            </div>
-          </div>
-          <div className="paymentModalMethod">
-            <p>Payment method</p>
-            <div className="paymentWrapperMethod">
-              <div className="paymentWrapperMethodItem">
-                <div className="paymentModalItemLeft">
-                  <div>
-                    <img
-                      src="./asset/Logo-GoPay-Vector-CDR-dan-PNG 1.png"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <img
-                      src="./asset/kisspng-pos-indonesia-mail-point-of-sale-logo-indonesia-5aeb329c2f74d7 1.png"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <img src="./asset/Group.png" alt="" />
-                  </div>
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="paymentModalBody">
+              <div className="paymentModalHead">
+                <div>
+                  <FaTimes
+                    style={{ fontSize: "28pxs", cursor: "pointer" }}
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  />
                 </div>
-                <div className="paymentModalItemRigth">
-                  <div className="paymentModalItemRightContent">
-                    <div className="paymentModalName">
-                      <p>Gopay</p>
-                    </div>
-                    <div className="paymentModalChecklist">
-                      <input
-                        type="checkbox"
-                        checked={paymentMethod === "Gopay" && true}
-                        onChange={() => handlePaymentMethod("Gopay")}
-                      />
-                    </div>
-                  </div>
-                  <div className="paymentModalItemRightContent">
-                    <div className="paymentModalName">
-                      <p>Pos Indonesia</p>
-                    </div>
-                    <div className="paymentModalChecklist">
-                      <input
-                        type="checkbox"
-                        checked={paymentMethod === "Pos Indonesia" && true}
-                        onChange={() => handlePaymentMethod("Pos Indonesia")}
-                      />
-                    </div>
-                  </div>
-                  <div className="paymentModalItemRightContent">
-                    <div className="paymentModalName">
-                      <p>MasterCard</p>
-                    </div>
-                    <div className="paymentModalChecklist">
-                      <input
-                        type="checkbox"
-                        checked={paymentMethod === "MasterCard" && true}
-                        onChange={() => handlePaymentMethod("MasterCard")}
-                      />
-                    </div>
-                  </div>
+                <div className="paymentModalTitle">
+                  <p>Payment</p>
                 </div>
               </div>
               <hr />
-              <div className="paymentModalBottom">
-                <p>Shopping summary</p>
-                <div className="paymentModalSummary">
-                  <div className="paymentModalSummaryDetil">
-                    <div>
-                      <p>Order</p>
+              <div className="paymentModalMethod">
+                <p>Payment method</p>
+                <div className="paymentWrapperMethod">
+                  <div className="paymentWrapperMethodItem">
+                    <div className="paymentModalItemLeft">
+                      <div>
+                        <img
+                          src="./asset/Logo-GoPay-Vector-CDR-dan-PNG 1.png"
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <img
+                          src="./asset/kisspng-pos-indonesia-mail-point-of-sale-logo-indonesia-5aeb329c2f74d7 1.png"
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <img src="./asset/Group.png" alt="" />
+                      </div>
                     </div>
-                    <div>
-                      <span>Rp.{total}</span>
+                    <div className="paymentModalItemRigth">
+                      <div className="paymentModalItemRightContent">
+                        <div className="paymentModalName">
+                          <p>Gopay</p>
+                        </div>
+                        <div className="paymentModalChecklist">
+                          <input
+                            type="checkbox"
+                            checked={paymentMethod === "Gopay" && true}
+                            onChange={() => handlePaymentMethod("Gopay")}
+                          />
+                        </div>
+                      </div>
+                      <div className="paymentModalItemRightContent">
+                        <div className="paymentModalName">
+                          <p>Pos Indonesia</p>
+                        </div>
+                        <div className="paymentModalChecklist">
+                          <input
+                            type="checkbox"
+                            checked={paymentMethod === "Pos Indonesia" && true}
+                            onChange={() =>
+                              handlePaymentMethod("Pos Indonesia")
+                            }
+                          />
+                        </div>
+                      </div>
+                      <div className="paymentModalItemRightContent">
+                        <div className="paymentModalName">
+                          <p>MasterCard</p>
+                        </div>
+                        <div className="paymentModalChecklist">
+                          <input
+                            type="checkbox"
+                            checked={paymentMethod === "MasterCard" && true}
+                            onChange={() => handlePaymentMethod("MasterCard")}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="paymentModalSummaryDetil">
-                    <div>
-                      <p>Delivery</p>
-                    </div>
-                    <div>
-                      <span>Rp.{postage}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="paymentModalFooter">
-                <div className="paymentModalFooterBody">
-                  <div className="paymentSHoppingSUmmary">
+                  <hr />
+                  <div className="paymentModalBottom">
                     <p>Shopping summary</p>
-                    <span>Rp.{payment}</span>
+                    <div className="paymentModalSummary">
+                      <div className="paymentModalSummaryDetil">
+                        <div>
+                          <p>Order</p>
+                        </div>
+                        <div>
+                          <span>Rp.{total}</span>
+                        </div>
+                      </div>
+                      <div className="paymentModalSummaryDetil">
+                        <div>
+                          <p>Delivery</p>
+                        </div>
+                        <div>
+                          <span>Rp.{postage}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="paymentModalButton">
-                    <Button
-                      btnClr="#273AC7"
-                      val="Buy"
-                      ftClr="white"
-                      cls="paymentModalBtn"
-                      func={() => handleBuy()}
-                    />
+                  <hr />
+                  <div className="paymentModalFooter">
+                    <div className="paymentModalFooterBody">
+                      <div className="paymentSHoppingSUmmary">
+                        <p>Shopping summary</p>
+                        <span>Rp.{payment}</span>
+                      </div>
+                      <div className="paymentModalButton">
+                        <Button
+                          btnClr="#273AC7"
+                          val="Buy"
+                          ftClr="white"
+                          cls="paymentModalBtn"
+                          func={() => handleBuy()}
+                          isDismiss
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Modal>
+      </div>
     </div>
   );
 }

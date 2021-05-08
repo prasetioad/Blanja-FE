@@ -1,191 +1,185 @@
-.box-head-add{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
-    border-radius: 4px;
-    padding: 1.5em;
-    margin: 1em 0;
+.box-head-add {
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
+  border-radius: 4px;
+  padding: 1.5em;
+  margin: 1em 0;
 }
 .box-head-add > h4 {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
-    color: #222222;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #222222;
 }
 .box-head-add > p {
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-    color: #222222;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #222222;
 }
 .box-head-add > button {
-    border: 1px solid #9B9B9B;
-    box-sizing: border-box;
-    border-radius: 24px;
-    background: none;
-    outline: none;
-    height: 42px;
-    width: 230px;
-    color: #9B9B9B;
-}
-.reactModalPlakat{
-    width: 53.39vw;
-    height:60.49vh;
-}
-.reactModalBody{
-    margin: 1vw 2vw;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 60vh;
-}
-.reactModalTitle{
-    text-align: center;
-    height:5vh;
-    font-family: Metropolis;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 28px;
-    color: #222222;
-}
-.reactModalAddNewAdd{
-    font-family: Metropolis;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 18px;
-    color: #8a8383;
-    width: 90%;
-    height:15%;
-    margin-top: 1vw;
-    text-align: center;
-    border: 1px #8a8383 dashed;
-    padding: 50px;
-}
-.reactModalAddressBlock{
-    width: 90%;
-    border: 1px solid #273AC7;
-    margin-top: 30px;
-    padding: 20px;
-}
-.reactModalBody{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.reacModalChangeAddressButton{
-    cursor: pointer;
-}
-.reactModalAddNewAdd span{
-    cursor: pointer;
-}
-.reactModalAddAddressFlex{
-    display: flex;
-    justify-content: space-between;
-    /* border: 1px solid blue; */
-    /* width: 75vw; */
-}
-.reactModalAddAddressFlexLeft{
-    display: flex;
-    flex-direction: column;
-    width: 45%;
+  border: 1px solid #9b9b9b;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: none;
+  outline: none;
+  height: 42px;
+  width: 230px;
+  color: #9b9b9b;
 }
 
-.reactModalAddAddres{
-    /* width: 75%; */
+.modal .modal-dialog .modal-content .modal-header,
+.modal .modal-dialog .modal-content .modal-footer {
+  border: transparent;
 }
-.reactModalAddAddressForm{
-    display: flex;
-    justify-content: center;
-    /* width: 100%; */
 
+.modal .modal-dialog .modal-content .modal-body .modal-title {
+  font-family: Metropolis;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 28px;
+  color: #222222;
 }
-.reactModalAddAddressForm form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    /* width: 50%; */
-   /* padding-left: 15%;
-   padding-right: 15%; */
+
+.modal .modal-dialog .modal-content .modal-body form label {
+  font-family: Metropolis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9b9b9b;
 }
-.reactModalAddressTop {
-    /* width: 75vw; */
-    /* border: 1px red solid; */
+
+.modal .modal-dialog .modal-content .modal-body form input.form-control {
+  height: 48px;
+  border: 1px solid #9b9b9b;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 1px 8px rgba(0, 0, 0, 0.05));
+  border-radius: 4px;
+  font-family: Metropolis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9b9b9b;
 }
-.inputTopAddAddress{
-    padding-top: 10px;
-    width: 55.4vw;
-    margin: 10px;
+
+.modal .modal-dialog .modal-content .modal-body form input.form-control.error {
+  border: 1px solid #db3022;
 }
-.inputTopAddAddress input{
-    width: 100%;
-    border-radius: 6px;
-    height: 48px;
+
+.modal .modal-dialog .modal-content .modal-body form small.text-error {
+  font-family: Metropolis;
+  font-weight: 400;
+  color: #db3022;
 }
-.addAddressFlexLeftItem input{
-    width: 100%;
-    height: 48px;
-    margin-top: 5px;
-    border-radius: 6px;
+
+.modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  form
+  input.form-control::placeholder {
+  font-family: Metropolis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9b9b9b;
 }
-.addAddressFlexLeftItem p{
-    margin-bottom: 0;
+
+.modal .modal-dialog .modal-content .modal-footer .btn-cancel {
+  width: 160px;
+  height: 36px;
+  border: 1px solid #9b9b9b;
+  box-sizing: border-box;
+  border-radius: 24px;
+  font-family: Metropolis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9b9b9b;
 }
-.checkboxAddAddress{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-direction: row;
+
+.modal .modal-dialog .modal-content .modal-footer .btn-save {
+  width: 160px;
+  height: 36px;
+  background: #273ac7;
+  border-radius: 25px;
+  font-family: Metropolis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
 }
-.checkboxAddAddress input{
-    /* align-self: flex-start; */
-    width: 15px;
+
+.modal .modal-dialog .modal-content .modal-body .new-address {
+  height: 86px;
+  border: 1px dashed #9b9b9b;
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.reactModalAddAddressButtons{
-    margin-top: 1vw;
-    display: flex;
-    justify-content: space-evenly;
+
+.modal .modal-dialog .modal-content .modal-body .new-address span {
+  font-family: Metropolis;
+  font-weight: 600;
+  font-size: 18px;
+  color: #9b9b9b;
+  transition: 0.5 ease;
+  cursor: pointer;
 }
-.addAddressButtonsItm{
-    height: 30px;
-    width: 160px;
-    border-radius: 25px;
-    border: 1px solid #9B9B9B;
+
+.modal .modal-dialog .modal-content .modal-body .new-address span:hover {
+  opacity: 0.6;
 }
-.ModalAddress{
-    position: absolute;
-    top: 50px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    background-color: white;
-    width:55vw;
-    height:75vh;
-    /* padding: 10px; */
-    margin: auto;
-    overflow: auto;
+
+.modal .modal-dialog .modal-content .modal-body .current-address {
+  background: #ffffff;
+  border: 1px solid #9b9b9b;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
-@media only screen and (max-width: 765px) {
-        .reactModalAddAddressFlex{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .ModalAddress{
-            top: 30%;
-            width: 75vw;
-            height: 60vh;
-            overflow: auto;
-        }
-        .reactModalPlakat{
-            width: 100%;
-            height:75vh;
-        }.reactModalBody{
-            margin: 1vw 2vw;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            height:100vh;
-        }
+
+.modal .modal-dialog .modal-content .modal-body .current-address.active {
+  border: 1px solid #273ac7;
+}
+
+.modal .modal-dialog .modal-content .modal-body .current-address h3 {
+  font-family: Metropolis;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #222222;
+}
+
+.modal .modal-dialog .modal-content .modal-body .current-address p {
+  font-family: Metropolis;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #222222;
+}
+
+.modal .modal-dialog .modal-content .modal-body .current-address div {
+  font-family: Metropolis;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #273ac7;
+}
+
+.modal .modal-dialog .modal-content .modal-body .current-address div.choose {
+  cursor: pointer;
+  transition: 0.5 ease;
+}
+
+.modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .current-address
+  div.choose:hover {
+  opacity: 0.6;
+}
+
+.modal .modal-dialog .modal-content .modal-body.choose {
+  padding-bottom: 200px;
 }
