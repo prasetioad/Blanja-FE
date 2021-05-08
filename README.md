@@ -40,3 +40,8 @@ Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
 ## Store Profile
 ## Chat
 ![chat-mockup](https://user-images.githubusercontent.com/74039235/117532296-e7ceff00-b010-11eb-894d-b79b3e6fcdf9.jpg)
+
+
+## VISIT PROJECT !!!
+- :white_check_mark: [Backend](https://github.com/chaerulmarwan20/tuku-backend)
+- :rocket: [Blanja App]()
