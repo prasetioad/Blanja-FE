@@ -1,27 +1,27 @@
 import { useState, useEffect } from "react";
 import style from "./popularhome.module.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { FaStar } from "react-icons/fa";
 import { useHistory } from "react-router";
 
 function PopularHome() {
   const [getNewProduct, setGetNewProduct] = useState([]);
   const history = useHistory();
-  // Untuk Banyaknya rating/bintang
-  const [rating, setRating] = useState(null);
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/product/popular?perPage=8`)
       .then((res) => {
         const dataNewProduct = res.data.data;
-        // console.log(dataNewProduct);
         setGetNewProduct(dataNewProduct);
-
-        // setRating(5)
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
   }, []);
 
@@ -55,23 +55,19 @@ function PopularHome() {
                           <p className={style["product-name"]}>{item.title}</p>
                           <p className={style["price"]}>Rp {item.price}</p>
                           <p className={style["teks-store"]}>{item.brand}</p>
-
-                          {[...Array(5)].map((star, i) => {
-                            const ratingValue = i + 1;
-                            return (
-                              <>
+                          {Array.from(Array(item.rating).keys()).map(
+                            (item, index) => {
+                              return (
                                 <FaStar
                                   className={style["star"]}
                                   size={25}
-                                  color={
-                                    ratingValue <= item.rating
-                                      ? "#FFBA49"
-                                      : "#D4D4D4"
-                                  }
+                                  color={"#FFBA49"}
+                                  key={index}
                                 />
-                              </>
-                            );
-                          })}
+                              );
+                            }
+                          )}
+                          <span> ({item.rating})</span>
                         </div>
                       </div>
                     </div>

@@ -7,18 +7,15 @@ import Filter from "../../../images/filter.png";
 
 export default function LeftNav({ func }) {
   const history = useHistory();
-
-  const handleClickLogo = () => {
-    history.push("/");
-  };
   return (
     <div className={"displayRow " + css.leftNav}>
       <img
-        className={css.logo}
-        src={Logo}
         alt="Logo"
-        style={{ cursor: "pointer" }}
-        onClick={() => handleClickLogo()}
+        className={"hoverThis " + css.logo}
+        onClick={() => {
+          history.push("/");
+        }}
+        src={Logo}
       />
       <div className="displayRow">
         <div className={"displayRow " + css.searchBorder}>

@@ -1,209 +1,270 @@
-import { useState, useEffect } from 'react'
-import style from './mybag.module.css'
-import { mybagjacket } from '../../images'
-import { AiOutlineMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
-import axios from 'axios'
-import { Navbar } from '..'
-import Swal from 'sweetalert2'
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import style from "./mybag.module.css";
+import "./mybag.css";
+import { AiOutlineMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+import axiosApiInstance from "../../../helpers/axios";
+import { Navbar, Filter } from "..";
+import Swal from "sweetalert2";
 
 function MyBag() {
-
-  const [product, setProduct] = useState([])
-  const [countSelected, setCountSelected] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0)
+  const history = useHistory();
+  const urlApi = process.env.REACT_APP_API_URL;
+  const urlImg = process.env.REACT_APP_API_IMG;
+  const [product, setProduct] = useState([]);
+  const [filter, showFilter] = useState(false);
+  let total = 0;
+  const [checked] = useState([]);
+  const [count, setCount] = useState(0);
+  const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
+    axiosApiInstance
+      .get(`${urlApi}/cart`)
       .then((res) => {
-        const newProduct = res.data
-        setProduct(
-          newProduct.map((d) => {
-            return {
-              select: false,
-              id: d.id,
-              title: d.name,
-              store: d.username,
-              price: d.id,
-              totalBuy: 1
-            }
-          })
-        )
+        const newProduct = res.data.data;
+        setProduct(newProduct);
+      })
+      .catch((err) => {
+        setEmpty(true);
+      });
+  }, [urlApi]);
+
+  const handleBuy = () => {
+    history.push("/check-out");
+  };
+
+  const showError = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Item tidak bisa kurang dari 1",
+    });
+  };
+
+  const handleUpdate = (id, qty, price) => {
+    axiosApiInstance
+      .put(`${urlApi}/cart/${id}`, { qty, price })
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil",
+          text: "Item berhasil diupdate!",
+        }).then(() => {
+          axiosApiInstance
+            .get(`${urlApi}/cart`)
+            .then((res) => {
+              const newProduct = res.data.data;
+              setProduct(newProduct);
+            })
+            .catch((err) => {
+              setEmpty(true);
+            });
+        });
       })
       .catch((err) => {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.message,
+        });
+      });
+  };
+
+  const deleteCart = () => {
+    if (checked.length < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Tidak ada item yang dipilih",
+      });
+    } else {
+      axiosApiInstance
+        .delete(`${urlApi}/cart`, { data: { cart: checked } })
+        .then((res) => {
+          Swal.fire({
+            icon: "success",
+            title: "Berhasil",
+            text: "Item berhasil dihapus!",
+          }).then(() => {
+            axiosApiInstance
+              .get(`${urlApi}/cart`)
+              .then((res) => {
+                const newProduct = res.data.data;
+                setProduct(newProduct);
+              })
+              .catch((err) => {
+                setEmpty(true);
+              });
+          });
         })
-      })
-
-  }, [])
-  
-  const countPrice = () => {
-    let sum = 0
-    product.forEach((value) => {
-      sum += parseInt(value.price * value.totalBuy)
-    })    
-    setTotalPrice(sum)
-  }
-  const countSelect = () => {
-    let c = 0
-    for (let i = 0; i < product.length; i++) {
-      if (product[i].select === true) {
-        c++
-      }
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: err.response.data.message,
+          });
+        });
     }
-    setCountSelected(c)
-  }
+  };
 
+  const handleChecked = (id) => {
+    if (checked.includes(id) === false) {
+      checked.push(id);
+      setCount(count + 1);
+    } else {
+      const check = checked.indexOf(id);
+      setCount(count - 1);
+      checked.splice(check, 1);
+    }
+  };
 
-  const handleBuy = () => {
-
-  }
+  product.map((item, index) => {
+    return (total += item.total);
+  });
 
   return (
-    <div>
-      <Navbar />
+    <div className="pb-5">
+      <Navbar
+        func={() => {
+          showFilter(true);
+        }}
+      />
+      {filter === true ? (
+        <Filter
+          func={() => {
+            showFilter(false);
+          }}
+        />
+      ) : null}
       <div className="container">
         <p className={style["title-mybag"]}>My bag</p>
         <div className="row">
-          <div className="col-lg">
-            <label className={style["select-all-items"]}>
-              <input
-                type="checkbox"
-                id="selectall"
-                onChange={(e) => {
-                  let checked = e.target.checked
-                  setProduct(
-                    product.map((d) => {
-                      d.select = checked;
-                      return d;
-                    })
-                  )
-                  countSelect()
-                }}
-              />
-              Select all items ( {countSelected} items selected)
-            </label>
-
-            {product.map((item, index) => {
-              return (
-                <div key={index}>
-                  <div className="row mt-4">
-                    <div className="col d-flex">
-                      <div className={style["select-items"]}>
-                        <div className="row">
-                          <div className="col-lg-3 col-6 ml-3">
-                            <label >
-                              <input type="checkbox"
-                                checked={item.select}
-                                onChange={(e) => {
-                                  let checked = e.target.checked;
-                                  setProduct(
-                                    product.map((data) => {
-                                      if (item.id === data.id) {
-                                        data.select = checked;
-                                        countSelect();
-                                      }
-                                      return data;
-                                    })
-                                  )
-
-                                }}
-                              />
-                              <img className={style["item-selected"]} src={mybagjacket} alt="" />
-                            </label>
-                          </div>
-                          <div className="col">
-                            <p className={style["item-name"]}>{item.title}</p>
-                            <p className={style["store-name"]}>{item.store}</p>
-                          </div>
-                          <div className="col d-flex mt-4 mr-lg-5 ml-lg-0 ml-5">
-                            <AiOutlineMinusCircle
-                              size="30"
-                              className={style["min-icon"]}
-                              onClick={(e) => {
-                                setProduct(
-                                  product.map((data) => {
-                                    if (item.id === data.id) {
-                                      if (item.totalBuy > 1) {
-                                        data.totalBuy = data.totalBuy - 1;
-                                      } else {
-                                        Swal.fire({
-                                          title: 'Do you want to delete this item from you bag?',
-                                          showConfirmButton: false,
-                                          showDenyButton: true,
-                                          showCancelButton: true,
-                                          denyButtonText: `yes please!`,
-                                        }).then((result) => {
-                                          if (result.isDenied) {
-                                            Swal.fire("oops... this feature are not developed yet", '', 'info')
-                                          }
-                                        })
-                                      }
-                                    }
-                                    return data
-                                  })
-                                )
-                                countSelect();
-                              }}
-                            />
-                            <p className={style["value"]}>{item.totalBuy}</p>
-                            <AiFillPlusCircle
-                              size="30"
-                              className={["plus-icon"]}
-                              onClick={(e) => {
-                                setProduct(
-                                  product.map((data) => {
-                                    if (item.id === data.id) {
-                                      data.totalBuy = data.totalBuy + 1;
-
-                                    }
-                                    return data
-                                  })
-                                )
-                                countPrice()
-                              }}
-                            />
-                            <p className={style["price"]}>
-                              {item.totalBuy !== 0 ?
-                                "$ " + item.price * item.totalBuy + ".00"
-                                : "$ " + item.price + ".00"
-                              }
-                            </p>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
+          {!empty && (
+            <>
+              <div className="col-lg">
+                <div className="container-checkbox d-flex p-4 justify-content-between">
+                  <div className="pl-3">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck1"
+                      style={{ width: "20px" }}
+                    />
+                    <label
+                      className="form-check-label order-1"
+                      for="defaultCheck1"
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Select all items ({count} items selected)
+                    </label>
+                  </div>
+                  <div onClick={() => deleteCart()}>
+                    <Link to="#">Delete</Link>
                   </div>
                 </div>
-              )
-            })}
-
-
-          </div>
-          <div className="col-lg-4 mb-5">
-            <div className={style["box-sum"]}>
-              <p className={style["shop-summary-teks"]}>Shopping summary</p>
-              <br />
-              <p className={style["total-price"]}>Total Price</p>
-              <p className={style["price-value"]}>
-                $ {totalPrice}.0
-                </p>
-              <br />
-              <button
-                type="button"
-                className={style["btn-buy"]}
-                onClick={handleBuy}
-              >Buy</button>
-              <br />
+                {product.length > 0 &&
+                  product.map((item, index) => {
+                    return (
+                      <div className="row mt-4" key={index}>
+                        <div className="col d-flex">
+                          <div className={style["select-items"]}>
+                            <div className="row">
+                              <div className="col-lg-3 col-6 pl-0">
+                                <div
+                                  className="d-flex align-items-center"
+                                  style={{ transform: "translateX(-15px)" }}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    onChange={() => handleChecked(item.id)}
+                                  />
+                                  <img
+                                    className={style["item-selected"]}
+                                    src={`${urlImg}${item.image}`}
+                                    alt=""
+                                    width={69}
+                                    height={69}
+                                  />
+                                </div>
+                              </div>
+                              <div className="col">
+                                <p className={style["item-name"]}>
+                                  {item.title}
+                                </p>
+                                <p className={style["store-name"]}>
+                                  {item.brand}
+                                </p>
+                              </div>
+                              <div className="col d-flex mt-4 mr-lg-5 ml-lg-0 ml-5">
+                                <AiOutlineMinusCircle
+                                  size="30"
+                                  className={style["min-icon"]}
+                                  style={{ cursor: "pointer" }}
+                                  onClick={
+                                    item.qty === 1
+                                      ? () => showError()
+                                      : () =>
+                                          handleUpdate(
+                                            item.id,
+                                            item.qty - 1,
+                                            item.total - item.price
+                                          )
+                                  }
+                                />
+                                <p className={style["value"]}>{item.qty}</p>
+                                <AiFillPlusCircle
+                                  size="30"
+                                  className={["plus-icon"]}
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() =>
+                                    handleUpdate(
+                                      item.id,
+                                      item.qty + 1,
+                                      item.total + item.price
+                                    )
+                                  }
+                                />
+                                <p className={style["price"]}>
+                                  Rp.{item.total}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+              <div className="col-lg-4 mb-5">
+                <div className={style["box-sum"]}>
+                  <p className={style["shop-summary-teks"]}>Shopping summary</p>
+                  <br />
+                  <p className={style["total-price"]}>Total Price</p>
+                  <p className={style["price-value"]}>Rp.{total}</p>
+                  <br />
+                  <button
+                    type="button"
+                    className={style["btn-buy"]}
+                    onClick={handleBuy}
+                  >
+                    Buy
+                  </button>
+                  <br />
+                </div>
+              </div>
+            </>
+          )}
+          {empty && (
+            <div className="col d-flex justify-content-center">
+              <p className={style["title-mybag"]}>Your bag is empty</p>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default MyBag
+export default MyBag;

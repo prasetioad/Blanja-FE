@@ -6,17 +6,18 @@ import Swal from "sweetalert2";
 // ORGANISMS
 import {
   Navbar,
+  Filter,
   ProductTop,
   InformationProduct,
   OtherProducts,
 } from "../organisms";
 
 export default function Product() {
+  window.scrollTo(0, 0);
   const urlApi = process.env.REACT_APP_API_URL;
   let { idproduct } = useParams();
-
   const [product, setProduct] = useState([]);
-
+  const [filter, showFilter] = useState(false);
   useEffect(() => {
     if (idproduct) {
       axios
@@ -29,7 +30,7 @@ export default function Product() {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "can not get this product!",
+            text: "Cannot get this product!",
           });
         });
     }
@@ -37,7 +38,18 @@ export default function Product() {
 
   return (
     <div style={{ background: "#F9F9F9" }}>
-      <Navbar />
+      <Navbar
+        func={() => {
+          showFilter(true);
+        }}
+      />
+      {filter === true ? (
+        <Filter
+          func={() => {
+            showFilter(false);
+          }}
+        />
+      ) : null}
       <ProductTop product={product} />
       <InformationProduct product={product} />
       <OtherProducts product={product} />

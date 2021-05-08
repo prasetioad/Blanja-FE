@@ -8,7 +8,7 @@ import NavBtn from "../../images/navMobile.png";
 // MOLECULES
 import { LeftNav, RightNav, MobileNav } from "../../molecules";
 
-export default function Navbar({ func }) {
+export default function Navbar({ func, au }) {
   const history = useHistory();
   const [navMobile, showNavMobile] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -46,6 +46,7 @@ export default function Navbar({ func }) {
           func={() => {
             logout();
           }}
+          au={au}
           ud={userData}
         />
         <img
@@ -63,6 +64,7 @@ export default function Navbar({ func }) {
           func={() => {
             logout();
           }}
+          au={au}
           ud={userData}
         />
       </div>

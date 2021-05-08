@@ -8,5 +8,8 @@ import Colors from "../molecules/Navbar/Filter/Colors";
 import Sizes from "../molecules/Navbar/Filter/Sizes";
 import Categories from "../molecules/Navbar/Filter/Categories";
 import Brands from "../molecules/Navbar/Filter/Brands";
+// PROFILE
+import SidebarUser from "./Profile/SidebarUser"
+import SidebarStore from "./Profile/SidebarStore"
 
-export { LeftNav, RightNav, MobileNav, Notification, Colors, Sizes, Categories, Brands };
+export { LeftNav, RightNav, MobileNav, Notification, Colors, Sizes, Categories, Brands, SidebarUser, SidebarStore };
