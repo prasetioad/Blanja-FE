@@ -7,6 +7,7 @@ import Top from '../../../images/Top.png'
 import Bottom from '../../../images/Bottom.png'
 import Left from '../../../images/left.png'
 import Right from '../../../images/right.png'
+import axiosApiInstance from '../../../../helpers/axios';
 
 export default function MyAccount({ switchGender, cau, au, udc, ud }) {
    const monthArray = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"]
@@ -33,6 +34,18 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
          else if(opr === "+" && year < 2021) { setYear(year + 1) }
       }
    }
+   const handleUpdateProfil =()=>{
+      const data = new FormData()
+      data.append('storeName',ud.name)
+      data.append('email',ud.email)
+      data.append('phoneNumber',ud.phoneNumber)
+      data.append('description',ud.storeDescription)
+      data.append('image',ud.image)
+      axiosApiInstance.put(`${process.env.REACT_APP_API_URL}/store`, data)
+      .then((res)=>{ console.log(res.data);})
+      .catch((err)=>{ console.log(err.response);})
+   }
+   console.log(ud);
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
@@ -86,7 +99,7 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
             <div className={"displayColumn " + css.myProfileRightSide}>
                <img alt="Profile Picture" className={css.myProfilePic} src={au}/>
                <Button btnClr="white" cls={css.myProfileSelectImage} func={cau} val="Select image"/>
-               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Save"/>
+               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Save" func={()=>{handleUpdateProfil()}}/>
             </div>
          </div>
       </div>

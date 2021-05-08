@@ -3,8 +3,44 @@ import css from './profileUser.module.css';
 import Close from '../../../images/close.png';
 // ATOMS
 import { Button, Input } from '../../../atoms'
+import axiosApiInstance from '../../../../helpers/axios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2'
+import { useHistory } from 'react-router';
 
 export default function AddNewAddress({ closeAddAddress, na, nac, removeExistAddress }) {
+   const [isPrimary, setIsPrimary] = useState(false)
+   const history = useHistory()
+   
+   
+   const updateAddress=()=>{
+      na.isPrimary = isPrimary
+      na.phoneNumber = na.phone
+      na.type = na.save
+      na.postalCode = na.code
+      axiosApiInstance.post(process.env.REACT_APP_API_URL+'/address', na)
+      .then((res)=>{
+         if(res){
+            Swal.fire({
+               icon: 'success',
+               title: 'Success!'
+            })
+         }
+      })
+      .catch((err)=>{
+         Swal.fire({
+            title: 'Please fill correctly!',
+            icon: 'warning'
+         })
+      })
+   }
+   const checkBox=(e)=>{
+     if(isPrimary == false){
+        setIsPrimary(true)
+     }else{
+        setIsPrimary(false)
+     }
+   }
    return(
       <div>
          <div className={"displayRow " + css.addNewAddress}>
@@ -43,14 +79,14 @@ export default function AddNewAddress({ closeAddAddress, na, nac, removeExistAdd
                         <Input cls={css.newInputAddress} nm="city" onCg={nac} plcHldr="Kota / kecamatan" val={na.city}/>
                      </div>
                      <div className="displayRow">
-                        <input className={css.inputCheckbox} type="checkbox"/>
+                        <input className={css.inputCheckbox} type="checkbox" onChange={(e)=>{ checkBox(e)}}/>
                         <span className={css.makeItThePrimaryAddress}>Make it the primary address</span>
                      </div>
                   </div>
                   <div>
                      <div className={"displayRow " + css.addNewAddressButtonArea}>
                         <Button btnClr="white" cls={css.addressCancelButton} func={removeExistAddress} ftClr="#9B9B9B" val="Clear"/>
-                        <Button btnClr="#273AC7" cls={css.addressSaveButton} ftClr="white" val="Save"/>
+                        <Button btnClr="#273AC7" cls={css.addressSaveButton} ftClr="white" val="Save" func={()=>{updateAddress()}}/>
                      </div>
                   </div>
                </div>

@@ -7,7 +7,7 @@ export default function Sidebar({ ms, sm, au, ud }) {
    return(
       <div className={"displayColumn " + css.sidebar}>
          <div className={"displayRow " + css.sidebarUser}>
-            <img alt="Profile Picture" className={"hoverThis " + css.profileImage} src={au}/>
+            <img alt="Profile Picture" className={"hoverThis " + css.profileImage} src={`${process.env.REACT_APP_API_IMG}${ud.image}`}/>
             <div className={"displayColumn " + css.userProfileNameAndPhone}>
                <p className={css.userProfileName}>{ud.name.length > 25 ? ud.name.slice(0,25) + "..." : ud.name}</p>
                <div className="displayRow hoverThis">

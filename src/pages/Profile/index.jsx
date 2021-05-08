@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 import { Profile } from '../../components/templates'
 // IMAGES
 import Default from '../../components/images/PhotoOfGoods.png'
+import axiosApiInstance from '../../helpers/axios'
+import { useSelector } from 'react-redux'
 
 export default function ProfilePage(){
    // SET-UP STATE
@@ -16,8 +18,10 @@ export default function ProfilePage(){
    const [myOrderStoreSelected, selectMyOrderStore] = useState("All items")
    const [myProductMenuSelected, selectMyProductMenu] = useState("All items")
    const [checkProduct, isProductNew] = useState(true)
-   const [newAddress, addNewAddress] = useState({save: null, name: null, phone: null, address: null, code: null, city: null})
+   const [newAddress, addNewAddress] = useState({type: null, name: null, phoneNumber: null, address: null, postalCode: null, city: null, isPrimary: false})
    const [avatarUser, setUpdateImage] = useState("https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator.gif")
+   const [dataImage, setdataImage] = useState()
+   const {date, month, year} = useSelector(state => state.user)
    // FUNCTIONS
    const userDataChange = (e) => { setUserData({...userData, [e.target.name]: e.target.value}) }
    const newAddressChange = (e) => { addNewAddress({...newAddress, [e.target.name]: e.target.value}) }
@@ -27,6 +31,7 @@ export default function ProfilePage(){
    const [thirdPhoto, setThird] = useState(Default)
    const [fourthPhoto, setFourth] = useState(Default)
    const [fifthPhoto, setFifth] = useState(Default)
+   
    const setProductPhoto = (num) => {
       Swal.fire({
          icon: "info",
@@ -53,7 +58,11 @@ export default function ProfilePage(){
          else{
             const packValue = res.value
             const data = new FormData()
-            data.append("user_image", res.value)       
+            data.append("user_image", res.value) 
+            setdataImage({
+               ...dataImage,
+               data
+            })      
             const reader = new FileReader()
             reader.addEventListener("load", () => {
                if(num === 0) { setMain(reader.result) }
@@ -99,8 +108,33 @@ export default function ProfilePage(){
           }
          else{
          const packValue = res.value
-         const data = new FormData()
-         data.append("user_image", res.value)
+         setUserData({
+            ...userData,
+            image: res.value
+         })
+         // const data = new FormData()
+         // data.append("image",res.value)
+         // data.append('name',userData.name)
+         // data.append('email',userData.email)
+         // data.append('gender',userData.gender)
+         // data.append('phoneNumber',userData.phoneNumber)
+         // data.append('dateOfBirth',`${year}-0${month+1}-${date}`)
+         // axiosApiInstance.put(process.env.REACT_APP_API_URL+`/users/${userData.id}`, )
+         // .then((res)=>{
+         //       if(res){
+         //          Swal.fire({
+         //             title: 'Success',
+         //             icon: 'success'
+         //          })
+         //       }
+         // })
+         //    .catch((err)=>{
+         //       console.log(err.response);
+         //       Swal.fire({
+         //          title: 'Fill your phone number first',
+         //          icon: 'warning'
+         //       })
+         //    })
          const reader = new FileReader()
          reader.addEventListener("load", () => {
          setUpdateImage(reader.result)
@@ -117,6 +151,7 @@ export default function ProfilePage(){
          console.log(err)
       })
    }
+  console.log(userData);
    // REACT HOOKS - USE EFFECT
    useEffect(() => {
       axios.get(process.env.REACT_APP_API_URL + "/users/find-one", {
@@ -131,7 +166,6 @@ export default function ProfilePage(){
       })
       .catch((err) => { console.log(err.response) })
     }, [])
-    console.log(userData)
    return(
       <div className="showInAnimation">
          <Helmet>
@@ -151,7 +185,7 @@ export default function ProfilePage(){
             smpmm={ (val) => { selectMyProductMenu(val) } }
             na={newAddress}
             nac={ (e) => { newAddressChange(e) } }
-            rea={ () => { addNewAddress({save: "", name: "", phone: "", address: "", code: "", city: ""}) } }
+            rea={ () => { addNewAddress({type: "", name: "", phoneNumber: "", address: "", postalCode: "", city: ""}) } }
             sg={ (e) => { setUserData({...userData, gender: e.target.id}) } }
             udc={ (e) => { userDataChange(e) } }
             cau={ () => { changeAvatarUser() } }
@@ -161,6 +195,7 @@ export default function ProfilePage(){
             cp={checkProduct}
             ipn={ (val) => {isProductNew(val)} }
             ud={userData}
+            img={dataImage}
          />
       </div>
    )

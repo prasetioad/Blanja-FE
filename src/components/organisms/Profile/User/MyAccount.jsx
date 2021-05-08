@@ -1,5 +1,6 @@
 import css from './profileUser.module.css';
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
+import Swal from 'sweetalert2'
 // ATOMS
 import { Button, Input } from '../../../atoms'
 // IMAGES 
@@ -7,8 +8,12 @@ import Top from '../../../images/Top.png'
 import Bottom from '../../../images/Bottom.png'
 import Left from '../../../images/left.png'
 import Right from '../../../images/right.png'
+import axiosApiInstance from '../../../../helpers/axios';
+import {birth, moonth, yearr} from '../../../../configs/redux/actions/user'
+import { useDispatch } from 'react-redux';
 
-export default function MyAccount({ switchGender, cau, au, udc, ud }) {
+export default function MyAccount({ switchGender, cau, au, udc, ud, img }) {
+   const dispatch = useDispatch()
    const monthArray = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"]
    // CHANGE DATE
    const [date, setDate] = useState(10)
@@ -21,18 +26,63 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
    // FUNCTION
    const changeDMY = (opt, opr) => {
       if(opt === "d") {
-         if(opr === "-" && date > 1) { setDate(date - 1) }
-         else if(opr === "+" && date < 31) { setDate(date + 1) }
+         if(opr === "-" && date > 1) { setDate(date - 1) 
+            dispatch(birth(date + 1))}
+         else if(opr === "+" && date < 31) { setDate(date + 1)
+         dispatch(birth(date + 1)) }
       }
       else if(opt === "m") {
-         if(opr === "-" && month > 0) { setMonth(month - 1) }
-         else if(opr === "+" && month < 11) { setMonth(month + 1) }
+         if(opr === "-" && month > 0) { setMonth(month - 1) 
+            dispatch(moonth(month-1))}
+         else if(opr === "+" && month < 11) { setMonth(month + 1) 
+            dispatch(moonth(month + 1))}
       }
       else if(opt === "y") {
-         if(opr === "-" && year > 1945) { setYear(year - 1) }
-         else if(opr === "+" && year < 2021) { setYear(year + 1) }
+         if(opr === "-" && year > 1945) { setYear(year - 1) 
+            dispatch(yearr(year-1))}
+         else if(opr === "+" && year < 2021) { setYear(year + 1) 
+            dispatch(yearr(year+1))}
       }
    }
+   const save =()=>{
+      const url = process.env.REACT_APP_API_URL
+      ud.dateOfBirth = `${year}-${month}-${date}`
+      delete ud.id 
+      delete ud.role
+      // ud.image = au
+      // console.log(img);
+      // return
+      let i;
+      console.log(ud.dateOfBirth);
+      for(i=0; i< monthArray.length; i++){
+         let birth = ud.dateOfBirth.split(' ')
+         if(birth[1] == monthArray[i]){
+            ud.dateOfBirth = `${birth[2]}-0${i+1}-${birth[0]}`
+            console.log(ud.dateOfBirth);
+         }}
+         const data = new FormData()
+         data.append('name',ud.name)
+         data.append('email',ud.email)
+         data.append('gender',ud.gender)
+         data.append('phoneNumber',ud.phoneNumber)
+         data.append('dateOfBirth',ud.dateOfBirth)
+         data.append('image', ud.image)
+      axiosApiInstance.put(url+`/users/${localStorage.getItem('id')}`, data)
+      .then((res)=>{
+            if(res){
+               Swal.fire({
+                  title: 'Success',
+                  icon: 'success'
+               })
+            }
+      })
+         .catch((err)=>{
+               console.log(err.response);
+         })
+   }
+  useEffect(() => {
+    
+  }, [ud])
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
@@ -132,9 +182,12 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
                </div>
             </div>
             <div className={"displayColumn " + css.myProfileRightSide}>
-               <img alt="Profile Picture" className={css.myProfilePic} src={au}/>
+               {ud.image == undefined?
+               <img alt="Profile Picture" className={css.myProfilePic} src={au}/> :
+               <img alt="Profile Picture" className={css.myProfilePic} src={process.env.REACT_APP_API_IMG +ud.image}/> 
+               }
                <Button btnClr="white" cls={css.myProfileSelectImage} func={cau} val="Select image"/>
-               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Save"/>
+               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Save" func={()=>{save()}}/>
             </div>
          </div>
       </div>

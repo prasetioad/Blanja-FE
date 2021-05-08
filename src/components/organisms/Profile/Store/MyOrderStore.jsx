@@ -6,6 +6,8 @@ import Right from '../../../images/right.png'
 import NoOrder from '../../../images/NoOrder.png'
 // ATOMS
 import { Button } from '../../../atoms'
+import { useEffect } from 'react';
+import axiosApiInstance from '../../../../helpers/axios';
 
 export default function MyOrderUser({ moss, smosd, smosm }) {
    const btnCls = "hoverThis " + css.myOrderBtn
@@ -26,6 +28,15 @@ export default function MyOrderUser({ moss, smosd, smosm }) {
          } 
       }
    }
+   useEffect(() => {
+      axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/store/order`)
+      .then((res)=>{
+         console.log(res.data);
+      })
+      .catch((err)=>{
+         console.log(err.response);
+      })
+   }, [])
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>

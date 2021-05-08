@@ -69,7 +69,6 @@ function Index({ product }) {
     const handleType = (data) => {
         dispatch(addType(data))
     }
-    console.log(count);
     return (
         <div>
             <div className="productTopContent">
@@ -91,7 +90,7 @@ function Index({ product }) {
                                     )
                                 })}
 
-                            </div>
+                            </div>  
                         </div>
                         <div className="productTopContentRight">
                             <div className="productTopContentRightBody">

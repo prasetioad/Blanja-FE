@@ -3,7 +3,7 @@ import { useState } from 'react';
 // ORGANISMS
 import { Navbar, Filter, Sidebar, MyAccount, ShippingAddress, AddNewAddress, MyOrderUser, StoreProfile, MyProducts, SellingProducts, MyOrderStore } from '../organisms';
 
-export default function Profile({ ms, mous, moss, mpms, sm, smoud, smoum, smosd, smosm, smpmd, smpmm, na, nac, rea, sg, udc, cau, au, pog, spp, cp, ipn, ud }) {
+export default function Profile({ ms, mous, moss, mpms, sm, smoud, smoum, smosd, smosm, smpmd, smpmm, na, nac, rea, sg, udc, cau, au, pog, spp, cp, ipn, ud, img }) {
    const [filter, showFilter] = useState(false)
    const [addAddress, showAddAddress] = useState(false)
    return(
@@ -19,7 +19,7 @@ export default function Profile({ ms, mous, moss, mpms, sm, smoud, smoum, smosd,
             </div>
             <div className={css.profileRightSide}>
                {ms === "My Account" ?
-               <MyAccount switchGender={sg} udc={udc} cau={cau} au={au} ud={ud}/>
+               <MyAccount switchGender={sg} udc={udc} cau={cau} au={au} ud={ud} img={img} />
                :
                ms === "Shipping Address" ?
                <ShippingAddress func={ () => { showAddAddress(true) } }/>
@@ -34,7 +34,7 @@ export default function Profile({ ms, mous, moss, mpms, sm, smoud, smoum, smosd,
                <MyProducts mpms={mpms} smpmd={smpmd} smpmm={smpmm}/>
                :
                ms === "Selling Products" ?
-               <SellingProducts pog={pog} spp={spp} cp={cp} ipn={ipn}/>
+               <SellingProducts pog={pog} spp={spp} cp={cp} ipn={ipn} img={img}/>
                :
                ms === "My Order Store" ?
                <MyOrderStore moss={moss} smosd={smosd} smosm={smosm}/>

@@ -22,7 +22,7 @@ export default function HeadAddress() {
           bottom                : 'auto',
           marginRight           : '-50%',
           transform             : 'translate(-50%, -50%)',
-          innerWidth            : '100%'
+          innerWidth            : '100%',
         }
       };
       Modal.setAppElement('body')
@@ -47,7 +47,6 @@ export default function HeadAddress() {
             [name]: value
         })
      }
-     console.log(newAddress);
     return (
         <div className="box-head-add" id='main'>
             <h4>Andreas Jane</h4>
