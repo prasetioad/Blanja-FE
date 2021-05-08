@@ -8,7 +8,7 @@ import Right from '../../../images/right.png'
 
 export default function Sizes({ cat, catState }) {
    // CATEGORY ARRAY
-   const categoryArray = ["Clothes", "Pants", "Sandals", "Shoes", "Shorts", "Underwears"]
+   const categoryArray = ["Jacket", "Pants", "Sandals", "Shoes", "Shorts", "T-Shirt"]
    // STATE HOOKS
    const [startNum, setStart] = useState(0)
    const [endNum, setEnd] = useState(3)

@@ -1,34 +1,61 @@
 import { useState, useEffect } from "react";
 import style from "./newhome.module.css";
 import axios from "axios";
-import { FaStar } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa';
 import { useHistory } from 'react-router';
+import { Button } from '../../../atoms';
+import Left from '../../../images/left.png';
+import Right from '../../../images/right.png';
 
 function NewHome() {
   const history = useHistory()
   const [getNewProduct, setGetNewProduct] = useState([]);
-  const [rating, setRating] = useState(null)
-
-  useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/product?perPage=8`)
+  const [rating, setRating] = useState(null);
+  const [totalPage, checkTotalPage] = useState(null);
+  const [paginationNum, checkPaginationNum] = useState([]);
+  const [currentPage, changePage] = useState(1)
+  const [startNum, setStart] = useState(0)
+  const [endNum, setEnd] = useState(3)
+  // FUNCTIONS
+  const pgNum = () => {
+    for(let i = 1; i <= totalPage; i++) {
+      checkPaginationNum(paginationNum => [...paginationNum, i])
+    }
+  }
+  const axiosGet = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/product?perPage=4&page=` + currentPage)
       .then((res) => {
         const dataNewProduct = res.data.data
         // console.log(dataNewProduct);
         setGetNewProduct(dataNewProduct)
-
+        checkTotalPage(res.data.totalPage)
         // Untuk set rating/bintang
         setRating(4)
       })
       .catch((err) => {
         console.log(err);
       })
-  }, [])
-
+  }
   const changeRating = (param) => {
     setRating(param)
   }
-  
-  
+  const leftArrow = () => {
+    if(startNum > 0) {
+       setStart(startNum - 1)
+       setEnd(endNum - 1)
+    }
+  }
+  const rightArrow = () => {
+      if(endNum < paginationNum.length) {
+        setStart(startNum + 1)
+        setEnd(endNum + 1)
+      }
+  }
+  // USE EFFECT
+  useEffect(() => { axiosGet() }, [])
+  useEffect(() => { pgNum() }, [rating])
+  useEffect(() => { axiosGet() }, [currentPage])
+
   return (
     <div className={style.newHomeOuterBackgroundParentDIV}>
       <div className="container">
@@ -38,7 +65,7 @@ function NewHome() {
           {getNewProduct !== undefined ? getNewProduct.map((item) => {
             return (
               <>
-                <div className="col-lg-3 col-6 mb-5" >
+                <div className="hoverThis col-lg-3 col-6 mb-5" >
                   <div className={style["card"]} onClick={() => { history.push(`./product/${item.id}`) }}>
                     <img className={[["card-img-top"], style["product-img"]].join(' ')} src={`${process.env.REACT_APP_API_IMG}${item.image}`} alt="" />
                     <div className="card-body">
@@ -64,6 +91,35 @@ function NewHome() {
             );
           })
             : console.log("try again")}
+        </div>
+        <div className="displayRow" style={{justifyContent: "center"}}>
+          {
+            paginationNum.length < 3 ? 
+            null
+            :
+            startNum === 0 ?
+            <img className={style.filterArrowLeft} src={Left} style={{opacity: "0.11"}}/>
+            : 
+            <img className={"hoverThis " + style.filterArrowLeft} onClick={ () => { leftArrow() } } src={Left}/>
+          }
+          {paginationNum.slice(startNum, endNum).map((item) => {
+            return(
+              <Button 
+                cls={currentPage === item ? style.pagBtnOn + " " + style.pagBtn : style.pagBtnOff + " " + style.pagBtn} 
+                func={ () => { changePage(item) } } 
+                val={item}
+              />
+            )
+          })}
+          {
+            paginationNum.length < 3 ? 
+            null 
+            :
+            startNum === 1 ?
+            <img className={style.filterArrowRight} src={Right} style={{opacity: "0.11"}}/>
+            :
+            <img className={"hoverThis " + style.filterArrowRight} onClick={ () => { rightArrow() } } src={Right}/>
+          }
         </div>
       </div>
     </div>

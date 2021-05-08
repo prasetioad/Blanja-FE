@@ -1,11 +1,10 @@
+.searchBorder { background: white; }
+
 /* DESKTOP */
 @media(min-width: 768px) {
    /* NAVBAR */
    .leftNav { justify-content: space-between; width: 50vw; }
    .logo { height: 3.3vw; width: 7.7vw; }
-   .searchBorder { border: 0.13vw solid #8E8E93; border-radius: 1.5vw; padding: 0.77vw 1.5vw; width: 30vw; }
-   .searchLogo { height: 1.3vw; width: 1.3vw; }
-   .inputSearch { border: none; font-size: 1vw; width: 100%; }
    .inputSearch:focus { outline: none; }
    .filterBtn { margin-left: 1vw; height: 3vw; width: 3vw; }
    .rightNav { justify-content: space-between; width: 22vw; }
@@ -48,14 +47,22 @@
    .settingsBtn, .logoutBtn { border-radius: 1vw; font-size: 1vw; padding: 0.5vw 1.5vw; }
    .settingsBtn { background: #273AC7; color: white; }
    .logoutBtn { background: indianred; color: white; }
-   /* FILTER */
+   /* SEARCH */
+   .searchBorder { border: 0.13vw solid #8E8E93; border-radius: 1.5vw; margin-left: -30vw; position: absolute; width: 30vw; }
+   .searchInputArea { padding: 0.5vw 1vw; }
+   .searchLogo { height: 1.3vw; width: 1.3vw; }
+   .inputSearch { border: none; font-size: 1vw; width: 100%; }
+   .searchResult { border-top: 0.1vw solid black; padding: 1vw; }
+   .productImage { border-radius: 0.5vw; height: 3.3vw; margin-right: 1vw; width: 3.3vw; }
+   .productTitle { font-size: 1vw; font-weight: bold; }
+   .productCategory { color: #9B9B9B; font-size: 0.8vw; }
 }
 
 /* MOBILE */
 @media(max-width: 768px) {
    .logo { width: 30vw; }
    .rightNav, .searchBorder, .filterBtn { display: none; }
-   .searchMobile { border: 2px solid #9B9B9B; border-radius: 24px; justify-content: space-between; padding: 5vw; width: 100%; }
+   .searchMobile { border: 2px solid #9B9B9B; border-radius: 24px; justify-content: space-between; padding: 3vw; width: 100%; }
    .searchMobileInput { border: none; font-size: 5vw; width: 50%; }
    .searchMobileInput:focus { outline: none; }
    .authBtnMobileLogin { border-radius: 12px; font-size: 5vw; padding: 3vw; width: 30vw; }

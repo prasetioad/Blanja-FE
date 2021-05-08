@@ -6,7 +6,7 @@ import Close from '../../images/close.png'
 // ATOMS
 import { Button } from '../../atoms'
 // MOLECULES
-import { Colors, Sizes, Categories } from '../../molecules'
+import { Colors, Sizes, Categories, Brands } from '../../molecules'
 
 export default function Filter({ func }) {
    // COLORS
@@ -16,13 +16,15 @@ export default function Filter({ func }) {
    const [numericSize, selectNumericSize] = useState(null)
    // CATEGORIES
    const [category, selectCategory] = useState(null)
-   const [finalFilter, setFinalFilter] = useState({})
+   // BRANDS
+   const [brand, selectBrand] = useState(null)
    // FUNCS
    const discard = () => {
       selectColor(null)
       selectAlphabetSize(null)
       selectNumericSize(null)
       selectCategory(null)
+      selectBrand(null)
    }
    const apply = () => {
       if(
@@ -39,17 +41,26 @@ export default function Filter({ func }) {
          color === null &&
          alphabetSize === null && 
          numericSize === null && 
-         category === null
+         category === null &&
+         brand === null
       ) { Swal.fire("Error!", "Setidaknya minimal harus ada satu pilihan untuk fitur filter pencarian!", "error") }
       else { 
          Swal.fire("Berhasil!", "Berhasil menambahkan filter pencarian yang di pilih!", "success")
          .then(() => { 
-            setFinalFilter({color: color, alphabet: alphabetSize, number: numericSize, category: category})
+            localStorage.removeItem("color")
+            localStorage.removeItem("alphabetSize")
+            localStorage.removeItem("numericSize")
+            localStorage.removeItem("category")
+            localStorage.removeItem("brand")
+            color !== null && localStorage.setItem("color", color)
+            alphabetSize !== null && localStorage.setItem("alphabetSize", alphabetSize)
+            numericSize !== null && localStorage.setItem("numericSize", numericSize)
+            category !== null && localStorage.setItem("category", category)
+            brand !== null && localStorage.setItem("brand", brand)
             func()
          })   
       }
    }
-   console.log(finalFilter)
    return(
       <div>
          <div className={"displayRow " + css.filter}>
@@ -67,6 +78,7 @@ export default function Filter({ func }) {
                      num={[numericSize, (e) => { selectNumericSize(e.target.innerText) }]}
                   />
                   <Categories cat={category} catState={ (e) => { selectCategory(e.target.innerText) } }/>
+                  <Brands brd={brand} brdState={ (e) => { selectBrand(e.target.innerText) } }/>
                </div>
                <div className={"displayRow " + css.filterBottom}>
                   <Button btnClr="white" cls={css.discardBtn} func={ () => { discard() } } val="Discard"/>

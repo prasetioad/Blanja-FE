@@ -1,8 +1,8 @@
 import css from "./style.module.css";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import axios from 'axios';
-import Swal from 'sweetalert2'
+import axios from "axios";
+import Swal from "sweetalert2";
 // IMAGES
 import NavBtn from "../../images/navMobile.png";
 // MOLECULES
@@ -10,9 +10,14 @@ import { LeftNav, RightNav, MobileNav } from "../../molecules";
 
 export default function Navbar({ func, au }) {
   const history = useHistory();
-  const [navMobile, showNavMobile] = useState(false)
+  const [navMobile, showNavMobile] = useState(false);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
+    localStorage.removeItem("color")
+    localStorage.removeItem("alphabetSize")
+    localStorage.removeItem("numericSize")
+    localStorage.removeItem("category")
+    localStorage.removeItem("brand")
     axios.get(process.env.REACT_APP_API_URL + "/users/find-one", {
       headers: { authorization: 'Bearer ' + localStorage.getItem("token"), 'Content-Type': 'application/json' }
     })
@@ -25,6 +30,7 @@ export default function Navbar({ func, au }) {
       localStorage.clear()
       history.push("/login")
     })
+    
   }
   return(
     <div className={css.navbarCSS}>
@@ -34,7 +40,7 @@ export default function Navbar({ func, au }) {
         <img className={css.navBtn} onClick={ () => showNavMobile(!navMobile) } src={NavBtn} alt="Nav"/>
       </div>
       <div className={"displayColumn " + css.navbarBottom} style={navMobile === false ? {display: "none"} : null}>
-        <MobileNav func={ () => { logout() } } au={au} ud={userData}/>
+        <MobileNav filter={func} func={ () => { logout() } } au={au} ud={userData}/>
       </div>
     </div>
   );

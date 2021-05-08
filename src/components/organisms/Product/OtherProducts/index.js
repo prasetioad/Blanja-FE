@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
-import {useHistory} from 'react-router-dom'
-import axios from 'axios'
-import style from './otherproducts.module.css'
-import Swal from 'sweetalert2';
-import { FaStar } from 'react-icons/fa'
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import style from "./otherproducts.module.css";
+import Swal from "sweetalert2";
 
 function OtherProducts({ product }) {
   const urlApi = process.env.REACT_APP_API_URL;
@@ -11,84 +10,25 @@ function OtherProducts({ product }) {
 
   const history = useHistory();
 
-  const [getNewProduct, setGetNewProduct] = useState([])
-  const [rating, setRating] =useState(null)
+  const [getNewProduct, setGetNewProduct] = useState([]);
 
   useEffect(() => {
-    
-      if (product.category === "T-Shirt") {
-        axios.get(`${urlApi}/product/category/1`)
-          .then((res) => {
-            const dataNewProduct = res.data.data
-            setGetNewProduct(dataNewProduct)
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            })
-          })
-      } else if (product.category === "Shorts") {
-        axios.get(`${urlApi}/product/category/2`)
-          .then((res) => {
-            const dataNewProduct = res.data.data
-            setGetNewProduct(dataNewProduct)
-
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            })
-          })
-      } else if (product.category === "Jacket") {
-        axios.get(`${urlApi}/product/category/3`)
-          .then((res) => {
-            const dataNewProduct = res.data.data
-            setGetNewProduct(dataNewProduct)
-
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            })
-          })
-      } else if (product.category === "Pants") {
-        axios.get(`${urlApi}/product/category/4`)
-          .then((res) => {
-            const dataNewProduct = res.data.data
-            setGetNewProduct(dataNewProduct)
-
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            })
-          })
-      } else if (product.category === "Shoes") {
-        axios.get(`${urlApi}/product/category/5`)
-          .then((res) => {
-            const dataNewProduct = res.data.data
-            setGetNewProduct(dataNewProduct)
-
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            })
-          })
-      }
-    
-
-  }, [])
+    if (product.idCategory !== undefined) {
+      axios
+        .get(`${urlApi}/product/category/${product.idCategory}`)
+        .then((res) => {
+          const dataNewProduct = res.data.data;
+          setGetNewProduct(dataNewProduct);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        });
+    }
+  }, [product.idCategory, urlApi]);
 
   return (
     <div>
@@ -98,23 +38,35 @@ function OtherProducts({ product }) {
         <div className="row">
           {getNewProduct.map((item) => {
             return (
-              <div className="col-lg-3 col-6 mb-5" key={item.id} onClick={(e)=>history.push(`/product/${item.id}`)}>
+              <div
+                className="col-lg-3 col-6 mb-5"
+                key={item.id}
+                onClick={(e) => history.push(`/product/${item.id}`)}
+                style={{ cursor: "pointer" }}
+              >
                 <div className={style["card"]}>
-                  <img className={[["card-img-top"], style["product-img"]].join(' ')} src={`${urlImg}${item.image}`} alt="image" />
-                  <div className={[style["card-body"], ["card-body"]].join(" ")}>
+                  <img
+                    className={[["card-img-top"], style["product-img"]].join(
+                      " "
+                    )}
+                    src={`${urlImg}${item.image}`}
+                    alt="product"
+                  />
+                  <div
+                    className={[style["card-body"], ["card-body"]].join(" ")}
+                  >
                     <h3 className={style["product-name"]}>{item.title}</h3>
                     <h4 className={style["price"]}>Rp {item.price}</h4>
                     <p className={style["teks-store"]}>{item.brand}</p>
                   </div>
                 </div>
               </div>
-
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default OtherProducts
+export default OtherProducts;
