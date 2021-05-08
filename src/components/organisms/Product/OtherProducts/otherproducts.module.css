@@ -82,6 +82,26 @@ img.rating{
   height: 14px;
   margin-top: -23px;
 }
+
+h3.product-name{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 34px;
+  color: #000000;
+  margin-top: -10px;
+}
+h4.price{
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 26px;
+  color: #DB3022;
+  margin-top: -10px;
+}
+
   
 @media only screen and (max-width: 600px) {
   img.product-img{
@@ -100,47 +120,13 @@ img.rating{
   div.card:hover{
     cursor: pointer;
   }
-  
-  h3.product-name{
-    font-family: Metropolis;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #000000;
-    margin-top: -10px;
-  }
-  
-  h4.price{
-    font-family: Metropolis;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 16px;
-    color: #DB3022;
-    margin-top: -10px;
-  }
-  
-  p.teks-store{
-    font-family: Metropolis;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 12px;
-    color: #9B9B9B;
-    margin-top: -5px;
-  }
-  
+
   img.rating{
     width: 14px;
     height: 14px;
     margin-top: -23px;
   }
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
+  
   
   
   

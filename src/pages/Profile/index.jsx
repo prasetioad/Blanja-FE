@@ -160,7 +160,7 @@ export default function ProfilePage(){
       .then((res) => { 
          const data = res.data.data[0]
          setUserData(data)
-         setUpdateImage(data.image)
+         setUpdateImage(process.env.REACT_APP_API_IMG + data.image)
          if(data.role === 1) { selectMenu("Store Profile") }
          else if(data.role === 2) { selectMenu("My Account") }
       })

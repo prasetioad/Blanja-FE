@@ -1,34 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import axiosApiInstance from '../../../../helpers/axios'
+import React from "react";
 
+import "./style.css";
 
-import pict from '../../../images/men zalora suit.png'
-import "./style.css"
-
-export default function CardProCheckOut(props) {
-    const productId = useParams()
-    const [myOrder, setMyOrder] = useState()
-    useEffect(() => {
-        axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/product/${productId}`)
-    }, [])
-    console.log(props);
+export default function CardProCheckOut({ cart }) {
+  const urlImg = process.env.REACT_APP_API_IMG;
+  return cart.map((item, index) => {
     return (
-        <>
-                {myOrder && <>
-                <div className="card-checkout">
-                    <div className="card-checkout-sect-1">
-                        <img src={pict} alt="" />
-                    </div>
-                    <div className="card-checkout-sect-2">
-                        <h3>Men's formal Suit - Black</h3>
-                        <p>Zalora Cloth</p>
-                    </div>
-                    <div className="card-checkout-sect-3">
-                        <h3>$20</h3>
-                    </div>
-                </div>
-                </>}
-        </>
-    )
+      <div className="card-checkout" key={index}>
+        <div className="card-checkout-sect-1">
+          <img src={`${urlImg}${item.image}`} alt="" width={69} height={69} />
+        </div>
+        <div className="card-checkout-sect-2">
+          <h3>{item.title}</h3>
+          <p>{item.brand}</p>
+        </div>
+        <div className="card-checkout-sect-3">
+          <h3>Rp.{item.total}</h3>
+        </div>
+      </div>
+    );
+  });
 }

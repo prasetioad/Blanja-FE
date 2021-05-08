@@ -2,10 +2,11 @@ import css from "./style.module.css";
 import { useHistory } from 'react-router'
 // IMAGES
 import Search from "../../../images/Search.png";
+import Filter from '../../../images/filter.png';
 // ATOMS
 import { Button } from "../../../atoms";
 
-export default function MobileNav({ func, au, ud }) {
+export default function MobileNav({ filter, func, au, ud }) {
   const history = useHistory()
   return (
     <div className="displayColumn">
@@ -30,6 +31,7 @@ export default function MobileNav({ func, au, ud }) {
             alt="Search"
           />
         </div>
+        <img alt="Filter" onClick={filter} src={Filter} style={{height: "50px", width: "50px"}}/>
       </div>
       {
       ud === null ?
@@ -58,7 +60,7 @@ export default function MobileNav({ func, au, ud }) {
       :
       <div className={css.userDropdownWrapper}>
         <div className="displayRow">
-          <img className={"hoverThis " + css.profileImage} src={au === undefined ? ud.image : au}/>
+          <img className={"hoverThis " + css.profileImage} src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}/>
           <div className={css.userProfileNameAndPhone}>
               <p className={css.userProfileName}>{ud.name}</p>
               <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
