@@ -8,7 +8,7 @@ import NavBtn from "../../images/navMobile.png";
 // MOLECULES
 import { LeftNav, RightNav, MobileNav } from "../../molecules";
 
-export default function Navbar({ func }) {
+export default function Navbar({ func, au }) {
   const history = useHistory();
   const [navMobile, showNavMobile] = useState(false)
   const [userData, setUserData] = useState(null);
@@ -30,11 +30,11 @@ export default function Navbar({ func }) {
     <div className={css.navbarCSS}>
       <div className={"displayRow " + css.navbarTop}>
         <LeftNav func={func}/>
-        <RightNav func={ () => { logout() } } ud={userData}/>
+        <RightNav func={ () => { logout() } } au={au} ud={userData}/>
         <img className={css.navBtn} onClick={ () => showNavMobile(!navMobile) } src={NavBtn} alt="Nav"/>
       </div>
       <div className={"displayColumn " + css.navbarBottom} style={navMobile === false ? {display: "none"} : null}>
-        <MobileNav func={ () => { logout() } } ud={userData}/>
+        <MobileNav func={ () => { logout() } } au={au} ud={userData}/>
       </div>
     </div>
   );

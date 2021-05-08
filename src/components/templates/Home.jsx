@@ -1,7 +1,7 @@
-import css from './style.module.css'
-import { useState } from 'react'
+import css from './style.module.css';
+import { useState } from 'react';
 // ORGANISMS
-import { Navbar, Filter, NewHome, PopularHome, CarouselOne } from '../organisms'
+import { Navbar, Filter, NewHome, PopularHome, CarouselOne } from '../organisms';
 
 export default function Home() {
    const [filter, showFilter] = useState(false)
