@@ -10,7 +10,6 @@ export default function HomePage(){
    useEffect(() => {
       axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/product`)
       .then((res)=>{
-         console.log(res)
          setProduct(res.data)
       })
       .catch((err)=>{

@@ -5,6 +5,10 @@ import shoes from './shoes.png'
 import shorts from './shorts.png'
 import mybagjacket from './jacket-mybag.png'
 import userprofile from './user-profile.png'
+import redcircle from './red Ellipse.png'
+import blackcircle from './black Ellipse.png'
+import greencircle from './green Ellipse.png'
+import bluecircle from './blue Ellipse.png'
 
 export {
   jacket,
@@ -13,5 +17,9 @@ export {
   shoes,
   shorts,
   mybagjacket,
-  userprofile
+  userprofile,
+  redcircle,
+  bluecircle,
+  greencircle,
+  blackcircle
 }
