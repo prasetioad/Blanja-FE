@@ -63,12 +63,12 @@ export default function RightNav({ func, au, ud }) {
                 aria-haspopup="true" 
                 aria-expanded="false" 
                 alt="profileBtn" 
-                src={au === undefined ? ud.image : au}
+                src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}
               />
               <div className={"hideFirst dropdown-menu " + css.dropdownUser} aria-labelledby="dropdownMenuButton">
                 <div className={css.userDropdownWrapper}>
                     <div className="displayRow">
-                      <img className={"hoverThis " + css.profileImage} src={au === undefined ? ud.image : au}/>
+                      <img className={"hoverThis " + css.profileImage} src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}/>
                       <div className={css.userProfileNameAndPhone}>
                           <p className={css.userProfileName}>{ud.name}</p>
                           <p className={css.userProfilePhone}>{ud.phoneNumber}</p>

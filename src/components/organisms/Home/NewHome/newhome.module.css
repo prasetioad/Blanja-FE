@@ -18,15 +18,15 @@ p.teks{
 img.product-img{
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  /* height: 136px; */
+  max-height: 251px;
 }
 
 div.card{
   background: #FFFFFF;
   box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
   border-radius: 15px;
-  /* width: 208px;
-  height: 278px; */
+  min-height: 410px;
+  max-height: 410px;
 }
 
 p.product-name{
@@ -67,3 +67,43 @@ img.rating{
 
 .newHomeOuterBackgroundParentDIV { padding: 5vw 0 1vw 0; }
 
+@media only screen and (max-width: 600px) {
+  img.product-img{
+    max-height: 188px;
+  }
+  
+  div.card{
+    min-height: 364px;
+    max-height: 364px;
+  }
+}
+
+.pagBtnOff { background: transparent; border: 0.11vw solid #9B9B9B; color: #9B9B9B; transition-duration: 0.3s; }
+.pagBtnOn { background: #273AC7; border: 0.11vw solid #273AC7; color: white; }
+
+/* DESKTOP */
+@media(min-width: 768px) {
+  .pagBtn { 
+    border-radius: 0.5vw; 
+    font-size: 1vw; 
+    margin: 3vw 1vw; 
+    padding: 1vw; 
+    width: 3.5vw; 
+  }
+  .filterArrowLeft, .filterArrowRight { height: 1vw; width: 0.5vw; }
+  .filterArrowLeft { margin-right: 0.5vw; }
+  .filterArrowRight { margin-left: 0.5vw; }
+}
+
+@media(max-width: 768px) {
+  .pagBtn { 
+    border-radius: 1.5vw; 
+    font-size: 5vw; 
+    margin: 0 2.5vw; 
+    padding: 2.5vw; 
+    width: 12.5vw; 
+  }
+  .filterArrowLeft, .filterArrowRight { height: 5vw; width: 2.5vw; }
+  .filterArrowLeft { margin-right: 2.5vw; }
+  .filterArrowRight { margin-left: 2.5vw; }
+}

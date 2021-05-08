@@ -6,6 +6,11 @@ import CarouselOne from './Home/Corousel 1';
 import InformationProduct from './Product/InformationProduct';
 import OtherProducts from './Product/OtherProducts';
 import ProductTop from './Product/Product Carousel/index';
+import Jacket from './Category/Jacket/index'
+import Tshirt from './Category/Tshirt/index'
+import HeadAddress from './CheckOut/HeadAddress'
+import ShoppingSum from './CheckOut/ShoppingSum'
+import CardProCheckout from './CheckOut/CardProCheckOut'
 // PROFILE
 import Sidebar from './Profile/Sidebar';
 // PROFILE - USER
@@ -21,5 +26,6 @@ import MyOrderStore from './Profile/Store/MyOrderStore';
 
 export { 
     Navbar, Filter, NewHome, PopularHome, CarouselOne, InformationProduct, OtherProducts, ProductTop, 
-    Sidebar, MyAccount, ShippingAddress, AddNewAddress, MyOrderUser, StoreProfile, MyProducts, SellingProducts, MyOrderStore
+    Sidebar, MyAccount, ShippingAddress, AddNewAddress, MyOrderUser, StoreProfile, MyProducts, SellingProducts, MyOrderStore,
+    Jacket, Tshirt, HeadAddress, ShoppingSum, CardProCheckout
 }
