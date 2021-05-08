@@ -1,4 +1,4 @@
-# Blanja App
+<h3 align="center">Blanja App</h3>
 
 Blanja App adalah web aplikasi jual beli secara online yang memudahkan penggunaanya untuk berbelanja macam- macam produk fashion dengan menawarkan banyak category fashion seperti sepatu, kemeja, celana panjang, celana pendek, dan jacket. Pengguna juga dapat melakukan pembayaran online dengan cepat, efektif dan aman.
 
