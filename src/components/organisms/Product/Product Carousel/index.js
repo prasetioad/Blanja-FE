@@ -35,11 +35,11 @@ function Index({ product }) {
         setGallery(newGallery);
       })
       .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `${err.message}`,
-        });
+        Swal.fire(
+          "one image only for this product",
+          'is that okay for you?',
+          'question'
+        )
       });
   }, [idproduct, urlApi]);
 
