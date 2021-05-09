@@ -6,11 +6,21 @@ import Right from '../../../images/right.png'
 import NoOrder from '../../../images/NoOrder.png'
 // ATOMS
 import { Button } from '../../../atoms'
+import { useEffect } from 'react';
+import axiosApiInstance from '../../../../helpers/axios';
+import { useHistory } from 'react-router';
 
 export default function MyOrderUser({ moss, smosd, smosm }) {
+   const history = useHistory()
    const btnCls = "hoverThis " + css.myOrderBtn
    const orderButtonRowCarouselMobile = ["All items", "Not yet paid", "Packed", "Sent", "Completed", "Order cancel"]
    const [buttonOrder, switchButtonOrder] = useState(0)
+   const [cart, setCart] = useState(null)
+   const [getPaid, setGetPaid] = useState(null)
+   const [process, setProcess] = useState(null)
+   const [sent, setSent] = useState(null)
+   const [completed, setCompleted] = useState(null)
+   const [orderCancel, setOrderCancel] = useState(null)
    // SWITCH CAROUSEL BUTTON
    const switchBtn = (opr) => {
       if(opr === "+") { 
@@ -26,6 +36,25 @@ export default function MyOrderUser({ moss, smosd, smosm }) {
          } 
       }
    }
+   useEffect(() => {
+      // axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/cart`)
+      // .then((res)=>{
+      //    setCart(res.data.data)
+      // })
+      // .catch((err)=>{
+      //    console.log(err.response);
+      // })
+
+      // axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/order/${localStorage.getItem('id')}`)
+      // .then((res)=>{
+      //    setGetPaid(res.data.data)
+      // })
+      // .catch((err)=>{
+      //    console.log(err.response);
+      // })
+
+   }, [])
+   console.log(getPaid);
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
@@ -84,7 +113,111 @@ export default function MyOrderUser({ moss, smosd, smosm }) {
             </div>
          </div>
          <div className={"displayColumn " + css.rightSideMyOrderDataShow}>
-            <img alt="No Order" className={css.noOrderImg} src={NoOrder}/>
+            <div className="myOrderDataShowObjek" style={{display:'flex', justifyContent:'start', height: '50vh'}}>
+            {moss === "All items"?
+            cart ?
+            cart.map((item)=>{return(
+               
+                  <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey', marginLeft: '10px'}} className="myOrderShowObjekProfil"  onClick={()=>{history.push(`./product/${item.idProduct}`)}}>
+                     <div style={{height: '60%', width:'100%'}}>
+                        <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                     </div>
+                     <div style={{height: '40%',marginTop: '20px',  marginLeft:'5px'}}>
+                        <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500'}}>{item.brand}</p>
+                        <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                        {/* <p></p> */}
+                     </div>   
+                  </div>
+              
+               )})
+               : <img alt="No Order" className={css.noOrderImg} src={NoOrder}/> : 
+               moss === "Get paid" ?
+               getPaid ?
+               getPaid.map((item)=>{return(
+                  
+                     <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey',  marginLeft: '10px'}} className="myOrderShowObjekProfil" onClick={()=>{history.push(`./product/${item.id}`)}}>
+                        <div style={{height: '60%', width:'100%'}}>
+                           <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                        </div>
+                        <div style={{height: '40%',marginTop: '5px',  marginLeft:'5px'}}>
+                           <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500', fontSize: '10px'}}>{item.title}</p>
+                           <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                           {/* <p></p> */}
+                        </div>   
+                     </div>
+                 
+                  )}) : 
+                  <img alt="No Order" className={css.noOrderImg} src={NoOrder}/>
+               : moss === "Processed" ?
+               getPaid ?
+               cart.map((item)=>{return(
+                  
+                     <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey',  marginLeft: '10px'}} className="myOrderShowObjekProfil" onClick={()=>{history.push(`./product/${item.idProduct}`)}}>
+                        <div style={{height: '60%', width:'100%'}}>
+                           <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                        </div>
+                        <div style={{height: '40%',marginTop: '20px',  marginLeft:'5px'}}>
+                           <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500'}}>{item.brand}</p>
+                           <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                           {/* <p></p> */}
+                        </div>   
+                     </div>
+                  
+                  )}) : 
+                  <img alt="No Order" className={css.noOrderImg} src={NoOrder}/> :
+                  moss === "Sent"  ?
+               getPaid ?
+               cart.map((item)=>{return(
+                  
+                     <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey', marginLeft: '10px'}} className="myOrderShowObjekProfil" onClick={()=>{history.push(`./product/${item.idProduct}`)}}>
+                        <div style={{height: '60%', width:'100%'}}>
+                           <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                        </div>
+                        <div style={{height: '40%',marginTop: '20px',  marginLeft:'5px'}}>
+                           <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500'}}>{item.brand}</p>
+                           <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                           {/* <p></p> */}
+                        </div>   
+                     </div>
+                
+                  )}) : 
+                  <img alt="No Order" className={css.noOrderImg} src={NoOrder}/> : 
+                  moss === "Completed"  ?
+                  getPaid ?
+                  cart.map((item)=>{return(
+                     
+                        <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey', marginLeft: '10px'}} className="myOrderShowObjekProfil" onClick={()=>{history.push(`./product/${item.idProduct}`)}}>
+                           <div style={{height: '60%', width:'100%'}}>
+                              <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                           </div>
+                           <div style={{height: '40%',marginTop: '20px',  marginLeft:'5px'}}>
+                              <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500'}}>{item.brand}</p>
+                              <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                              {/* <p></p> */}
+                           </div>   
+                        </div>
+                     
+                     )}) : 
+                     <img alt="No Order" className={css.noOrderImg} src={NoOrder}/> : 
+                     moss === "Order cancel"  ?
+                  getPaid ?
+                  cart.map((item)=>{return(
+                     
+                        <div style={{display:'flex', justifyContent: 'flex-start',flexDirection:'column', width:'8vw', height:'25vh', background: 'white', boxShadow:'1px 2px 10px 7px grey', marginLeft: '10px'}} className="myOrderShowObjekProfil" onClick={()=>{history.push(`./product/${item.idProduct}`)}}>
+                           <div style={{height: '60%', width:'100%'}}>
+                              <img src={process.env.REACT_APP_API_IMG +item.image} alt="item" style={{width:'100%'}}/>
+                           </div>
+                           <div style={{height: '40%',marginTop: '20px',  marginLeft:'5px'}}>
+                              <p style={{marginBottom:'0px', fontFamily:'Metropolis', fontWeight:'500'}}>{item.brand}</p>
+                              <p style ={{color: '#DB3022' ,fontSize:'16px'}}> {item.price}</p>
+                              {/* <p></p> */}
+                           </div>   
+                        </div>
+                    
+                     )}) : 
+                     <img alt="No Order" className={css.noOrderImg} src={NoOrder}/> : <div></div>
+            }
+            </div>
          </div>
       </div>
    )

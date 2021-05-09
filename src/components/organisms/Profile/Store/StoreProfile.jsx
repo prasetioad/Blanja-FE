@@ -1,5 +1,5 @@
 import css from './profileStore.module.css';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // ATOMS
 import { Button, Input } from '../../../atoms'
 // IMAGES 
@@ -7,8 +7,10 @@ import Top from '../../../images/Top.png'
 import Bottom from '../../../images/Bottom.png'
 import Left from '../../../images/left.png'
 import Right from '../../../images/right.png'
+import axiosApiInstance from '../../../../helpers/axios';
+import Swal from 'sweetalert2';
 
-export default function MyAccount({ switchGender, cau, au, udc, ud }) {
+export default function MyAccount({ switchGender, cau, au, udc, ud , sd, is}) {
    const monthArray = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"]
    // CHANGE DATE
    const [date, setDate] = useState(10)
@@ -33,6 +35,50 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
          else if(opr === "+" && year < 2021) { setYear(year + 1) }
       }
    }
+   const handleUpdateProfil =()=>{
+      ud.dateOfBirth = `${year}-${month}-${date}`
+      const data = new FormData()
+      data.append('name',ud.name)
+         data.append('email',ud.email)
+         data.append('gender',ud.gender)
+         data.append('phoneNumber',ud.phoneNumber)
+         data.append('dateOfBirth',ud.dateOfBirth)
+         data.append('image', ud.image)
+      axiosApiInstance.put(`${process.env.REACT_APP_API_URL}/users/${localStorage.getItem('id')}`, data)
+      .then((res)=>{ Swal.fire({
+         title: 'Success',
+         icon: 'success'
+      })})
+      .catch((err)=>{ console.log(err.response.data.message);
+          Swal.fire({
+         title: 'failed',
+         text: 'Choose you photo and retype your data!',
+         icon: 'warning'
+      })})
+   }
+   const handleUpdateStore =()=>{
+      ud.dateOfBirth = `${year}-${month}-${date}`
+      const data = new FormData()
+      data.append('storeName',ud.name)
+         data.append('email',ud.email)
+         data.append('phoneNumber',ud.phoneNumber)
+         data.append('description',ud.storeDescription)
+         data.append('image', ud.image)
+      axiosApiInstance.put(`${process.env.REACT_APP_API_URL}/store`, data)
+      .then((res)=>{ Swal.fire({
+         title: 'Success',
+         icon: 'success'
+      })})
+      .catch((err)=>{ Swal.fire({
+         title: 'failed',
+         text: 'Choose you photo and retype your data!',
+         icon: 'warning'
+      })})
+   }
+   useEffect(() => {
+      
+   }, [ud, sd])
+   console.log(ud);
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
@@ -48,6 +94,7 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
                      <span className={css.myProfileInputLabel}>Phone Number</span>
                      <span className={css.myProfileInputLabel}>Store description</span>
                   </div>
+                  {sd &&
                   <div className={"displayColumn " + css.myProfileLeftSideInputArea}>
                      <Input 
                         cls={css.myProfileInput + " " + css.myProfileLeftSideSetupSpace} 
@@ -78,15 +125,17 @@ export default function MyAccount({ switchGender, cau, au, udc, ud }) {
                         name="storeDescription" 
                         onChange={udc} 
                         placeholder="Input your store description here" 
-                        val={ud.storeDescription}
+                        val={sd.description}
                      />
                   </div>
+                  }
                </div>
             </div>
             <div className={"displayColumn " + css.myProfileRightSide}>
-               <img alt="Profile Picture" className={css.myProfilePic} src={au}/>
+               <img alt="Profile Picture" className={css.myProfilePic} src={is}/>
                <Button btnClr="white" cls={css.myProfileSelectImage} func={cau} val="Select image"/>
-               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Save"/>
+               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Update Profil" func={()=>{handleUpdateProfil()}}/>
+               <Button btnClr="#273AC7" cls={css.myProfileSelectImage} ftClr="white" val="Update Store" func={()=>{handleUpdateStore()}}/>
             </div>
          </div>
       </div>

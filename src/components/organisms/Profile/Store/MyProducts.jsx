@@ -7,10 +7,19 @@ import Search from '../../../images/Search.png'
 import NoProduct from '../../../images/NoProduct.png'
 // ATOMS
 import { Button } from '../../../atoms'
+import { useEffect } from 'react';
+import axiosApiInstance from '../../../../helpers/axios';
 
 export default function MyProducts({ mpms, smpmd, smpmm }) {
    const btnCls = "hoverThis " + css.myOrderBtn
    const productButtonRowCarouselMobile = ["All items", "Sold out", "Archieved"]
+
+   const [allItem, setAllItem] = useState([])
+   const [soldOut, setSoldOut] = useState([])
+   const [archived, setArchived] = useState([])
+   const [dataSearch, setDataSearch] = useState([])
+
+
    const [buttonOrder, switchButtonOrder] = useState(0)
    // SWITCH CAROUSEL BUTTON
    const switchBtn = (opr) => {
@@ -26,6 +35,37 @@ export default function MyProducts({ mpms, smpmd, smpmm }) {
             smpmm(productButtonRowCarouselMobile[buttonOrder - 1])
          } 
       }
+   }
+
+   useEffect(() => {
+     axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/store/product`)
+     .then((res)=>{
+         setAllItem(res.data.data)
+     })
+     .catch((err)=>{
+        console.log(err.response);
+     })
+     axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/store/product/sold`)
+     .then((res)=>{
+      setSoldOut(res.data.data)
+     })
+     .catch((err)=>{
+        console.log(err.response);
+     })
+     axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/store/product/archive`)
+     .then((res)=>{
+         setArchived(res.data.data)
+     })
+     .catch((err)=>{
+        console.log(err.response);
+     })
+   }, [])
+
+   const onChangeSearch=(e)=>{
+      console.log(e.target.value);
+      axiosApiInstance.get(`${process.env.REACT_APP_API_URL}/store/product?keyword=${e.target.value}`)
+      .then((res)=>{setDataSearch(res.data.data)})
+      .catch((err)=>{console.log(err.response)})
    }
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
@@ -72,7 +112,7 @@ export default function MyProducts({ mpms, smpmd, smpmm }) {
          <div className={"displayColumn " + css.rightSideMyOrderDataShow}>
             <div className={"displayRow " + css.rightSideProductSearchBorder}>
                <img alt="Search" className={css.productSearchLogo} src={Search}/>
-               <input className={css.productSearchInput} placeholder="Search" type="text"/>
+               <input className={css.productSearchInput} placeholder="Search" type="text" onChange={(e)=>{onChangeSearch(e)}}/>
             </div>
             <div className={"displayColumn " + css.productListTable}>
                <div className={"displayRow " + css.productListTableCategory}>

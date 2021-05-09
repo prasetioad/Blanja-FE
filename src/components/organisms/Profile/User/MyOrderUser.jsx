@@ -6,11 +6,15 @@ import Right from '../../../images/right.png'
 import NoOrder from '../../../images/NoOrder.png'
 // ATOMS
 import { Button } from '../../../atoms'
+import { useEffect } from 'react';
+import axiosApiInstance from '../../../../helpers/axios';
+import axios from 'axios';
 
 export default function MyOrderUser({ mous, smoud, smoum }) {
    const btnCls = "hoverThis " + css.myOrderBtn
    const orderButtonRowCarouselMobile = ["All items", "Not yet paid", "Packed", "Sent", "Completed", "Order cancel"]
    const [buttonOrder, switchButtonOrder] = useState(0)
+   const [myOrder, setMyOrder] = useState([])
    // SWITCH CAROUSEL BUTTON
    const switchBtn = (opr) => {
       if(opr === "+") { 
@@ -26,6 +30,18 @@ export default function MyOrderUser({ mous, smoud, smoum }) {
          } 
       }
    }
+   // USEEFFECT
+   useEffect(() => {
+      axios.get(`${process.env.REACT_APP_API_URL}/order/${localStorage.getItem('id')}`, {headers: {
+         Authorization: `Bearer ${localStorage.getItem('token')}`
+      }})
+      .then((res)=>{ 
+         setMyOrder(res.data.data)
+      })
+      .catch((err)=>{ console.log(err.response)})
+   }, [])
+
+
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
