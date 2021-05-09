@@ -1,37 +1,79 @@
 import css from "./style.module.css";
-import { useHistory } from 'react-router'
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import axios from 'axios'
 // IMAGES
-import Search from "../../../images/Search.png";
 import Filter from '../../../images/filter.png';
 // ATOMS
 import { Button } from "../../../atoms";
 
 export default function MobileNav({ filter, func, au, ud }) {
   const history = useHistory()
+  const [searchResult, saveSearchResult] = useState("Empty")
+  const [keyword, setKeyword] = useState("")
+  // FUNCTION
+  const searchInputChange = (e) => { setKeyword(e.target.value) }
+  const selectSearch = (id) => {
+    history.push("/product/" + id)
+    saveSearchResult("Empty")
+  }
+  // USE EFFECT
+  useEffect(() => {
+    if(keyword === "") { saveSearchResult("Empty") }
+    else {
+      let axiosURL = process.env.REACT_APP_API_URL + "/product?keyword=" + keyword
+      if(localStorage.getItem("color") !== null) {
+        const convertHashtagColor = localStorage.getItem("color").substring(1)
+        axiosURL += "&color=%23" + convertHashtagColor
+      }
+      localStorage.getItem("numericSize") !== null && (axiosURL += "&size=" + localStorage.getItem("numericSize"))
+      localStorage.getItem("category") !== null && (axiosURL += "&category=" + localStorage.getItem("category"))
+      localStorage.getItem("brand") !== null && (axiosURL += "&brand=" + localStorage.getItem("brand"))
+      axios.get(axiosURL)
+      .then((res) => { saveSearchResult(res.data.data) })
+      .catch((err) => { saveSearchResult("Not Found") })
+    }
+  }, [keyword])
   return (
     <div className="displayColumn">
       <div
-        className="displayRow"
         style={{
           justifyContent: "space-between",
           marginBottom: "36px",
           width: "100%",
         }}
       >
-        <div className={"displayRow " + css.searchMobile}>
+        <div className={"displayColumn " + css.searchMobile}>
           <input
             className={css.searchMobileInput}
+            onChange={ (e) => { searchInputChange(e) } }
             placeholder="Search ..."
             required
             type="text"
           />
-          <img
-            src={Search}
-            style={{ height: "24px", paddingLeft: "24px", width: "24px" }}
-            alt="Search"
-          />
+          { 
+          searchResult === "Empty" ?
+          null
+          :
+          searchResult === "Not Found" ?
+          <div className={"displayRow " + css.searchResult} style={{justifyContent: "center"}}>
+              <span className={css.productCategory}>Product not found!</span>
+          </div>
+          :
+          searchResult.map((item) => {
+            return(
+              <div className={"displayRow hoverThis " + css.searchResult} onClick={ () => { selectSearch(item.id) } }>
+                <img alt="Product Image" className={css.productImage} src={process.env.REACT_APP_API_IMG + item.image}/>
+                <div className="displayColumn">
+                  <span className={css.productTitle}>{item.title.length > 8 ? item.title.slice(0,8) + " ..." : item.title}</span>
+                  <span className={css.productCategory}>{item.category}</span>
+                </div>
+              </div>
+              )
+            })
+          }
         </div>
-        <img alt="Filter" onClick={filter} src={Filter} style={{height: "50px", width: "50px"}}/>
+        <img alt="Filter" className={css.filterBtnMobile} onClick={filter} src={Filter}/>
       </div>
       {
       ud === null ?

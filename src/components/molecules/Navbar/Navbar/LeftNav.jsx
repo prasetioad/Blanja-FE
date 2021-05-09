@@ -29,7 +29,6 @@ export default function LeftNav({ func }) {
       localStorage.getItem("numericSize") !== null && (axiosURL += "&size=" + localStorage.getItem("numericSize"))
       localStorage.getItem("category") !== null && (axiosURL += "&category=" + localStorage.getItem("category"))
       localStorage.getItem("brand") !== null && (axiosURL += "&brand=" + localStorage.getItem("brand"))
-      console.log(axiosURL)
       axios.get(axiosURL)
       .then((res) => { saveSearchResult(res.data.data) })
       .catch((err) => { saveSearchResult("Not Found") })

@@ -56,7 +56,7 @@ function PopularHome() {
   useEffect(() => { axiosGet() }, [currentPage])
  
   return (
-    <div>
+    <div className={style.newHomeOuterBackgroundParentDIV}>
       <div className="container" >
        <p className={style["title"]}>Popular</p>
        <p className={style["teks"]}>Find clothes that are trending recently</p>
