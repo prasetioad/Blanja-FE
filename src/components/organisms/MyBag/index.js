@@ -39,6 +39,7 @@ function MyBag() {
       icon: "error",
       title: "Oops...",
       text: "Item tidak bisa kurang dari 1",
+      confirmButtonColor: "#273ac7",
     });
   };
 
@@ -50,6 +51,7 @@ function MyBag() {
           icon: "success",
           title: "Berhasil",
           text: "Item berhasil diupdate!",
+          confirmButtonColor: "#273ac7",
         }).then(() => {
           axiosApiInstance
             .get(`${urlApi}/cart`)
@@ -67,6 +69,7 @@ function MyBag() {
           icon: "error",
           title: "Oops...",
           text: err.response.data.message,
+          confirmButtonColor: "#273ac7",
         });
       });
   };
@@ -77,6 +80,7 @@ function MyBag() {
         icon: "error",
         title: "Oops...",
         text: "Tidak ada item yang dipilih",
+        confirmButtonColor: "#273ac7",
       });
     } else {
       axiosApiInstance
@@ -86,6 +90,7 @@ function MyBag() {
             icon: "success",
             title: "Berhasil",
             text: "Item berhasil dihapus!",
+            confirmButtonColor: "#273ac7",
           }).then(() => {
             axiosApiInstance
               .get(`${urlApi}/cart`)
@@ -103,6 +108,7 @@ function MyBag() {
             icon: "error",
             title: "Oops...",
             text: err.response.data.message,
+            confirmButtonColor: "#273ac7",
           });
         });
     }
@@ -145,19 +151,15 @@ function MyBag() {
               <div className="col-lg">
                 <div className="container-checkbox d-flex p-4 justify-content-between">
                   <div className="pl-3">
-                    <input
+                    {/* <input
                       className="form-check-input"
                       type="checkbox"
                       value=""
                       id="defaultCheck1"
                       style={{ width: "20px" }}
-                    />
-                    <label
-                      className="form-check-label order-1"
-                      for="defaultCheck1"
-                      style={{ marginLeft: "10px" }}
-                    >
-                      Select all items ({count} items selected)
+                    /> */}
+                    <label className="form-check-label" for="defaultCheck1">
+                      {count} items selected
                     </label>
                   </div>
                   <div onClick={() => deleteCart()}>

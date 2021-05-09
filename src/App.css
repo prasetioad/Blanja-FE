@@ -56,6 +56,14 @@ button:hover {
   display: flex;
   flex-direction: row;
 }
+
+.displayRow.hover {
+  transition: 0.5 ease;
+}
+
+.displayRow.hover:hover {
+  opacity: 0.6;
+}
 .displayColumn {
   display: flex;
   flex-direction: column;

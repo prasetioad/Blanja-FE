@@ -31,6 +31,7 @@ export default function Product() {
             icon: "error",
             title: "Oops...",
             text: "Cannot get this product!",
+            confirmButtonColor: "#273ac7",
           });
         });
     }

@@ -127,7 +127,7 @@ export default function Register() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Register</title>
+        <title>Tuku - Register</title>
       </Helmet>
       <section className="register">
         <div className="container">

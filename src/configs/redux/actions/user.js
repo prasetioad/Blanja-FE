@@ -25,6 +25,15 @@ const resetFailure = (error) => {
   return { type: "RESET_FAILURE", payload: error };
 };
 
+export const birth = (data) =>(dispatch)=>{
+  dispatch({type: 'DATE', payload: data})
+}
+export const moonth = (data) =>(dispatch)=>{
+  dispatch({type: 'MONTH', payload: data})
+}
+export const yearr = (data) =>(dispatch)=>{
+  dispatch({type: 'YEAR', payload: data})
+}
 export const signUp = (data, isSeller) => (dispatch) => {
   return new Promise((resolve, reject) => {
     const Url = process.env.REACT_APP_API_URL;

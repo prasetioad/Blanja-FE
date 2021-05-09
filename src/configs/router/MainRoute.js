@@ -24,7 +24,6 @@ function App() {
         <PublicRoute path="/register" component={Register} />
         <PublicRoute path="/reset" component={ResetPassword} />
         <PrivateRoute path="/confirm" component={ConfirmPassword} />
-
         <PrivateRoute path="/bag" component={MyBagPage} />
         <PrivateRoute path="/product/:idproduct" component={Product} />
         <Route path="/category/:params" component={Category} />

@@ -25,12 +25,14 @@ export default function ShoppingSum({ total, address, cart }) {
         icon: "error",
         title: "Oops...",
         text: "Silahkan masukkan alamat lengkap",
+        confirmButtonColor: "#273ac7",
       });
     } else if (paymentMethod === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Silahkan pilih metode pembayaran",
+        confirmButtonColor: "#273ac7",
       });
     } else {
       axiosApiInstance
@@ -46,11 +48,13 @@ export default function ShoppingSum({ total, address, cart }) {
             icon: "success",
             title: "Berhasil",
             text: "Checkout berhasil, silahkan lakukan pembayaran!",
+            confirmButtonColor: "#273ac7",
           }).then(() => {
             Swal.fire({
               icon: "info",
               title: "Info!",
               text: "Mengarahkan ke home",
+              confirmButtonColor: "#273ac7",
             }).then(() => {
               history.push("/");
             });
@@ -61,6 +65,7 @@ export default function ShoppingSum({ total, address, cart }) {
             icon: "error",
             title: "Oops...",
             text: err.response.data.message,
+            confirmButtonColor: "#273ac7",
           });
         });
     }
