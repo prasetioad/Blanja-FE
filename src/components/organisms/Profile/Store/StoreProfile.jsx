@@ -1,38 +1,8 @@
 import css from './profileStore.module.css';
-import { useState } from 'react'
 // ATOMS
-import { Button, Input } from '../../../atoms'
-// IMAGES 
-import Top from '../../../images/Top.png'
-import Bottom from '../../../images/Bottom.png'
-import Left from '../../../images/left.png'
-import Right from '../../../images/right.png'
+import { Button, Input } from '../../../atoms';
 
-export default function MyAccount({ switchGender, cau, au, udc, ud }) {
-   const monthArray = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"]
-   // CHANGE DATE
-   const [date, setDate] = useState(10)
-   const [month, setMonth] = useState(8)
-   const [year, setYear] = useState(2000)
-   // TRIGGER DROPDOWN
-   const [dateDropdown, showDate] = useState(false)
-   const [monthDropdown, showMonth] = useState(false)
-   const [yearDropdown, showYear] = useState(false)
-   // FUNCTION
-   const changeDMY = (opt, opr) => {
-      if(opt === "d") {
-         if(opr === "-" && date > 1) { setDate(date - 1) }
-         else if(opr === "+" && date < 31) { setDate(date + 1) }
-      }
-      else if(opt === "m") {
-         if(opr === "-" && month > 0) { setMonth(month - 1) }
-         else if(opr === "+" && month < 11) { setMonth(month + 1) }
-      }
-      else if(opt === "y") {
-         if(opr === "-" && year > 1945) { setYear(year - 1) }
-         else if(opr === "+" && year < 2021) { setYear(year + 1) }
-      }
-   }
+export default function StoreProfile({ cau, au, udc, ud }) {
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
          <div className={"displayColumn " + css.rightSideUserTitle}>
