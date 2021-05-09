@@ -65,7 +65,7 @@ export default function SellingProducts({
       formData.append("price", data.price);
       formData.append("conditions", cp === true ? "Baru" : "Bekas");
       formData.append("stock", data.stock);
-      formData.append("size", JSON.stringify(["38", "39", "40", "41"]));
+      formData.append("size", JSON.stringify(["S", "M", "L", "XL"]));
       formData.append(
         "color",
         JSON.stringify(["#1A1A1A", "#D84242", "#4290D8", "#42D86C"])
