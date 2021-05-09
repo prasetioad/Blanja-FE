@@ -12,6 +12,8 @@ import { useSelector } from 'react-redux'
 
 export default function ProfilePage(){
    // SET-UP STATE
+   const [storeData, setStoreData] = useState(null)
+   const [imageStore, setImageStore] = useState(null)
    const [userData, setUserData] = useState({name: "Anonymous"})
    const [menuSelected, selectMenu] = useState(null)
    const [myOrderUserSelected, selectMyOrderUser] = useState("All items")
@@ -165,6 +167,19 @@ export default function ProfilePage(){
          else if(data.role === 2) { selectMenu("My Account") }
       })
       .catch((err) => { console.log(err.response) })
+
+      axios.get(process.env.REACT_APP_API_URL + "/store", {
+         headers: { authorization: 'Bearer ' + localStorage.getItem("token"), 'Content-Type': 'application/json' }
+       })
+       .then((res) => { 
+          const data = res.data.data[0]
+          console.log(data);
+          setStoreData(data)
+          setImageStore(process.env.REACT_APP_API_IMG +data.image)
+          if(data.role === 1) { selectMenu("Store Profile") }
+          else if(data.role === 2) { selectMenu("My Account") }
+       })
+       .catch((err) => { console.log(err.response) })
     }, [])
    return(
       <div className="showInAnimation">
@@ -196,6 +211,8 @@ export default function ProfilePage(){
             ipn={ (val) => {isProductNew(val)} }
             ud={userData}
             img={dataImage}
+            storeData={storeData}
+            imageStore={imageStore}
          />
       </div>
    )

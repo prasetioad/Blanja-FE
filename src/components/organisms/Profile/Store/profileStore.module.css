@@ -80,6 +80,8 @@
    .otherPhoto { height: 8vw; width: 8vw; }
    .fotoUtama { color: #9B9B9B; font-size: 0.9vw; margin: 1vw 0; text-align: center; width: 12vw; }
    .uploadPhotoAreaMobile { display: none; }
+   .myOrderDataShowObjek{width: 100%;}
+   .myOrderShowObjekProfil{ width: 30vw !important;}
 }
 
 /* MOBILE */
@@ -150,4 +152,6 @@
    .fotoUtama { color: #9B9B9B; margin: auto; margin-top: 5vw; }
    .mainPhoto { border-radius: 2.5vw; height: 50vw; }
    .otherPhoto { border-radius: 2vw; height: 40vw; }
+   .myOrderDataShowObjek{width: 85vw !important;}
+   .myOrderShowObjekProfil{ width: 50vw !important;}
 }

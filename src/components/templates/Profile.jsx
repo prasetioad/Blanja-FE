@@ -1,5 +1,5 @@
 import css from "./style.module.css";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 // ORGANISMS
 import {
   Navbar,
@@ -39,7 +39,11 @@ export default function Profile({
   cp,
   ipn,
   ud,
+  storeData,
+  imageStore,
 }) {
+
+
   const [filter, showFilter] = useState(false);
   const [addAddress, showAddAddress] = useState(false);
   return (
@@ -63,7 +67,7 @@ export default function Profile({
         </div>
         <div className={css.profileRightSide}>
           {ms === "My Account" ? (
-            <MyAccount switchGender={sg} udc={udc} cau={cau} au={au} ud={ud} />
+            <MyAccount switchGender={sg} udc={udc} cau={cau} au={au} ud={ud}  />
           ) : ms === "Shipping Address" ? (
             <ShippingAddress
               func={() => {
@@ -79,6 +83,8 @@ export default function Profile({
               cau={cau}
               au={au}
               ud={ud}
+              sd={storeData}
+              is={imageStore}
             />
           ) : ms === "My Products" ? (
             <MyProducts mpms={mpms} smpmd={smpmd} smpmm={smpmm} />
