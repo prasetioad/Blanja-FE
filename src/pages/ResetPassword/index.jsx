@@ -130,7 +130,7 @@ export default function Reset() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Reset Password</title>
+        <title>Tuku - Reset Password</title>
       </Helmet>
       <section className="reset">
         <div className="container">

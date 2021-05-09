@@ -11,6 +11,12 @@ import Default from "../../components/images/PhotoOfGoods.png";
 export default function ProfilePage() {
   // SET-UP STATE
   const [storeData, setStoreData] = useState(null);
+  const [storeImage, setStoreImage] = useState(null);
+  const [imgProduct1, setImgProduct1] = useState(null);
+  const [imgProduct2, setImgProduct2] = useState(null);
+  const [imgProduct3, setImgProduct3] = useState(null);
+  const [imgProduct4, setImgProduct4] = useState(null);
+  const [imgProduct5, setImgProduct5] = useState(null);
   const [imageStore, setImageStore] = useState(null);
   const [userData, setUserData] = useState({ name: "Anonymous" });
   const [menuSelected, selectMenu] = useState(null);
@@ -61,6 +67,7 @@ export default function ProfilePage() {
       showCancelButton: true,
       closeOnConfirm: false,
       animation: "slide-from-top",
+      confirmButtonColor: "#273ac7",
     })
       .then((res) => {
         if (res.value === null) {
@@ -68,6 +75,7 @@ export default function ProfilePage() {
             icon: "question",
             title: "Kosong ?!",
             text: "Gimana uploadnya nih kalau gambarnya gak ada? XD",
+            confirmButtonColor: "#273ac7",
           });
         } else {
           const packValue = res.value;
@@ -81,14 +89,19 @@ export default function ProfilePage() {
           reader.addEventListener("load", () => {
             if (num === 0) {
               setMain(reader.result);
+              setImgProduct1(res.value);
             } else if (num === 1) {
               setSecond(reader.result);
+              setImgProduct2(res.value);
             } else if (num === 2) {
               setThird(reader.result);
+              setImgProduct3(res.value);
             } else if (num === 3) {
               setFourth(reader.result);
+              setImgProduct4(res.value);
             } else if (num === 4) {
               setFifth(reader.result);
+              setImgProduct5(res.value);
             }
           });
           reader.readAsDataURL(packValue);
@@ -99,6 +112,7 @@ export default function ProfilePage() {
           icon: "error",
           title: "Batal~",
           text: "Penambahan gambar produk dibatalkan ~",
+          confirmButtonColor: "#273ac7",
         });
       });
   };
@@ -118,6 +132,7 @@ export default function ProfilePage() {
       showCancelButton: true,
       closeOnConfirm: false,
       animation: "slide-from-top",
+      confirmButtonColor: "#273ac7",
     })
       .then((res) => {
         if (res.value === null) {
@@ -125,6 +140,7 @@ export default function ProfilePage() {
             icon: "question",
             title: "Kosong ?!",
             text: "Gimana uploadnya nih kalau gambarnya gak ada? XD",
+            confirmButtonColor: "#273ac7",
           });
         } else {
           const packValue = res.value;
@@ -133,6 +149,7 @@ export default function ProfilePage() {
             ...userData,
             image: res.value,
           });
+          setStoreImage(res.value);
           const reader = new FileReader();
           reader.addEventListener("load", () => {
             setUpdateImage(reader.result);
@@ -145,6 +162,7 @@ export default function ProfilePage() {
           icon: "error",
           title: "Batal~",
           text: "Perubahan gambar profile user dibatalkan!",
+          confirmButtonColor: "#273ac7",
         });
       });
   };
@@ -170,34 +188,11 @@ export default function ProfilePage() {
       .catch((err) => {
         console.log(err.response);
       });
-
-    userData.role === 1 &&
-      axios
-        .get(process.env.REACT_APP_API_URL + "/store", {
-          headers: {
-            authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          const data = res.data.data[0];
-          console.log(data);
-          setStoreData(data);
-          setImageStore(process.env.REACT_APP_API_IMG + data.image);
-          if (data.role === 1) {
-            selectMenu("Store Profile");
-          } else if (data.role === 2) {
-            selectMenu("My Account");
-          }
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
   }, []);
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Profile</title>
+        <title>Tuku - Profile</title>
       </Helmet>
       <Profile
         ms={menuSelected}
@@ -262,6 +257,12 @@ export default function ProfilePage() {
         storeData={storeData}
         imageStore={imageStore}
         status={status}
+        storeImage={storeImage}
+        imgProduct1={imgProduct1}
+        imgProduct2={imgProduct2}
+        imgProduct3={imgProduct3}
+        imgProduct4={imgProduct4}
+        imgProduct5={imgProduct5}
       />
     </div>
   );

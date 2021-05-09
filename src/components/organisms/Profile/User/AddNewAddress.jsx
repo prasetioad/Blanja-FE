@@ -29,7 +29,8 @@ export default function AddNewAddress({
           Swal.fire({
             icon: "success",
             title: "Success!",
-            text: "Mengarahkan ke profile",
+            text: "Mengarahkan ke halaman profile",
+            confirmButtonColor: "#273ac7",
           }).then(() => {
             window.location.reload();
           });
@@ -39,6 +40,7 @@ export default function AddNewAddress({
         Swal.fire({
           title: "Please fill correctly!",
           icon: "warning",
+          confirmButtonColor: "#273ac7",
         });
       });
   };

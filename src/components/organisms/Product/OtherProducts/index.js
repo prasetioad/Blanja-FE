@@ -26,6 +26,7 @@ function OtherProducts({ product }) {
             icon: "error",
             title: "Oops...",
             text: "Something went wrong!",
+            confirmButtonColor: "#273ac7",
           });
         });
     }

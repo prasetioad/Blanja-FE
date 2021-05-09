@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Home</title>
+        <title>Tuku - Home</title>
       </Helmet>
       <Home />
     </div>

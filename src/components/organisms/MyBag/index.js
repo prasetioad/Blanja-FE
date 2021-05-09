@@ -39,6 +39,7 @@ function MyBag() {
       icon: "error",
       title: "Oops...",
       text: "Item tidak bisa kurang dari 1",
+      confirmButtonColor: "#273ac7",
     });
   };
 
@@ -50,6 +51,7 @@ function MyBag() {
           icon: "success",
           title: "Berhasil",
           text: "Item berhasil diupdate!",
+          confirmButtonColor: "#273ac7",
         }).then(() => {
           axiosApiInstance
             .get(`${urlApi}/cart`)
@@ -67,6 +69,7 @@ function MyBag() {
           icon: "error",
           title: "Oops...",
           text: err.response.data.message,
+          confirmButtonColor: "#273ac7",
         });
       });
   };
@@ -77,6 +80,7 @@ function MyBag() {
         icon: "error",
         title: "Oops...",
         text: "Tidak ada item yang dipilih",
+        confirmButtonColor: "#273ac7",
       });
     } else {
       axiosApiInstance
@@ -86,6 +90,7 @@ function MyBag() {
             icon: "success",
             title: "Berhasil",
             text: "Item berhasil dihapus!",
+            confirmButtonColor: "#273ac7",
           }).then(() => {
             axiosApiInstance
               .get(`${urlApi}/cart`)
@@ -103,6 +108,7 @@ function MyBag() {
             icon: "error",
             title: "Oops...",
             text: err.response.data.message,
+            confirmButtonColor: "#273ac7",
           });
         });
     }

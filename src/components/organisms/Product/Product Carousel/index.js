@@ -36,11 +36,12 @@ function Index({ product }) {
         setGallery(newGallery);
       })
       .catch((err) => {
-        Swal.fire(
-          "one image only for this product",
-          "is that okay for you?",
-          "question"
-        );
+        Swal.fire({
+          icon: "question",
+          title: "one image only for this product",
+          text: "is that okay for you?",
+          confirmButtonColor: "#273ac7",
+        });
       });
   }, [idproduct, urlApi]);
 

@@ -100,6 +100,8 @@ export default function MyAccount({
           Swal.fire({
             title: "Success",
             icon: "success",
+            text: "Data berhasil diupdate",
+            confirmButtonColor: "#273ac7",
           });
         }
       })

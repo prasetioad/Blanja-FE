@@ -312,6 +312,16 @@
     border-radius: 2vw;
     padding: 3vw;
   }
+  .btnDetail {
+    background-color: #273ac7;
+    border-radius: 25px;
+    font-family: Metropolis;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
   .rightSideUserTitle {
     border-bottom: 0.33vw solid #d4d4d4;
     text-align: center;

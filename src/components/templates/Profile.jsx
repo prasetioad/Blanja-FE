@@ -42,6 +42,12 @@ export default function Profile({
   storeData,
   imageStore,
   status,
+  storeImage,
+  imgProduct1,
+  imgProduct2,
+  imgProduct3,
+  imgProduct4,
+  imgProduct5,
 }) {
   const [filter, showFilter] = useState(false);
   const [addAddress, showAddAddress] = useState(false);
@@ -91,11 +97,23 @@ export default function Profile({
               ud={ud}
               sd={storeData}
               is={imageStore}
+              status={status}
+              storeImage={storeImage}
             />
           ) : ms === "My Products" ? (
             <MyProducts mpms={mpms} smpmd={smpmd} smpmm={smpmm} />
           ) : ms === "Selling Products" ? (
-            <SellingProducts pog={pog} spp={spp} cp={cp} ipn={ipn} />
+            <SellingProducts
+              pog={pog}
+              spp={spp}
+              cp={cp}
+              ipn={ipn}
+              imgProduct1={imgProduct1}
+              imgProduct2={imgProduct2}
+              imgProduct3={imgProduct3}
+              imgProduct4={imgProduct4}
+              imgProduct5={imgProduct5}
+            />
           ) : ms === "My Order Store" ? (
             <MyOrderStore moss={moss} smosd={smosd} smosm={smosm} />
           ) : null}
