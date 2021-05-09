@@ -64,16 +64,15 @@
    .rightNav, .searchBorder, .filterBtn { display: none; }
    .filterBtnMobile { 
       height: 15vw;
-      margin-left: 60vw; 
       width: 15vw;
    }
    .searchMobile { 
       background: white;
       border: 2px solid #9B9B9B; 
       border-radius: 24px; 
-      margin-right: 5vw; 
+      margin-top: 20vw;
       position: absolute; 
-      width: 55%; 
+      width: 75vw; 
    }
    .searchMobileInput { border: none; font-size: 5vw; margin: 3vw; width: 88%; }
    .searchMobileInput:focus { outline: none; }

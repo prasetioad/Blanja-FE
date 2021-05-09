@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios'
 // IMAGES
 import Filter from '../../../images/filter.png';
+import Cart from '../../../images/cart.png'
 // ATOMS
 import { Button } from "../../../atoms";
 
@@ -35,45 +36,46 @@ export default function MobileNav({ filter, func, au, ud }) {
     }
   }, [keyword])
   return (
-    <div className="displayColumn">
-      <div
-        style={{
-          justifyContent: "space-between",
-          marginBottom: "36px",
-          width: "100%",
-        }}
-      >
-        <div className={"displayColumn " + css.searchMobile}>
-          <input
-            className={css.searchMobileInput}
-            onChange={ (e) => { searchInputChange(e) } }
-            placeholder="Search ..."
-            required
-            type="text"
-          />
-          { 
-          searchResult === "Empty" ?
-          null
-          :
-          searchResult === "Not Found" ?
-          <div className={"displayRow " + css.searchResult} style={{justifyContent: "center"}}>
-              <span className={css.productCategory}>Product not found!</span>
-          </div>
-          :
-          searchResult.map((item) => {
-            return(
-              <div className={"displayRow hoverThis " + css.searchResult} onClick={ () => { selectSearch(item.id) } }>
-                <img alt="Product Image" className={css.productImage} src={process.env.REACT_APP_API_IMG + item.image}/>
-                <div className="displayColumn">
-                  <span className={css.productTitle}>{item.title.length > 8 ? item.title.slice(0,8) + " ..." : item.title}</span>
-                  <span className={css.productCategory}>{item.category}</span>
+    <div>
+      <div style={{ marginBottom: "25vw", width: "100%" }}>
+        <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
+          <div className={"displayColumn " + css.searchMobile}>
+            <input
+              className={css.searchMobileInput}
+              onChange={ (e) => { searchInputChange(e) } }
+              placeholder="Search ..."
+              required
+              type="text"
+            />
+            { 
+            searchResult === "Empty" ?
+            null
+            :
+            searchResult === "Not Found" ?
+            <div className={"displayRow " + css.searchResult} style={{justifyContent: "center"}}>
+                <span className={css.productCategory}>Product not found!</span>
+            </div>
+            :
+            searchResult.map((item) => {
+              return(
+                <div className={"displayRow hoverThis " + css.searchResult} onClick={ () => { selectSearch(item.id) } }>
+                  <img alt="Product Image" className={css.productImage} src={process.env.REACT_APP_API_IMG + item.image}/>
+                  <div className="displayColumn">
+                    <span className={css.productTitle}>{item.title.length > 8 ? item.title.slice(0,8) + " ..." : item.title}</span>
+                    <span className={css.productCategory}>{item.category}</span>
+                  </div>
                 </div>
-              </div>
-              )
-            })
-          }
+                )
+              })
+            }
+          </div>
         </div>
-        <img alt="Filter" className={css.filterBtnMobile} onClick={filter} src={Filter}/>
+        <div className="displayRow" style={{justifyContent: "space-between"}}>
+          <div onClick={ () => { history.push("/bag") } } style={{border: "0.60vw solid #9B9B9B", borderRadius: "3.8vw", padding: "2.77vw 3.77vw"}}>
+            <img alt="Cart" src={Cart} style={{height: "6vw", width: "6vw"}}/>
+          </div>
+          <img alt="Filter" className={css.filterBtnMobile} onClick={filter} src={Filter}/>
+        </div>
       </div>
       {
       ud === null ?
