@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import style from "./otherproducts.module.css";
+import Rupiah from "../../../../helpers/rupiah";
 import Swal from "sweetalert2";
 
 function OtherProducts({ product }) {
@@ -56,7 +57,7 @@ function OtherProducts({ product }) {
                     className={[style["card-body"], ["card-body"]].join(" ")}
                   >
                     <h3 className={style["product-name"]}>{item.title}</h3>
-                    <h4 className={style["price"]}>Rp {item.price}</h4>
+                    <h4 className={style["price"]}>{Rupiah(item.price)}</h4>
                     <p className={style["teks-store"]}>{item.brand}</p>
                   </div>
                 </div>

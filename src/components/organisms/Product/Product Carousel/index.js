@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addType } from "../../../../configs/redux/actions/order";
 import axios from "axios";
 import axiosApiInstance from "../../../../helpers/axios";
+import Rupiah from "../../../../helpers/rupiah";
 import Swal from "sweetalert2";
 
 function Index({ product }) {
@@ -37,9 +38,9 @@ function Index({ product }) {
       .catch((err) => {
         Swal.fire(
           "one image only for this product",
-          'is that okay for you?',
-          'question'
-        )
+          "is that okay for you?",
+          "question"
+        );
       });
   }, [idproduct, urlApi]);
 
@@ -297,10 +298,12 @@ function Index({ product }) {
                     <span>({product.rating})</span>
                   </div>
                 </div>
-                <div className="productTopBotContentPrice">
-                  <span className="prodTextTiny">Price</span>
-                  <p>Rp. {product.price},-</p>
-                </div>
+                {product.price !== undefined && (
+                  <div className="productTopBotContentPrice">
+                    <span className="prodTextTiny">Price</span>
+                    <p>{Rupiah(product.price)},-</p>
+                  </div>
+                )}
                 <div className="productTopBotContentColor">
                   <p>Color</p>
                   <div className="productTopBotContentColorItem">

@@ -93,7 +93,10 @@ function Index() {
         </div>
         <div className="CarouselTwoCategoryItem">
           <Carousel breakPoints={categoryBreakPoints}>
-            <div className="CarouselTwoCategoryObjek">
+            <div
+              className="CarouselTwoCategoryObjek"
+              style={{ cursor: "pointer" }}
+            >
               <div className="CarouselTwoCategoryText">
                 <p>Shoes</p>
               </div>
@@ -106,7 +109,10 @@ function Index() {
                 <img src="./asset/Group 1229.png" alt="" />
               </div>
             </div>
-            <div className="CarouselTwoCategoryObjek">
+            <div
+              className="CarouselTwoCategoryObjek"
+              style={{ cursor: "pointer" }}
+            >
               <div className="CarouselTwoCategoryText">
                 <p>Pants</p>
               </div>
@@ -119,7 +125,10 @@ function Index() {
                 <img src="./asset/Group 1230.png" alt="" />
               </div>
             </div>
-            <div className="CarouselTwoCategoryObjek">
+            <div
+              className="CarouselTwoCategoryObjek"
+              style={{ cursor: "pointer" }}
+            >
               <div className="CarouselTwoCategoryText">
                 <p>Jacket</p>
               </div>
@@ -132,7 +141,10 @@ function Index() {
                 <img src="./asset/Group 1231.png" alt="" />
               </div>
             </div>
-            <div className="CarouselTwoCategoryObjek">
+            <div
+              className="CarouselTwoCategoryObjek"
+              style={{ cursor: "pointer" }}
+            >
               <div className="CarouselTwoCategoryText">
                 <p>Shorts</p>
               </div>
@@ -145,7 +157,10 @@ function Index() {
                 <img src="./asset/Group 1232.png" alt="" />
               </div>
             </div>
-            <div className="CarouselTwoCategoryObjek">
+            <div
+              className="CarouselTwoCategoryObjek"
+              style={{ cursor: "pointer" }}
+            >
               <div className="CarouselTwoCategoryText">
                 <p>T-Shirt</p>
               </div>

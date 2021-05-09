@@ -145,19 +145,15 @@ function MyBag() {
               <div className="col-lg">
                 <div className="container-checkbox d-flex p-4 justify-content-between">
                   <div className="pl-3">
-                    <input
+                    {/* <input
                       className="form-check-input"
                       type="checkbox"
                       value=""
                       id="defaultCheck1"
                       style={{ width: "20px" }}
-                    />
-                    <label
-                      className="form-check-label order-1"
-                      for="defaultCheck1"
-                      style={{ marginLeft: "10px" }}
-                    >
-                      Select all items ({count} items selected)
+                    /> */}
+                    <label className="form-check-label" for="defaultCheck1">
+                      {count} items selected
                     </label>
                   </div>
                   <div onClick={() => deleteCart()}>
