@@ -32,7 +32,7 @@ export default function MyOrderUser({ mous, smoud, smoum }) {
    }
    // USEEFFECT
    useEffect(() => {
-      axios.get(`${process.env.REACT_APP_API_URL}/order/21`, {headers: {
+      axios.get(`${process.env.REACT_APP_API_URL}/order/${localStorage.getItem('id')}`, {headers: {
          Authorization: `Bearer ${localStorage.getItem('token')}`
       }})
       .then((res)=>{ 
@@ -40,6 +40,7 @@ export default function MyOrderUser({ mous, smoud, smoum }) {
       })
       .catch((err)=>{ console.log(err.response)})
    }, [])
+
 
    return(
       <div className={"displayColumn " + css.rightSideUserProfile}>
