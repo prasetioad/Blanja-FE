@@ -88,6 +88,7 @@ export default function HeadAddress({ funcAddress }) {
           }).then(() => {
             getOneAddress();
             getAllAdress();
+            funcAddress();
           });
         })
         .catch((err) => {
