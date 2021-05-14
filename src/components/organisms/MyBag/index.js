@@ -4,6 +4,7 @@ import style from "./mybag.module.css";
 import "./mybag.css";
 import { AiOutlineMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import axiosApiInstance from "../../../helpers/axios";
+import Rupiah from "../../../helpers/rupiah";
 import { Navbar, Filter } from "..";
 import Swal from "sweetalert2";
 
@@ -38,7 +39,7 @@ function MyBag() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Item tidak bisa kurang dari 1",
+      text: "Produk tidak bisa kurang dari 1",
       confirmButtonColor: "#273ac7",
     });
   };
@@ -50,7 +51,7 @@ function MyBag() {
         Swal.fire({
           icon: "success",
           title: "Berhasil",
-          text: "Item berhasil diupdate!",
+          text: "Keranjang berhasil diupdate!",
           confirmButtonColor: "#273ac7",
         }).then(() => {
           axiosApiInstance
@@ -79,7 +80,7 @@ function MyBag() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tidak ada item yang dipilih",
+        text: "Tidak ada produk yang dipilih",
         confirmButtonColor: "#273ac7",
       });
     } else {
@@ -89,7 +90,7 @@ function MyBag() {
           Swal.fire({
             icon: "success",
             title: "Berhasil",
-            text: "Item berhasil dihapus!",
+            text: "Produk berhasil dihapus dari keranjang!",
             confirmButtonColor: "#273ac7",
           }).then(() => {
             axiosApiInstance
@@ -229,7 +230,7 @@ function MyBag() {
                                   }
                                 />
                                 <p className={style["price"]}>
-                                  Rp.{item.total}
+                                  {Rupiah(item.total)}
                                 </p>
                               </div>
                             </div>
@@ -244,7 +245,7 @@ function MyBag() {
                   <p className={style["shop-summary-teks"]}>Shopping summary</p>
                   <br />
                   <p className={style["total-price"]}>Total Price</p>
-                  <p className={style["price-value"]}>Rp.{total}</p>
+                  <p className={style["price-value"]}>{Rupiah(total)}</p>
                   <br />
                   <button
                     type="button"

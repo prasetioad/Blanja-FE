@@ -37,9 +37,9 @@ function Index({ product }) {
       })
       .catch((err) => {
         Swal.fire({
-          icon: "question",
-          title: "one image only for this product",
-          text: "is that okay for you?",
+          icon: "info",
+          title: "Info!",
+          text: "Hanya satu gambar untuk produk ini",
           confirmButtonColor: "#273ac7",
         });
       });
@@ -135,21 +135,21 @@ function Index({ product }) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Pilih warna item`,
+        text: `Pilih warna produk`,
         confirmButtonColor: "#273ac7",
       });
     } else if (count > product.stock) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Stock item ${product.stock}`,
+        text: `Stok produk ${product.stock}`,
         confirmButtonColor: "#273ac7",
       });
     } else if (arrSizes.includes(String(size)) === false) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Size item ${arrSizes.join(" ")}`,
+        text: `Ukuran produk ${arrSizes.join(" ")}`,
         confirmButtonColor: "#273ac7",
       });
     } else {
@@ -159,7 +159,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "success",
             title: "Berhasil",
-            text: `Item berhasil ditambahkan ke keranjang`,
+            text: `Produk berhasil ditambahkan ke keranjang`,
             confirmButtonColor: "#273ac7",
           });
           setColorActive("");
@@ -174,7 +174,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: `${err.message}`,
+            text: err.response.data.message,
             confirmButtonColor: "#273ac7",
           });
         });
@@ -203,21 +203,21 @@ function Index({ product }) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Pilih warna item`,
+        text: `Pilih warna barang`,
         confirmButtonColor: "#273ac7",
       });
     } else if (count > product.stock) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Stock item ${product.stock}`,
+        text: `Stok barang ${product.stock}`,
         confirmButtonColor: "#273ac7",
       });
     } else if (arrSizes.includes(String(size)) === false) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Size item ${arrSizes.join(" ")}`,
+        text: `Ukuran barang ${arrSizes.join(" ")}`,
         confirmButtonColor: "#273ac7",
       });
     } else {
@@ -237,7 +237,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: `${err.message}`,
+            text: err.response.data.message,
             confirmButtonColor: "#273ac7",
           });
         });
