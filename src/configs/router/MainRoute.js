@@ -15,6 +15,7 @@ import Category from "../../pages/Category";
 import Chat from "../../pages/Chat";
 import CheckOut from "../../pages/Checkout";
 import Profile from "../../pages/Profile";
+import ChatRoom from "../../pages/ChatRoom";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <PrivateRoute path="/check-out" component={CheckOut} />
         <PrivateRoute path="/profile" component={Profile} />
         <PrivateRoute path="/chat" component={Chat} />
+        <PrivateRoute path="/chat-room" component={ChatRoom} />
         <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>

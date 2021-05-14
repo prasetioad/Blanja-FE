@@ -1,3 +1,8 @@
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
 div.box-side-chat {
   background: #ffffff;
   border: 1px solid #8e8e93;
@@ -17,6 +22,7 @@ div.box-main-chat {
   height: 583px;
   margin-top: 50px;
   margin-bottom: 50px;
+  position: relative;
   /* padding-left: 20px; */
   /* padding-top: 20px; */
 }
@@ -37,8 +43,6 @@ div.line-width {
 }
 
 img.userimg {
-  margin-left: 20px;
-  margin-top: 20px;
   width: 45px;
   height: 45px;
   border-radius: 100%;
@@ -94,7 +98,54 @@ input.input-massage-body {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-  position: relative;
-  top: 450px;
+  width: 85%;
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  
+}
+.main-chat {
+  overflow-y: auto;
+  height: 78%;
+  padding-top: 1em;
+  padding-right: 2em;
+  
+} 
+.box-main-chat > button {
+ position: absolute;
+ bottom: 25px;
+ right: 20px;
+}
+.cont-msg-send, .cont-msg-rec {
+  display: flex;
+  margin: .5em 0;
+  align-items: center;
+  width: 55%;
+}
+.cont-msg-rec {
+  margin-left: auto;
+  background-color: rgb(247,239,233,0.8);
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  justify-content: flex-end;
+  
+}
+.cont-msg-send {
+  background-color: rgb(126,152,223,0.5);
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.cont-msg-send > li, .cont-msg-rec > li {
+  list-style: none;
+}
+.cont-msg-send > img, .cont-msg-rec > img {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin: .5em 1em;
+}
+.spanlist > p{
+  margin-bottom: 0;
+
 }
