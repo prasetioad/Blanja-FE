@@ -35,8 +35,8 @@ export default function Login() {
         .then((res) => {
           formik.resetForm();
           Swal.fire({
-            title: "Success!",
-            text: res,
+            title: "Berhasil",
+            text: "Berhasil masuk",
             icon: "success",
             confirmButtonText: "Ok",
             confirmButtonColor: "#273ac7",
@@ -73,7 +73,7 @@ export default function Login() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Login</title>
+        <title>Tuku - Login</title>
       </Helmet>
       <section className="login">
         <div className="container">

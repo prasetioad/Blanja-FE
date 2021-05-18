@@ -1,3 +1,4 @@
+import React from "react";
 import css from "./style.module.css";
 import { useHistory } from "react-router";
 // IMAGES
@@ -8,7 +9,7 @@ import { Button } from "../../../atoms";
 import { Notification } from "../../../molecules";
 
 export default function RightNav({ func, au, ud }) {
-  const history = useHistory()
+  const history = useHistory();
   return (
     <div className={"displayRow " + css.rightNav}>
       <div></div>
@@ -63,25 +64,49 @@ export default function RightNav({ func, au, ud }) {
                 id="dropdownMenuButton"
                 data-toggle="dropdown"
                 alt="profileBtn"
-                src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}
+                src={
+                  au === undefined
+                    ? process.env.REACT_APP_API_IMG + ud.image
+                    : au
+                }
               />
               <div
                 className={"hideFirst dropdown-menu " + css.dropdownUser}
                 aria-labelledby="dropdownMenuButton"
               >
                 <div className={css.userDropdownWrapper}>
-                    <div className="displayRow">
-                      <img className={"hoverThis " + css.profileImage} src={au === undefined ? process.env.REACT_APP_API_IMG + ud.image : au}/>
-                      <div className={css.userProfileNameAndPhone}>
-                          <p className={css.userProfileName}>{ud.name}</p>
-                          <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
-                      </div>
+                  <div className="displayRow">
+                    <img
+                      className={"hoverThis " + css.profileImage}
+                      src={
+                        au === undefined
+                          ? process.env.REACT_APP_API_IMG + ud.image
+                          : au
+                      }
+                      alt="User"
+                    />
+                    <div
+                      className={"displayColumn " + css.userProfileNameAndPhone}
+                    >
+                      <p className={css.userProfileName}>{ud.name}</p>
+                      <p className={css.userProfilePhone}>{ud.phoneNumber}</p>
                     </div>
-                    <div className={"displayRow " + css.userBtnArea}>
-                      <Button cls={"hoverThis " + css.settingsBtn} func={ () => {history.push("/profile") } } val="Settings"/>
-                      <Button cls={"hoverThis " + css.logoutBtn} func={func} val="Logout"/>
-                    </div>
-                </div> 
+                  </div>
+                  <div className={"displayRow " + css.userBtnArea}>
+                    <Button
+                      cls={"hoverThis " + css.settingsBtn}
+                      func={() => {
+                        history.push("/profile");
+                      }}
+                      val="Settings"
+                    />
+                    <Button
+                      cls={"hoverThis " + css.logoutBtn}
+                      func={func}
+                      val="Logout"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

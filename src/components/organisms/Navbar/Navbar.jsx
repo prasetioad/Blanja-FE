@@ -13,34 +13,73 @@ export default function Navbar({ func, au }) {
   const [navMobile, showNavMobile] = useState(false);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
-    localStorage.removeItem("color")
-    localStorage.removeItem("alphabetSize")
-    localStorage.removeItem("numericSize")
-    localStorage.removeItem("category")
-    localStorage.removeItem("brand")
-    axios.get(process.env.REACT_APP_API_URL + "/users/find-one", {
-      headers: { authorization: 'Bearer ' + localStorage.getItem("token"), 'Content-Type': 'application/json' }
-    })
-    .then((res) => { setUserData(res.data.data[0]) })
-    .catch((err) => { console.log(err.response) })
-  }, [])
+    localStorage.removeItem("color");
+    localStorage.removeItem("alphabetSize");
+    localStorage.removeItem("numericSize");
+    localStorage.removeItem("category");
+    localStorage.removeItem("brand");
+    if (localStorage.getItem("token")) {
+      axios
+        .get(process.env.REACT_APP_API_URL + "/users/find-one", {
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setUserData(res.data.data[0]);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: err.response.data.message,
+            confirmButtonColor: "#273ac7",
+          });
+        });
+    }
+  }, []);
   const logout = () => {
-    Swal.fire("Sukses!", "Logout berhasil, mengarahkan kembali ke halaman login ~", "success")
-    .then(() => {
-      localStorage.clear()
-      history.push("/login")
-    })
-    
-  }
-  return(
+    Swal.fire({
+      icon: "success",
+      title: "Berhasil",
+      text: "Berhasil keluar",
+      confirmButtonColor: "#273ac7",
+    }).then(() => {
+      localStorage.clear();
+      history.push("/login");
+    });
+  };
+  return (
     <div className={css.navbarCSS}>
       <div className={"displayRow " + css.navbarTop}>
-        <LeftNav func={func}/>
-        <RightNav func={ () => { logout() } } au={au} ud={userData}/>
-        <img className={css.navBtn} onClick={ () => showNavMobile(!navMobile) } src={NavBtn} alt="Nav"/>
+        <LeftNav func={func} />
+        <RightNav
+          func={() => {
+            logout();
+          }}
+          au={au}
+          ud={userData}
+        />
+        <img
+          className={css.navBtn}
+          onClick={() => showNavMobile(!navMobile)}
+          src={NavBtn}
+          alt="Nav"
+        />
       </div>
-      <div className={"displayColumn " + css.navbarBottom} style={navMobile === false ? {display: "none"} : null}>
-        <MobileNav filter={func} func={ () => { logout() } } au={au} ud={userData}/>
+      <div
+        className={"displayColumn " + css.navbarBottom}
+        style={navMobile === false ? { display: "none" } : null}
+      >
+        <MobileNav
+          filter={func}
+          func={() => {
+            logout();
+          }}
+          au={au}
+          ud={userData}
+        />
       </div>
     </div>
   );

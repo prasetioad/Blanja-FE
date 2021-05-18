@@ -2,6 +2,9 @@ const initialState = {
   user: {},
   loading: false,
   error: "",
+  date:   null,
+  month: null,
+  year: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -55,6 +58,21 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+      case "DATE":
+      return {
+        ...state,
+        date: action.payload,
+      };
+      case "MONTH":
+        return {
+          ...state,
+          month: action.payload,
+        };
+        case "YEAR":
+          return {
+            ...state,
+            year: action.payload
+          };
     default:
       return state;
   }

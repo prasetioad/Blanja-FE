@@ -6,7 +6,7 @@ export default function ProductPage() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Product</title>
+        <title>Tuku - Product</title>
       </Helmet>
       <Product />
     </div>

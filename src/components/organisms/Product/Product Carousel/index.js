@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addType } from "../../../../configs/redux/actions/order";
 import axios from "axios";
 import axiosApiInstance from "../../../../helpers/axios";
+import Rupiah from "../../../../helpers/rupiah";
 import Swal from "sweetalert2";
 
 function Index({ product }) {
@@ -35,11 +36,12 @@ function Index({ product }) {
         setGallery(newGallery);
       })
       .catch((err) => {
-        Swal.fire(
-          "one image only for this product",
-          'is that okay for you?',
-          'question'
-        )
+        Swal.fire({
+          icon: "info",
+          title: "Info!",
+          text: "Hanya satu gambar untuk produk ini",
+          confirmButtonColor: "#273ac7",
+        });
       });
   }, [idproduct, urlApi]);
 
@@ -133,21 +135,21 @@ function Index({ product }) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Pilih warna item`,
+        text: `Pilih warna produk`,
         confirmButtonColor: "#273ac7",
       });
     } else if (count > product.stock) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Stock item ${product.stock}`,
+        text: `Stok produk ${product.stock}`,
         confirmButtonColor: "#273ac7",
       });
     } else if (arrSizes.includes(String(size)) === false) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Size item ${arrSizes.join(" ")}`,
+        text: `Ukuran produk ${arrSizes.join(" ")}`,
         confirmButtonColor: "#273ac7",
       });
     } else {
@@ -157,7 +159,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "success",
             title: "Berhasil",
-            text: `Item berhasil ditambahkan ke keranjang`,
+            text: `Produk berhasil ditambahkan ke keranjang`,
             confirmButtonColor: "#273ac7",
           });
           setColorActive("");
@@ -172,7 +174,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: `${err.message}`,
+            text: err.response.data.message,
             confirmButtonColor: "#273ac7",
           });
         });
@@ -201,21 +203,21 @@ function Index({ product }) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Pilih warna item`,
+        text: `Pilih warna barang`,
         confirmButtonColor: "#273ac7",
       });
     } else if (count > product.stock) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Stock item ${product.stock}`,
+        text: `Stok barang ${product.stock}`,
         confirmButtonColor: "#273ac7",
       });
     } else if (arrSizes.includes(String(size)) === false) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Size item ${arrSizes.join(" ")}`,
+        text: `Ukuran barang ${arrSizes.join(" ")}`,
         confirmButtonColor: "#273ac7",
       });
     } else {
@@ -235,7 +237,7 @@ function Index({ product }) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: `${err.message}`,
+            text: err.response.data.message,
             confirmButtonColor: "#273ac7",
           });
         });
@@ -261,7 +263,7 @@ function Index({ product }) {
                 {gallery.map((item) => {
                   return (
                     <div
-                      className="productTriggerImageItem"
+                      className="hoverThis productTriggerImageItem"
                       key={item.id}
                       onClick={() => {
                         handleType("PX28");
@@ -297,10 +299,12 @@ function Index({ product }) {
                     <span>({product.rating})</span>
                   </div>
                 </div>
-                <div className="productTopBotContentPrice">
-                  <span className="prodTextTiny">Price</span>
-                  <p>Rp. {product.price},-</p>
-                </div>
+                {product.price !== undefined && (
+                  <div className="productTopBotContentPrice">
+                    <span className="prodTextTiny">Price</span>
+                    <p>{Rupiah(product.price)},-</p>
+                  </div>
+                )}
                 <div className="productTopBotContentColor">
                   <p>Color</p>
                   <div className="productTopBotContentColorItem">

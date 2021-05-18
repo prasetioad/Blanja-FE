@@ -1,94 +1,95 @@
-p.navigation{
-  font-family: Metropolis;
+p.navigation {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
+  font-family: "Metropolis Medium";
   line-height: 24px;
-  color: #9B9B9B;
+  color: #9b9b9b;
   margin-top: 50px;
 }
 
-p.title{
-  font-family: Metropolis;
+p.title {
   font-size: 34px;
   font-weight: 600;
+  font-family: "Metropolis SemiBold";
   line-height: 34px;
   color: #222222;
   margin-bottom: 25px;
 }
 
-p.teks{
-  font-family: Metropolis;
+p.teks {
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
+  font-family: "Metropolis Regular";
   font-size: 12px;
   line-height: 12px;
-  color: #9B9B9B;
+  color: #9b9b9b;
 }
 
-img.product-img{
+img.product-img {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   max-height: 251px;
 }
 
-div.card{
-  background: #FFFFFF;
+div.card {
+  background: #ffffff;
   box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
   border-radius: 15px;
   max-height: 410px;
-  min-height: 410px;   
+  min-height: 410px;
+  cursor: pointer;
 }
 
-p.product-name{
-  font-family: Metropolis;
+p.product-name {
   font-style: normal;
   font-weight: 500;
+  font-family: "Metropolis Medium";
   font-size: 16px;
   line-height: 24px;
   color: #000000;
   margin-top: -10px;
 }
 
-p.price{
-  font-family: Metropolis;
+p.price {
   font-style: normal;
   font-weight: 500;
+  font-family: "Metropolis Medium";
   font-size: 16px;
   line-height: 16px;
-  color: #DB3022;
+  color: #db3022;
   margin-top: -10px;
 }
 
-p.teks-store{
-  font-family: Metropolis;
+p.teks-store {
   font-style: normal;
   font-weight: 500;
+  font-family: "Metropolis Medium";
   font-size: 12px;
   line-height: 12px;
-  color: #9B9B9B;
+  color: #9b9b9b;
   margin-top: -5px;
 }
 
-img.rating{
+img.rating {
   width: 14px;
   height: 14px;
   margin-top: -23px;
 }
 
-.star{
+.star {
   cursor: pointer;
   transition: color 200ms;
   margin-top: -10px;
 }
 
 @media only screen and (max-width: 600px) {
-  img.product-img{
+  img.product-img {
     max-height: 188px;
   }
-  
-  div.card{
-    min-height:364px;
+
+  div.card {
+    min-height: 364px;
     max-height: 364px;
   }
 }

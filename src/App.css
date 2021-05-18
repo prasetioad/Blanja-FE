@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family: "Metropolis Regular";
   color: white;
 }
 
@@ -55,6 +56,14 @@ button:hover {
 .displayRow {
   display: flex;
   flex-direction: row;
+}
+
+.displayRow.hover {
+  transition: 0.5 ease;
+}
+
+.displayRow.hover:hover {
+  opacity: 0.6;
 }
 .displayColumn {
   display: flex;

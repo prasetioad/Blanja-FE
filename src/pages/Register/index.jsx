@@ -33,7 +33,8 @@ export default function Register() {
     validate = {
       name: Yup.string().min(3, "Mininum 3 characters").required("Required!"),
       email: Yup.string().email("Invalid email format").required("Required!"),
-      phoneNumber: Yup.string()
+      phoneNumber: Yup.number()
+        .typeError("Invalid phone number")
         .min(11, "Mininum 11 characters")
         .required("Required!"),
       store: Yup.string().min(3, "Mininum 3 characters").required("Required!"),
@@ -65,8 +66,8 @@ export default function Register() {
         .then((res) => {
           formik.resetForm();
           Swal.fire({
-            title: "Success!",
-            text: res,
+            title: "Berhasil",
+            text: "Akun kamu telah dibuat, silahkan periksa email kamu untuk mengaktifkan akun kamu",
             icon: "success",
             confirmButtonText: "Ok",
             confirmButtonColor: "#273ac7",
@@ -99,8 +100,8 @@ export default function Register() {
       dispatch(verify(email, token))
         .then((res) => {
           Swal.fire({
-            title: "Success!",
-            text: res,
+            title: "Berhasil",
+            text: "Akun kamu telah diaktifkan, silahkan masuk.",
             icon: "success",
             confirmButtonText: "Ok",
             confirmButtonColor: "#273ac7",
@@ -127,7 +128,7 @@ export default function Register() {
   return (
     <div className="showInAnimation">
       <Helmet>
-        <title>Blanja - Register</title>
+        <title>Tuku - Register</title>
       </Helmet>
       <section className="register">
         <div className="container">
