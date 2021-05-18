@@ -1,13 +1,24 @@
-<<<<<<< HEAD
-<h3 align="center">Blanja App</h3>
+<h1 align="center">Tuku</h1>
+<p align="center">
+  <a href="https://tukupedia.netlify.app/" target="_blank"><img src="./src/assets/Tuku.png"  width="400" alt="Tuku" border="0" /></a>
+</p>
 
----
+## Table of Contents
 
+- [Introduction](#introduction)
+- [Features](#features)
+- [Built With](#built-with)
+- [Prerequisites](#prerequisites)
+- [Endpoint](#endpoint)
+- [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Related Project](#related-project)
 
-Blanja App adalah web aplikasi jual beli secara online yang memudahkan penggunaanya untuk berbelanja macam- macam produk fashion dengan menawarkan banyak category fashion seperti sepatu, kemeja, celana panjang, celana pendek, dan jacket. Pengguna juga dapat melakukan pembayaran online dengan cepat, efektif dan aman.
+## Introduction
 
-## Tentang Blanja App
-Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
+Tuku is an online buying and selling web application that makes it easy to use to shop for various fashion products by offering many fashion categories such as shoes, shirts, trousers, shorts, and jackets. Users can also make online payments quickly, effectively and safely.
+
+This web application was developed by a team of 5 people.
 
 1. [Wisnu Prasetio](https://github.com/prasetioad) - Frontend- PM
 2. [Chaerul Marwan](https://github.com/chaerulmarwan20) - Full Stack - Member
@@ -15,55 +26,105 @@ Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
 4. [Erwin Saputra Sulistio](https://github.com/ErwinSaputraSulistio) - Frontend - Member
 5. [Kevin Farid Alpharisy](https://github.com/kevinfaridap) - Frontend -Member
 
+## Features
 
-## Register Page
-![register-mockup](https://user-images.githubusercontent.com/74039235/117530436-64f57680-b007-11eb-9114-2838cfef5115.jpg)
+- Authentication
 
-## Login Page
+- Authorization
+
+- Reset password
+
+- Upload multiple image
+
+- Realtime product search
+
+- Cart
+
+- Order product
+
+- Filter product
+
+- Change profile
+
+- Upload image profile
+
+## Built With
+
+- [ReactJs](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Bootstrap](https://getbootstrap.com/)
+
+## Prerequisites
+
+- [NodeJs](https://nodejs.org/en/download/)
+- [Backend Tuku](https://github.com/chaerulmarwan20/tuku-backend)
+
+## Installation
+
+1. Open your terminal or command prompt. Then, clone the repo.
+
+```
+$ git clone https://github.com/chaerulmarwan20/tuku-frontend.git
+```
+
+2. Open this project.
+
+```
+$ cd tuku-frontend
+$ npm install
+```
+
+3. Create environment variable.
+
+```
+$ cp .env.example .env
+```
+
+4. Run this application.
+
+```
+$ npm start
+```
+
+## Screenshots
+
+- Authentication
+
 ![smartmockups_koeomun7](https://user-images.githubusercontent.com/74039235/117496299-0d242480-afa1-11eb-8714-d156080b080b.jpg)
 
-## Home Page
+- Home
+
 ![home-mockup](https://user-images.githubusercontent.com/74039235/117530610-3e840b00-b008-11eb-8efd-fb08a1492237.jpg)
 
-## Category Page - Jacket
+- Category
+
 ![category-mockup](https://user-images.githubusercontent.com/74039235/117530743-147f1880-b009-11eb-8c05-3557a42ebe98.jpg)
 
-## Product Details
-![product-details-mockup](https://user-images.githubusercontent.com/74039235/117530886-d59d9280-b009-11eb-94e0-906406c62234.jpg)
+- Product Detail
 
-## My Bag
-![mybag-mockup](https://user-images.githubusercontent.com/74039235/117531713-10092e80-b00e-11eb-813d-ac80ca5c7ff6.jpg)
+![product-details-mockup](https://user-images.githubusercontent.com/74039235/117561786-13f78800-b0c4-11eb-931a-320987705051.jpg)
 
-## Checkout
-![checkout-mockup](https://user-images.githubusercontent.com/74039235/117532125-257f5800-b010-11eb-89b3-0aeeeda86afe.jpg)
+- My Bag
 
-## Shopping Address
-## Payment
-## Notification
-## Profile
-## Store Profile
-## Chat
-![chat-mockup](https://user-images.githubusercontent.com/74039235/117532296-e7ceff00-b010-11eb-894d-b79b3e6fcdf9.jpg)
+![mybag-mockup](https://user-images.githubusercontent.com/74039235/117561859-a26c0980-b0c4-11eb-9dec-0d85acdf6e6c.jpg)
 
+- Checkout
 
-## VISIT PROJECT !!!
-- :white_check_mark: [Backend](https://github.com/chaerulmarwan20/tuku-backend)
-- :rocket: [Blanja App]()
-=======
-# Blanja App
+![checkout-mockup](https://user-images.githubusercontent.com/74039235/117561916-01318300-b0c5-11eb-89cd-b806f3349940.jpg)
 
-Blanja App adalah web aplikasi yang bergerak dibidang jual beli secara online yang memudahkan penggunaanya untuk berbelanja macam- macam produk fashion dengan menawarkan banyak category fashion seperti sepatu, kemeja, celana panjang, celana pendek, dan jacket. Pengguna juga dapat melakukan pembayaran online dengan cepat, efektif dan aman.
+- Shopping Address
 
-## Tentang Blanja App
-Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
+![address-mockup](https://user-images.githubusercontent.com/74039235/117562031-122ec400-b0c6-11eb-8237-9bbd9ef8a1b6.jpg)
 
-1. [Wisnu Prasetio](https://github.com/prasetioad) - Frontend- PM
-2. [Chaerul Marwan](https://github.com/chaerulmarwan20) - Full Stack - Member
-3. [Herza Paramayudhanto](https://github.com/herzaparam) - Backend - Member
-4. [Erwin Saputra Sulistio](https://github.com/ErwinSaputraSulistio) - Frontend - Member
-5. [Kevin Farid Alpharisy](https://github.com/kevinfaridap) - Frontend -Member
+- Payment
 
+![payment-mockup](https://user-images.githubusercontent.com/74039235/117562086-6fc31080-b0c6-11eb-9297-0698bd47fa88.jpg)
 
-## Login Page
-![smartmockups_koeomun7](https://user-images.githubusercontent.com/74039235/117496299-0d242480-afa1-11eb-8714-d156080b080b.jpg)
->>>>>>> 9936359d1a286bd0082778976d98081473c495a3
+- Profile
+
+![profile-mockup](https://user-images.githubusercontent.com/74039235/117562209-62f2ec80-b0c7-11eb-8515-59761b289707.jpg)
+
+## Related Project
+
+- :white_check_mark: [`Backend Tuku`](https://github.com/chaerulmarwan20/tuku-backend)
+- :rocket: [`Production`](https://tukupedia.netlify.app/)
