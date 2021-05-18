@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h3 align="center">Blanja App</h3>
 
 ---
@@ -48,3 +49,21 @@ Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
 ## VISIT PROJECT !!!
 - :white_check_mark: [Backend](https://github.com/chaerulmarwan20/tuku-backend)
 - :rocket: [Blanja App]()
+=======
+# Blanja App
+
+Blanja App adalah web aplikasi yang bergerak dibidang jual beli secara online yang memudahkan penggunaanya untuk berbelanja macam- macam produk fashion dengan menawarkan banyak category fashion seperti sepatu, kemeja, celana panjang, celana pendek, dan jacket. Pengguna juga dapat melakukan pembayaran online dengan cepat, efektif dan aman.
+
+## Tentang Blanja App
+Web aplikasi ini dikembangkan oleh sebuah tim yang beranggotakan 5 orang.
+
+1. [Wisnu Prasetio](https://github.com/prasetioad) - Frontend- PM
+2. [Chaerul Marwan](https://github.com/chaerulmarwan20) - Full Stack - Member
+3. [Herza Paramayudhanto](https://github.com/herzaparam) - Backend - Member
+4. [Erwin Saputra Sulistio](https://github.com/ErwinSaputraSulistio) - Frontend - Member
+5. [Kevin Farid Alpharisy](https://github.com/kevinfaridap) - Frontend -Member
+
+
+## Login Page
+![smartmockups_koeomun7](https://user-images.githubusercontent.com/74039235/117496299-0d242480-afa1-11eb-8714-d156080b080b.jpg)
+>>>>>>> 9936359d1a286bd0082778976d98081473c495a3
